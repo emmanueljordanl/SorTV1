@@ -89,5 +89,6 @@
     "Windows and Linux UF2 hashes are compiler/build specific.",
     "Synthetic metrics and host tests do not count as physical acceptance.",
     "Subsequent documentation commits are verified independently by PR checks."
-  ]
+  ],
+  "record_scope": "HISTORICAL_PRE_RELEASE_INTEGRATION"
 }

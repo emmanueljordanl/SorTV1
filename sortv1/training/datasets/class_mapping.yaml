@@ -1,3 +1,57 @@
+classes:
+  '0':
+    reason: Numeric or ambiguous name; material semantics not verified
+    reviewed: false
+    semantic_meaning: UNKNOWN
+    source_class_id: null
+    source_class_name: '0'
+    target: CHALLENGE_OOD
+    verification_confidence: PENDING_REVIEW
+    verification_source: ROBOFLOW_METADATA
+  '1':
+    reason: Numeric or ambiguous name; material semantics not verified
+    reviewed: false
+    semantic_meaning: UNKNOWN
+    source_class_id: null
+    source_class_name: '1'
+    target: CHALLENGE_OOD
+    verification_confidence: PENDING_REVIEW
+    verification_source: ROBOFLOW_METADATA
+  '2':
+    reason: Numeric or ambiguous name; material semantics not verified
+    reviewed: false
+    semantic_meaning: UNKNOWN
+    source_class_id: null
+    source_class_name: '2'
+    target: CHALLENGE_OOD
+    verification_confidence: PENDING_REVIEW
+    verification_source: ROBOFLOW_METADATA
+  '3':
+    reason: Numeric or ambiguous name; material semantics not verified
+    reviewed: false
+    semantic_meaning: UNKNOWN
+    source_class_id: null
+    source_class_name: '3'
+    target: CHALLENGE_OOD
+    verification_confidence: PENDING_REVIEW
+    verification_source: ROBOFLOW_METADATA
+  '4':
+    reason: Numeric or ambiguous name; material semantics not verified
+    reviewed: false
+    semantic_meaning: UNKNOWN
+    source_class_id: null
+    source_class_name: '4'
+    target: CHALLENGE_OOD
+    verification_confidence: PENDING_REVIEW
+    verification_source: ROBOFLOW_METADATA
+  '5':
+    reason: Numeric or ambiguous name; material semantics not verified
+    reviewed: false
+    semantic_meaning: UNKNOWN
+    source_class_id: null
+    source_class_name: '5'
+    target: CHALLENGE_OOD
+    verification_confidence: PENDING_REVIEW
+    verification_source: ROBOFLOW_METADATA
 default: CHALLENGE_OOD
-status: ACCESS_REQUIRED
-classes: {}
+status: PENDING_REVIEW

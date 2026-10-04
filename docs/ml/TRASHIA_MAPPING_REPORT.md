@@ -1,9 +1,14 @@
-# Mapeo TrashIA
+# TrashIA class mapping
 
-Estado: ACCESS_REQUIRED. La página pública devolvió 403 y la API devolvió 401; no se pudieron verificar task type, clases, versión, licencia, imágenes, splits o preprocessing. Esos campos son `null` en los metadatos; no se inventaron nombres ni mapeos. Falta ROBOFLOW_API_KEY local autorizada o un ZIP exportado con metadata/licencia verificable.
+Public metadata is verified separately from API/export access. See [metadata](../../sortv1/training/datasets/roboflow/trashia_metadata.json) and [public sources](../../sortv1/training/datasets/roboflow/public_metadata.json). Hosted inference is research only; final SorTV1 uses local MobileNetV3/ONNX.
 
-`scripts/fetch_trashia.py --inspect-only` usa SDK oficial. Luego elegir explícitamente `--version N`; nunca “latest”. El script incorpora todas las clases descubiertas a `class_mapping.yaml`, cada una por defecto CHALLENGE_OOD con `reviewed: false`, y regenera este reporte por clase. Para usar una clase interna, un operador debe revisar catálogo, material y justificación y marcar `reviewed: true`.
+| source_class | meaning_verified | target | reason | reviewed | evidence |
+| --- | --- | --- | --- | --- | --- |
+| 0 | UNKNOWN | CHALLENGE_OOD | Numeric or ambiguous name; material semantics not verified | False | ROBOFLOW_METADATA |
+| 1 | UNKNOWN | CHALLENGE_OOD | Numeric or ambiguous name; material semantics not verified | False | ROBOFLOW_METADATA |
+| 2 | UNKNOWN | CHALLENGE_OOD | Numeric or ambiguous name; material semantics not verified | False | ROBOFLOW_METADATA |
+| 3 | UNKNOWN | CHALLENGE_OOD | Numeric or ambiguous name; material semantics not verified | False | ROBOFLOW_METADATA |
+| 4 | UNKNOWN | CHALLENGE_OOD | Numeric or ambiguous name; material semantics not verified | False | ROBOFLOW_METADATA |
+| 5 | UNKNOWN | CHALLENGE_OOD | Numeric or ambiguous name; material semantics not verified | False | ROBOFLOW_METADATA |
 
-Las únicas etiquetas entrenables son PET, PAPEL_CARTON, METAL_LATAS y OTRO_SECO_CONOCIDO. “Plastic” no demuestra PET; vidrio, comida, pilas, húmedos, peligrosos y fuera de catálogo no son OTRO. CHALLENGE_OOD y EXCLUDE no son clases entrenables; RECHAZO es decisión. Los externos siempre train_external o challenge, incluso si el export público tenía valid/test. Validación y selección final dependen de LOCAL_PHYSICAL.
-
-Convertidor COCO recorta bbox/máscaras con margen conservador y conserva versión, original, anotación, clase y hashes. Si un original contiene un objeto challenge, todos sus crops quedan challenge para evitar fuga por source_image_id. Un crop tiene object_id por anotación; no se declara objeto físico independiente de evaluación. Importador classification preserva los mismos campos. ZIP se valida contra traversal, enlaces y tamaños excesivos; una versión importada no se sobrescribe.
+Numeric class names are not material labels or verified annotation IDs. External splits are train_external/challenge, never final LOCAL_PHYSICAL validation/test. No accuracy or physical acceptance is claimed.

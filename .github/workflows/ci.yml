@@ -89,6 +89,7 @@ jobs:
       - run: python scripts/verify_repository.py
       - run: python scripts/generate_hardware_views.py --check
       - run: python scripts/verify_mvp.py
+      - run: python scripts/scan_secrets.py
       - run: python scripts/doctor.py
 
   pico:
@@ -111,6 +112,7 @@ jobs:
           cmake -S sortv1/firmware -B build/pico -G Ninja -DPICOTOOL_NO_LIBUSB=1
           cmake --build build/pico -j 2
           test -s build/pico/sortv1_pico.uf2
+          python scripts/firmware_build_metadata.py --sdk .tools/pico-sdk
           sha256sum build/pico/sortv1_pico.uf2 > build/pico/sortv1_pico.uf2.sha256
           git rev-parse HEAD > build/pico/GIT_COMMIT.txt
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
@@ -121,6 +123,7 @@ jobs:
             build/pico/sortv1_pico.elf
             build/pico/*.sha256
             build/pico/GIT_COMMIT.txt
+            build/pico/BUILD_INFO.json
             LICENSE
             sortv1/firmware/vendor/vl53l0x/LICENSE.txt
 
