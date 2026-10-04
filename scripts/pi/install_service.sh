@@ -2,6 +2,9 @@
 set -euo pipefail
 repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
 if [[ ! -x "$repo_root/.venv/bin/python" ]]; then echo 'Run bootstrap_pi first'; exit 1; fi
+if systemctl cat sortv1.service >/dev/null 2>&1; then
+  sudo systemctl stop sortv1.service
+fi
 sudo useradd --system --create-home --groups video,render,dialout sortv1 2>/dev/null || id sortv1
 sudo install -d -o sortv1 -g sortv1 /opt/sortv1
 sudo cp -a "$repo_root/." /opt/sortv1/

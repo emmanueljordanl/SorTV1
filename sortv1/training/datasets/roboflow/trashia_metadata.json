@@ -1,15 +1,60 @@
 {
+  "status": "PUBLIC_METADATA_VERIFIED",
+  "verified_on": "2026-10-04",
+  "verification_source": "ROBOFLOW_PUBLIC_UNIVERSE",
+  "sources": [
+    "https://universe.roboflow.com/trashia/trashia",
+    "https://universe.roboflow.com/trashia/trashia/dataset/1"
+  ],
   "workspace": "trashia",
   "project": "trashia",
+  "task_type": "Object Detection",
+  "model_id": "trashia/1",
+  "model_type": "Roboflow 3.0 Object Detection (Fast)",
+  "input_output_contract": "Detection API; actual response contract requires inference inspection",
+  "versions": [
+    1
+  ],
+  "selected_version": 1,
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "classes": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "class_ids": null,
+  "class_semantics": "PENDING_REVIEW",
+  "project_images": 9876,
+  "images": 25557,
+  "splits": {
+    "train": 23589,
+    "valid": 996,
+    "test": 972
+  },
+  "preprocessing": {
+    "auto_orient": "Applied",
+    "resize": "Stretch to 640x640"
+  },
+  "augmentation": {
+    "outputs_per_training_example": 3,
+    "flip": "Horizontal",
+    "rotate_90": [
+      "Clockwise",
+      "Counter-Clockwise"
+    ],
+    "blur_up_to_px": 2.8
+  },
+  "dataset_downloaded": false,
+  "export_sha256": null,
+  "notes": "Project images and augmented version images are different counts. Numeric names do not establish annotation class IDs or material semantics. These are source dataset parameters, not SorTV1 training settings.",
   "url": "https://universe.roboflow.com/trashia/trashia",
-  "status": "ACCESS_REQUIRED",
-  "task_type": null,
-  "classes": null,
-  "versions": null,
-  "selected_version": null,
-  "license": null,
-  "images": null,
-  "splits": null,
-  "preprocessing": null,
-  "error": "ROBOFLOW_API_KEY_REQUIRED; public page returned 403 and API returned 401"
+  "metadata_access": "PUBLIC_METADATA_VERIFIED",
+  "inference_access": "ACCESS_REQUIRED",
+  "dataset_export_access": "ACCESS_REQUIRED",
+  "class_mapping": "PENDING_REVIEW",
+  "error": "ROBOFLOW_API_KEY_REQUIRED; public metadata preserved; inference/export not verified"
 }

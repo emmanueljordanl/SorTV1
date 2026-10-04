@@ -12,3 +12,14 @@ Comandos Python desde **sortv1**, salvo scripts/* que se ejecutan desde raíz co
 8. `python -m training.benchmark.benchmark_onnx --help`: paquete real, host y backend registrados. Pi --target-pi comprueba dispositivo real; 100 warmup/1000 inferencias batch1, p50/p95/max/RAM/temp/threads/versions/SHA. Laptop no se reporta como Pi. No INT8 sin benchmark real que lo justifique.
 
 Solo paquetes numéricamente verificados y validados LOCAL_PHYSICAL entran AUTO. `model_manifest.json` inicial sigue modelo ausente; el paquete de smoke no se versiona/despliega. Pipeline puede probarse con `python scripts/ml_smoke.py` desde raíz sin TrashIA/hardware, siempre SYNTHETIC_TEST/PASS_SOFTWARE_ONLY. No se reporta accuracy sintética como métrica del MVP.
+# Inspección hosted de TrashIA (solo investigación)
+
+La metadata pública está en `training/datasets/roboflow/public_metadata.json`. `python scripts/fetch_trashia.py --inspect-only` verifica acceso API por separado y conserva esa metadata si falta clave. `python scripts/fetch_trashia.py --version 1 --format coco` descarga el export autorizado, registra SHA del ZIP y archivos y aplica extracción segura. Las clases numéricas permanecen CHALLENGE_OOD/reviewed=false hasta revisar anotaciones y múltiples ejemplos; no asumir IDs ni materiales por el número.
+
+`inference-sdk==1.7.3` exige Python >=3.10,<3.14 y NumPy<2.4: usar un venv de investigación separado con Python3.13 y `requirements/roboflow-inference.txt`, sin alterar el entorno de entrenamiento ni la Pi. Con la clave únicamente en ROBOFLOW_API_KEY del entorno local:
+
+```powershell
+python scripts/inspect_trashia_inference.py --image RUTA_IMAGEN_REAL --output datasets-cache/trashia-inspection/response.json
+```
+
+Header authentication, respuesta sanitizada y source=ROBOFLOW_HOSTED_INFERENCE. No se guardan claves, headers, signed URLs ni mensajes de excepción. Un resultado de inferencia no acredita exportación, licencia de un export privado, mapping, precisión SorTV1 ni aceptación física. Operación normal: MobileNetV3Small/ONNX/Pi local, sin nube.

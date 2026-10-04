@@ -2,7 +2,7 @@
 
 Pi5 2GB, fuente oficial5.1V/5A, microSD≥64GB, Active Cooler, Camera Module3 estándar, CSI15→22 y USB de datos. Raspberry Pi OS Lite64bits; registrar imagen/versión/SHA. Instalar cooler y CSI sin alimentación; comprobar orientación según conectores reales.
 
-Clonar repo y cambiar a feature/mvp-physical-integration. Desde raíz: `bash scripts/pi/bootstrap_pi.sh`, `bash scripts/pi/check_camera.sh`, `.venv/bin/python scripts/doctor.py --hardware`. Venv con system-site-packages: Picamera2/libcamera/NumPy/Pillow son apt; ORT es pip. No instalar entrenamiento en Pi ni sustituir NumPy del sistema sin verificar ABI. ORT wheel debe existir para Python/aarch64 del OS escogido; si no, seleccionar versión compatible con ADR, nunca ignorar errores.
+Clonar repo y seleccionar el tag `v0.2.0-mvp-rc1` para un bring-up reproducible; comprobar GIT_COMMIT y hashes del release. Desde raíz: `bash scripts/pi/bootstrap_pi.sh`, `bash scripts/pi/check_camera.sh`, `.venv/bin/python scripts/doctor.py --hardware`. Venv con system-site-packages: Picamera2/libcamera/NumPy/Pillow son apt; ORT es pip. No instalar entrenamiento en Pi ni sustituir NumPy del sistema sin verificar ABI. ORT wheel debe existir para Python/aarch64 del OS escogido; si no, seleccionar versión compatible con ADR, nunca ignorar errores.
 
 Doctor lista USB VID/PID/serial. Fijar serial_number único observado, operador y modelo en sortv1/config/physical.json. COM/tty fijo solo fallback. Pico SDK USB suele VID0x2E8A/PID0x000A; confirmar con hardware. Puertos ambiguos se rechazan.
 

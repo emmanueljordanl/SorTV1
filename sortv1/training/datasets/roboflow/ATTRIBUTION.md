@@ -2,8 +2,8 @@
 
 Source: https://universe.roboflow.com/trashia/trashia
 
-Verification: ACCESS_REQUIRED
+Verification: PUBLIC_METADATA_VERIFIED
 
-License: NOT_VERIFIED — download/use blocked
+License: CC BY 4.0
 
-Pinned version: None
+Pinned version: 1

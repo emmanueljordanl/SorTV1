@@ -2,7 +2,9 @@
 
 Repositorio del contenedor experimental de clasificación de residuos secos: una pieza por ciclo, cuatro destinos, percepción local en Raspberry Pi y control físico independiente en Pico W.
 
-**Candidato 0.2.0-mvp-rc1**, desarrollado en `feature/mvp-physical-integration`; main conserva v0.1.0 hasta PR. Hay captura Picamera2, quality calibrable, ONNX Runtime, USB pySerial, MobileNetV3Small y firmware PicoSDK que genera UF2 real. Software/build no acreditan funcionamiento físico: no hay modelo validado de residuos ni pruebas físicas PASS. TrashIA requiere clave local autorizada o ZIP+metadatos reales; sensores, actuadores, cableado, cámara y mecánica necesitan calibración.
+**Candidato v0.2.0-mvp-rc1**, integrado en `main` mediante PR. Hay captura Picamera2, quality calibrable, ONNX Runtime, USB pySerial, MobileNetV3Small, HIL y firmware Pico SDK que genera UF2 real. Los procedimientos y el BOM preparan el bring-up; **NO EXISTE ACEPTACIÓN FÍSICA AÚN**. P01–P16 permanecen PENDING y el modelo de producción NOT_TRAINED. La metadata pública de TrashIA v1 está verificada; inferencia, exportación y semántica de clases se verifican por separado. La operación normal sigue siendo local, sin nube.
+
+El [release candidate](https://github.com/xxMannexx/SorTV1/releases/tag/v0.2.0-mvp-rc1) identifica el commit final y contiene UF2/SHA, ZIP offline, GIT_COMMIT y RELEASE_REPORT. El tag representa software, firmware y procedimientos para bring-up; no una máquina validada. `main` y `develop` conservan la misma base funcional tras sincronización mediante PR.
 
 Abrir [MVP_STATUS](docs/MVP_STATUS.md) para comprar, conectar, medir, compilar, flashear y avanzar gates. [BRINGUP](docs/BRINGUP.md), [Windows](docs/DEV_SETUP_WINDOWS.md), [Pi](docs/PI_INSTALL.md), [ML](docs/ml/ML_PIPELINE.md), [pruebas](docs/TESTING.md), [auditoría final](docs/audit/FINAL_MVP_AUDIT.md). Pi jamás controla STEP/PWM/rearme. ACK no cuenta; solo DONE consistente consolida. P01–P16 PENDING; no v1.0 físico.
 
