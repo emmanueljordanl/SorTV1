@@ -16,4 +16,10 @@ class ExtendedEvidenceTests(unittest.TestCase):
             p=Path(d);file=p/'proof.txt';file.write_text('SYNTHETIC_TEST')
             data=dict(test_id='P01',hardware_revision='fixture',model_sha256='fixture',firmware_version='fixture',stimulus='fixture',expected='fixture',observed='fixture',result='PASS',evidence_path=str(file),operator='fixture',source='SIMULATION')
             with self.assertRaises(ValueError):record(data,Journal(p/'acceptance.jsonl','PHYSICAL'))
+    def test_diagnostic_and_auto_counts_are_separate(self):
+        with tempfile.TemporaryDirectory() as d:
+            j=Journal(Path(d)/'j.jsonl','PHYSICAL',mode='DIAGNOSTIC')
+            j.append('DONE',dict(cycle_key='b:1',confirmed_bin=0))
+            j.append('DONE',dict(cycle_key='b:2',confirmed_bin=1,mode='PHYSICAL_AUTO'))
+            self.assertEqual(j.counts('DIAGNOSTIC'),[1,0,0,0]);self.assertEqual(j.counts('PHYSICAL_AUTO'),[0,1,0,0])
 if __name__=='__main__':unittest.main()

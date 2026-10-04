@@ -88,6 +88,7 @@ jobs:
           python-version: '3.14'
       - run: python scripts/verify_repository.py
       - run: python scripts/generate_hardware_views.py --check
+      - run: python scripts/verify_mvp.py
       - run: python scripts/doctor.py
 
   pico:

@@ -14,7 +14,7 @@ from app.utils import load_json,sha256
 def main():
     p=argparse.ArgumentParser();p.add_argument('--hardware',action='store_true');p.add_argument('--output',type=Path);a=p.parse_args()
     checks=[]
-    for name,cmd in [('repository',[sys.executable,str(ROOT/'scripts/verify_repository.py')]),('canonical_hardware',[sys.executable,str(ROOT/'scripts/generate_hardware_views.py'),'--check'])]:
+    for name,cmd in [('repository',[sys.executable,str(ROOT/'scripts/verify_repository.py')]),('canonical_hardware',[sys.executable,str(ROOT/'scripts/generate_hardware_views.py'),'--check']),('mvp_safety',[sys.executable,str(ROOT/'scripts/verify_mvp.py')])]:
         r=subprocess.run(cmd,cwd=ROOT,capture_output=True,text=True);checks.append(dict(check=name,status='PASS' if r.returncode==0 else 'FAIL',detail=(r.stdout+r.stderr).strip()))
     packages={}
     for name in ['numpy','Pillow','pyserial','onnxruntime','torch','torchvision','roboflow-slim']:

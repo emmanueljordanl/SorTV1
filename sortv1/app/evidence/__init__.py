@@ -15,11 +15,13 @@ class Journal:
     """Journal durable. Una línea truncada exige conciliación, no se descarta."""
 
     def __init__(self, path: Path, source: str, *, minimum_free_bytes: int = 16 * 1024 * 1024,
-                 rotate_bytes: int = 16 * 1024 * 1024):
+                 rotate_bytes: int = 16 * 1024 * 1024, mode: str | None = None):
         if source not in {"SIMULATION", "PHYSICAL"}:
             raise ValueError("source debe ser SIMULATION o PHYSICAL")
         self.path = path
         self.source = source
+        if mode is not None and mode not in {"SIMULATION", "DIAGNOSTIC", "PHYSICAL_AUTO"}: raise ValueError("Invalid operation mode")
+        self.mode = mode or ("SIMULATION" if source == "SIMULATION" else "UNKNOWN")
         self.failed = False
         self.minimum_free_bytes = minimum_free_bytes
         self.rotate_bytes = rotate_bytes
@@ -36,6 +38,7 @@ class Journal:
                     if not isinstance(event.get("event"), str) or not isinstance(event.get("data"), dict):
                         raise EvidenceError("Evento de journal inválido")
                     self.events.append(event)
+                    if mode is None and event["data"].get("mode") in {"SIMULATION", "DIAGNOSTIC", "PHYSICAL_AUTO"}: self.mode = event["data"]["mode"]
         except (OSError, ValueError) as exc:
             raise EvidenceError(f"No se puede recuperar evidencia: {exc}") from exc
 
@@ -46,6 +49,7 @@ class Journal:
                   "frame_ids", "frame_age_ms", "inference_ms", "predicted_class", "score", "margin", "decision",
                   "requested_bin", "ack", "confirmed_bin", "physical_result", "cycle_ms", "error_code", "mode")
         data = {**dict.fromkeys(fields), **data}
+        data["mode"] = data.get("mode") or self.mode
         data["boot_id"] = data.get("boot_id") or data.get("boot")
         data["cycle_id"] = data.get("cycle_id") if data.get("cycle_id") is not None else data.get("cycle")
         if data.get("cycle_key"):
@@ -110,13 +114,14 @@ class Journal:
                 values = {k: json.dumps(v) if isinstance(v, (dict, list, tuple)) else v for k, v in values.items()}
                 writer.writerow({**row, **values, "data_json": json.dumps(event["data"], ensure_ascii=True)})
 
-    def counts(self) -> list[int]:
+    def counts(self, mode: str | None = None) -> list[int]:
         counts = [0, 0, 0, 0]
         seen: set[str] = set()
         for event in self.events:
             if event["event"] != "DONE":
                 continue
             data = event["data"]
+            if mode is not None and data.get("mode") != mode: continue
             if data["cycle_key"] not in seen:
                 seen.add(data["cycle_key"])
                 counts[data["confirmed_bin"]] += 1

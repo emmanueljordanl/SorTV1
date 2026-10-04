@@ -20,7 +20,7 @@ class PhysicalService:
         self.root = root; self.settings = load_json(root / "config/physical.json")
         self.diagnostic, self.enable, self.destination = diagnostic, enable_actuators, destination
         self.mode = "DIAGNOSTIC" if diagnostic else "PHYSICAL_AUTO"
-        self.journal = Journal(root / self.settings["journal"], "PHYSICAL")
+        self.journal = Journal(root / self.settings["journal"], "PHYSICAL", mode=self.mode)
         self.controller = Controller(self.journal); self.status = {}; self.results = queue.Queue(maxsize=1)
         self.pool = ThreadPoolExecutor(max_workers=1); self.future = None; self.inspection_deadline = 0
         self.link = SerialTransport(self.settings["serial"])
@@ -96,7 +96,7 @@ class PhysicalService:
                 "llenado_orientativo": self.status.get("fill"), "almacenamiento_libre_bytes": shutil.disk_usage(self.journal.path.parent).free,
                 "modelo": self.model.model_sha256 if self.model else "DIAGNOSTIC_SIN_IA", "firmware": self.firmware_version,
                 "motivo": self.status.get("reason"),
-                "boot": self.controller.boot, "cycle": self.status.get("cycle"), "conteos_DONE": self.journal.counts()}
+                "boot": self.controller.boot, "cycle": self.status.get("cycle"), "conteos_DONE": self.journal.counts(self.mode)}
 
     def run(self):
         self.journal.append("SERVICE_START", {"mode": self.mode, "rearm": "PHYSICAL_ONLY"})
