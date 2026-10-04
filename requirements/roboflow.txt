@@ -1,1 +1,3 @@
 roboflow-slim==1.6.1
+# Dataset Project/Version imports image_utils even in slim SDK.
+pillow-avif-plugin==1.6.0

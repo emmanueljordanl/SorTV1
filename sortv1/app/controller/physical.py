@@ -95,6 +95,7 @@ class PhysicalService:
                 "paro": "COMPROBACIÓN FÍSICA; estado individual no instrumentado", "actuator_power": self.status.get("power"),
                 "llenado_orientativo": self.status.get("fill"), "almacenamiento_libre_bytes": shutil.disk_usage(self.journal.path.parent).free,
                 "modelo": self.model.model_sha256 if self.model else "DIAGNOSTIC_SIN_IA", "firmware": self.firmware_version,
+                "motivo": self.status.get("reason"),
                 "boot": self.controller.boot, "cycle": self.status.get("cycle"), "conteos_DONE": self.journal.counts()}
 
     def run(self):
@@ -108,6 +109,9 @@ class PhysicalService:
                 except queue.Empty: message = None
                 if message:
                     cmd = message["cmd"]
+                    if cmd not in {"HELLO", "STATUS", "DISCONNECTED"} and message.get("boot") != self.controller.boot:
+                        self.journal.append("IGNORED_STALE_BOOT", message)
+                        continue
                     if cmd == "DISCONNECTED": self.controller.disconnected(message["reason"])
                     elif cmd in {"HELLO", "STATUS"}:
                         if cmd == "HELLO": self.firmware_version = message.get("firmware", "UNKNOWN")

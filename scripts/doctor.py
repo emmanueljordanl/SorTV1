@@ -17,7 +17,7 @@ def main():
     for name,cmd in [('repository',[sys.executable,str(ROOT/'scripts/verify_repository.py')]),('canonical_hardware',[sys.executable,str(ROOT/'scripts/generate_hardware_views.py'),'--check'])]:
         r=subprocess.run(cmd,cwd=ROOT,capture_output=True,text=True);checks.append(dict(check=name,status='PASS' if r.returncode==0 else 'FAIL',detail=(r.stdout+r.stderr).strip()))
     packages={}
-    for name in ['numpy','Pillow','pyserial','onnxruntime','torch','torchvision','roboflow']:
+    for name in ['numpy','Pillow','pyserial','onnxruntime','torch','torchvision','roboflow-slim']:
         try:packages[name]=importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:packages[name]=None
     hardware=[]

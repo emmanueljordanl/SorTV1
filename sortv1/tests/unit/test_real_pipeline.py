@@ -34,6 +34,11 @@ class RealPipelineTests(unittest.TestCase):
         self.assertEqual(q.assess(Frame('f5',c,4,None,{}),c,5,weight_present=True).reason,'NO_IMAGE')
     def test_unmeasured_quality_blocks(self):
         with self.assertRaises(ValueError):ImageQuality({})
+    def test_quality_measurements_are_bounded_per_cycle(self):
+        q=self.quality();image=np.random.default_rng(1).integers(10,220,(10,10,3),dtype=np.uint8)
+        for n in range(1,20):
+            c=Cycle('b',n);q.assess(Frame(str(n),c,n,image,{}),c,n+1,weight_present=True)
+            self.assertLessEqual(len(q.measurements),1)
     def test_model_missing_hash_labels(self):
         with tempfile.TemporaryDirectory() as directory:
             package=Path(directory)

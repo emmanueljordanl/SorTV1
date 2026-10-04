@@ -120,6 +120,8 @@ jobs:
             build/pico/sortv1_pico.elf
             build/pico/*.sha256
             build/pico/GIT_COMMIT.txt
+            LICENSE
+            sortv1/firmware/vendor/vl53l0x/LICENSE.txt
 
   ml-smoke:
     name: ML numeric smoke (synthetic)

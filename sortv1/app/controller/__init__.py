@@ -51,7 +51,8 @@ class Controller:
         if decision.kind.value == "REVIEW" and decision.destination is not None:
             raise ControllerError("INVALID_DECISION")
         if decision.destination is None:
-            self.journal.append("REVIEW", {"cycle_key": self.active.key, "decision": asdict(decision)})
+            self.journal.append("REVIEW", {**self.metadata, "cycle_key": self.active.key, "decision": asdict(decision),
+                                          "physical_result": "PENDING_MANUAL_REMOVAL"})
             self.blocked = True
             return None
         command = {"v": 1, "boot": self.active.boot, "cycle": self.active.number,

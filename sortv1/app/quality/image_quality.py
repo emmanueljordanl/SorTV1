@@ -23,7 +23,7 @@ class ImageQuality:
         if age < 0 or age > self.config["max_age_ms"]: return result("STALE_FRAME")
         rgb = np.asarray(frame.rgb)
         if rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8 or min(rgb.shape[:2]) < 3: return result("NO_IMAGE")
-        if self.cycle != cycle: self.cycle = cycle; self.seen.clear()
+        if self.cycle != cycle: self.cycle = cycle; self.seen.clear(); self.measurements.clear()
         digest = hashlib.sha256(rgb.tobytes()).hexdigest()
         if frame.frame_id in self.seen or digest in self.seen or frame.captured_ns <= self.last_ns: return result("REPEATED_FRAME")
         self.seen.update((digest, frame.frame_id)); self.last_ns = frame.captured_ns

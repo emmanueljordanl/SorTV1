@@ -16,6 +16,7 @@ if __name__=='__main__':
             if file.is_file():z.write(file,file.relative_to(twin))
         for name in ['scripts/serve-dist.mjs','LICENSE','README.md']:
             if (twin/name).is_file():z.write(twin/name,name)
+        if not (twin/'LICENSE').is_file(): z.write(ROOT/'LICENSE','LICENSE')
         z.writestr('BUILD.json',json.dumps({'git_commit':commit,'version':'0.2.0-mvp-rc1','source':'SOFTWARE_BUILD','physical_acceptance':'PENDING'}))
     target.with_suffix('.sha256').write_text(hashlib.sha256(target.read_bytes()).hexdigest()+'  '+target.name+'\n')
     print(target)

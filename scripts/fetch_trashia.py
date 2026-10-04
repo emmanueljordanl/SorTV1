@@ -85,11 +85,13 @@ def main() -> int:
             publish_metadata(metadata, None); print(metadata["error"]); return 2
         try:
             from roboflow import Roboflow
+            from roboflow.adapters import rfapi
             with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
                 project = Roboflow(api_key=key).workspace("trashia").project("trashia")
                 versions = project.versions()
-            request = urllib.request.Request("https://api.roboflow.com/trashia/trashia", headers={"Authorization": "Bearer " + key})
-            with urllib.request.urlopen(request, timeout=30) as response: raw = json.load(response)
+            # Use official SDK authentication for project metadata/licence too.
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                raw = rfapi.get_project(key, "trashia", "trashia")
             raw_project = raw.get("project", raw)
             metadata.update(status="INSPECTED", task_type=project.type, classes=list(project.classes),
                             versions=[int(v.version) for v in versions], images=project.images,

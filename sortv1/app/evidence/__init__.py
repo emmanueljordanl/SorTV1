@@ -48,6 +48,10 @@ class Journal:
         data = {**dict.fromkeys(fields), **data}
         data["boot_id"] = data.get("boot_id") or data.get("boot")
         data["cycle_id"] = data.get("cycle_id") if data.get("cycle_id") is not None else data.get("cycle")
+        if data.get("cycle_key"):
+            boot, number = data["cycle_key"].rsplit(":", 1)
+            data["boot_id"] = data["boot_id"] or boot
+            if data["cycle_id"] is None: data["cycle_id"] = int(number)
         if kind in {"FAULT", "NACK"}: data["error_code"] = data.get("reason")
         if kind == "ACK": data["ack"] = True
         record = {"event": kind, "source": self.source,
@@ -89,7 +93,8 @@ class Journal:
                    ("power_isolated", "tray_empty", "path_clear", "gate_closed")):
             raise EvidenceError("Known safe physical state must be recorded")
         self.append(outcome, {"cycle_key": cycle_key, "operator": operator, "reason": reason,
-                             "evidence": str(Path(evidence).resolve()), "physical_state": physical_state})
+                             "evidence": str(Path(evidence).resolve()), "physical_state": physical_state,
+                             "physical_result": outcome})
 
     def export_csv(self, path: Path) -> None:
         fields = ["cycle_id", "boot_id", "request", "firmware_version", "model_sha256", "frame_ids", "frame_age_ms",

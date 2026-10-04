@@ -5,6 +5,9 @@ import platform
 from time import perf_counter_ns
 import numpy as np
 import torch
+import onnxruntime as ort
+import psutil
+from datetime import datetime,timezone
 from PIL import Image
 from training.train.train import model
 from app.inference.onnx_runtime import OnnxInference
@@ -24,7 +27,9 @@ def run(checkpoint,package,image,*,warmup=100,iterations=1000,threads=4):
             values[name]=dict(p50_ms=float(np.percentile(times,50)),p95_ms=float(np.percentile(times,95)),max_ms=max(times))
     return dict(source='MEASURED_HOST',target='LAPTOP',host=platform.node(),OS=platform.platform(),Python=platform.python_version(),
         model_source=runtime.manifest['source'],checkpoint_sha256=sha256(checkpoint),model_sha256=runtime.model_sha256,batch=1,threads=threads,
-        warmup=warmup,iterations=iterations,torch=torch.__version__,backends=values,physical_acceptance='PENDING')
+        warmup=warmup,iterations=iterations,torch=torch.__version__,onnxruntime=ort.__version__,backends=values,
+        ram_rss_end_bytes=psutil.Process().memory_info().rss,temperature_c=None,temperature_status='NO_HOST_SENSOR',
+        architecture=runtime.manifest['architecture'],timestamp=datetime.now(timezone.utc).isoformat(),physical_acceptance='PENDING')
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     for key in ['checkpoint','package','image']:p.add_argument('--'+key,type=Path,required=True)
