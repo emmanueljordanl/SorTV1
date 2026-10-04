@@ -1,0 +1,53 @@
+{
+  "record_scope": "LOCAL_SOFTWARE_VALIDATION_BEFORE_RELEASE_INTEGRATION",
+  "base_commit": "87de1931a7fd74c594444ec16a0b6dca6f734a2e",
+  "python_tests": 52,
+  "cpp_original_contracts": "PASS",
+  "cpp_physical_and_crc": "PASS",
+  "digital_twin_tests": 24,
+  "digital_twin_build": "PASS",
+  "ml_smoke": {
+    "result": "PASS_SOFTWARE_ONLY",
+    "source": "SYNTHETIC_TEST",
+    "equivalence": {
+      "images": 52,
+      "logits_atol": 0.0001,
+      "probabilities_atol": 1e-05,
+      "max_logit_abs_diff": 2.3283064365386963e-09,
+      "max_probability_abs_diff": 5.223139976084923e-10,
+      "top1_equal": true,
+      "passed": true
+    }
+  },
+  "imagenet_forward": {
+    "weights": "MobileNet_V3_Small_Weights.DEFAULT",
+    "device": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "input": "RGB float32 NCHW 1x3x224x224",
+    "outputs": 4,
+    "finite": true,
+    "torch": "2.14.1+cu130"
+  },
+  "local_firmware": {
+    "git_commit": "87de1931a7fd74c594444ec16a0b6dca6f734a2e",
+    "sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
+    "sdk_version": "2.3.1",
+    "compiler": "arm-none-eabi-g++ (Arm GNU Toolchain 14.3.Rel1 (Build arm-14.174)) 14.3.1 20250623",
+    "uf2_sha256": "f5a9437cf6248fc31832517a9a2cded5bbe7d10a23f381a4a35dc442c226e16f",
+    "uf2_bytes": 99840,
+    "flash_blocks": 195,
+    "calibrated": false,
+    "physical_acceptance": "PENDING"
+  },
+  "roboflow_hosted_sdk": {
+    "python": "3.13.16",
+    "inference_sdk": "1.7.3",
+    "api_key_transport": "HEADER",
+    "import_verified": true,
+    "authenticated_inference": "ACCESS_REQUIRED"
+  },
+  "production_model": "NOT_TRAINED",
+  "hardware_connected": false,
+  "P01_P16": "PENDING",
+  "secret_scan": "PASS",
+  "final_release_identity": "v0.2.0-mvp-rc1 + RELEASE_REPORT.json; this local record is not the final commit report"
+}

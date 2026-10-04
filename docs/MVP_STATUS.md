@@ -1,15 +1,16 @@
 # Estado MVP candidato 0.2.0-mvp-rc1
 
-No es v1.0 ni máquina físicamente aceptada. P01–P16 PENDING. Fuentes: plan original completo y repo/gemelo preservados; no Plan(2). Trabajo en feature/mvp-physical-integration, PR hacia develop; main sigue estable.
+No es v1.0 ni máquina físicamente aceptada. P01–P16 PENDING. Fuentes: plan original completo y repo/gemelo preservados; no Plan(2). El MVP ya está integrado en main mediante los PR #4/#5; el cierre y la sincronización de develop se realizan mediante PR, sin reescribir historia. La identidad final se resuelve con el tag v0.2.0-mvp-rc1 y su RELEASE_REPORT.
 
 | Categoría | Estado/siguiente acción |
 | --- | --- |
 | IMPLEMENTED_AND_TESTED_SOFTWARE | Codec/CRC/correlación/idempotencia, journal/cierre manual, datos/leakage/TESTfreeze, quality/preprocess/ONNX, cámara/USB mock, simulación/gemelo. MobileNet CUDA RTX4070 y CPU CI con imágenes sintéticas, export/equivalencia≥50. Sin métricas de residuos. |
 | COMPILES_NOT_PHYSICALLY_TESTED | Firmware PicoSDK2.3.1 ELF/BIN/UF2 reales: GPIO, STEPtimer, servoPWM, HX711, VL53L0X. Calibration=false; sin Pico disponible para flashear. |
+| REQUIRES_DATA | TrashIA solo auxiliar; nombres numéricos 0–5 sin semántica verificada. Faltan datos LOCAL_PHYSICAL train/validation/test y modelo real; model_manifest permanece NOT_TRAINED. |
 | REQUIRES_HARDWARE | Pi/cámara/Pico/actuadores/sensores/cadenaDC/mecánica. Comprar BOM y confirmar modelos/terminales/datasheets antes de conectar. |
 | REQUIRES_CALIBRATION | GPIO/polaridades/fallos, tare/escala/ruido, ToF/histéresis, servo endpoints y STEP; ROI/exposure/AWB/focus/background/quality. Sin valores medidos. |
 | REQUIRES_PHYSICAL_ACCEPTANCE | P01–P16, 200diagnóstico/200AUTO, sesión60min, recall/purity/coverage LOCAL, Pi latencias/RAM/temp y corte/recuperación/cero no autorizados. |
-| REQUIRES_EXTERNAL_ACCESS | TrashIA público403/API401. Clave local o ZIP+metadata/licencia real pendientes. Tipos/clases/versiones no inventados; CHALLENGE_OOD al descubrir clases. Descarga/import/conversión implementadas. |
+| REQUIRES_EXTERNAL_ACCESS | Metadata pública TrashIA v1 verificada: Object Detection/CC BY 4.0. Acceso MCP/API/inferencia/export evaluado por separado en [reporte](ml/TRASHIA_MAPPING_REPORT.md). Clave exclusivamente en ROBOFLOW_API_KEY local; nunca en Git/Actions. Mapping numérico CHALLENGE_OOD, reviewed=false. |
 
 | Recibir/comprar | Conectar/medir | Compilar/flashear/ejecutar | Observar/registrar/gate |
 | --- | --- | --- | --- |

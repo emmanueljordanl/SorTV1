@@ -1,9 +1,9 @@
 {
   "workspace": "trashia",
   "project": "trashia",
-  "version": null,
+  "version": 1,
   "source": "EXTERNAL",
   "files": [],
-  "status": "ACCESS_REQUIRED",
+  "status": "PUBLIC_METADATA_VERIFIED",
   "export_sha256": null
 }
