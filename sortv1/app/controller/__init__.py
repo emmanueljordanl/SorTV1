@@ -1,4 +1,5 @@
 from dataclasses import asdict
+from time import monotonic_ns
 
 from app.contracts import Cycle, Decision
 from app.evidence import Journal
@@ -22,6 +23,9 @@ class Controller:
                                if e["event"] in {"INSPECT", "INTENT", "DONE"}}
         self.completed = {e["data"]["cycle_key"]: e["data"] for e in journal.events
                           if e["event"] == "DONE"}
+        self.started_ns = 0
+        self.metadata: dict = {}
+        self.last_fault_seq = -1
 
     def connect(self, boot: str) -> None:
         if not isinstance(boot, str) or not boot:
@@ -38,6 +42,7 @@ class Controller:
         self.journal.append("INSPECT", {"cycle_key": cycle.key})
         self.seen.add(cycle.key)
         self.active = cycle
+        self.started_ns = monotonic_ns()
 
     def request_sort(self, decision: Decision) -> dict | None:
         if self.blocked or self.active is None or self.intent is not None:
@@ -53,7 +58,7 @@ class Controller:
         validate(command)
         # Si fsync falla, esta función no devuelve la orden al transporte.
         self.journal.append("INTENT", {"cycle_key": self.active.key, "command": command,
-                                      "decision": asdict(decision)})
+                                      "decision": asdict(decision), **self.metadata})
         self.intent = command
         return command.copy()
 
@@ -62,13 +67,28 @@ class Controller:
         if message["boot"] != self.boot:
             raise ControllerError("STALE_BOOT")
         cmd = message["cmd"]
-        if cmd == "FAULT":
-            self.journal.append("FAULT", message)
+        if cmd in {"FAULT", "NACK"}:
+            if "cycle" in message:
+                expected_request = self.intent["request"] if self.intent else 0
+                if (self.active is None or message["cycle"] != self.active.number
+                        or message["request"] != expected_request):
+                    self.journal.append("IGNORED_STALE_ERROR", message)
+                    return
+            elif cmd == "NACK":
+                self.journal.append("IGNORED_UNSCOPED_NACK", message)
+                return
+            if "seq" in message:
+                if message["seq"] <= self.last_fault_seq:
+                    return
+                self.last_fault_seq = message["seq"]
+            self.journal.append(cmd, message)
             self.blocked = True
             return
-        if cmd == "NACK":
-            self.journal.append("NACK", message)
-            self.blocked = True
+        if cmd == "ACK":
+            if (self.active is not None and self.intent is not None
+                    and message["cycle"] == self.active.number
+                    and message.get("request") == self.intent["request"]):
+                self.journal.append("ACK", {**message, "cycle_key": self.active.key})
             return
         if cmd != "DONE":
             return  # ACK jamás consolida un resultado físico.
@@ -84,8 +104,24 @@ class Controller:
                 or message["confirmed_bin"] != self.intent["dest"]):
             self.blocked = True
             raise ControllerError("UNEXPECTED_DONE")
-        data = {**message, "cycle_key": key, "physical_result": "DONE"}
+        data = {**self.metadata, **message, "cycle_key": key, "physical_result": "DONE",
+                "cycle_ms": (monotonic_ns() - self.started_ns) / 1_000_000}
         self.journal.append("DONE", data)
         self.completed[key] = data
         self.active = None
         self.intent = None
+
+    def disconnected(self, reason: str = "USB_DISCONNECTED") -> None:
+        self.journal.append("DISCONNECTED", {"boot_id": self.boot, "cycle_key": self.active.key if self.active else None,
+                                             "reason": reason})
+        self.blocked = True
+        self.boot = None
+
+    def manual_close(self, outcome: str, **fields) -> None:
+        if self.active is None:
+            raise ControllerError("NO_ACTIVE_CYCLE")
+        self.journal.close_manual(self.active.key, outcome, **fields)
+        self.active = None
+        self.intent = None
+        # Clearing software bookkeeping is not rearming the Pico.
+        self.blocked = bool(self.journal.pending_cycles())

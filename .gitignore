@@ -12,5 +12,14 @@ Thumbs.db
 .env.*
 !.env.example
 *.log
+.tools/
+build/
+artifacts/
+datasets-cache/
+**/dist/
+sortv1/training/datasets/external/**
+sortv1/training/datasets/local/**
+sortv1/training/datasets/challenge/**
+!**/README.md
 
 # Se versionan los documentos, ZIP original y dist/ offline del gemelo.
