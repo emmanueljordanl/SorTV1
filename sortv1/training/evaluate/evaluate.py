@@ -1,5 +1,7 @@
 import argparse
 import csv
+import json
+import hashlib
 from pathlib import Path
 import numpy as np
 import torch
@@ -13,6 +15,11 @@ def evaluate(checkpoint: Path, manifest: Path, split: str, output: Path, *, sear
     if search_thresholds and split!="validation": raise ValueError("Threshold optimization is restricted to VALIDATION")
     validate_manifest(manifest,strict=True)
     rows=[r for r in read_rows(manifest) if r["split"]==split and not r.get("excluded_reason")]
+    if split == "test":
+        freeze = manifest.with_suffix(".test-freeze.json")
+        frozen_rows = sorted([r for r in read_rows(manifest) if r["split"] == "test"], key=lambda r: (r["object_id"], r["sha256"]))
+        digest = hashlib.sha256(json.dumps(frozen_rows, sort_keys=True).encode()).hexdigest()
+        if not freeze.exists() or load_json(freeze).get("test_manifest_sha256") != digest: raise ValueError("TEST freeze missing or changed; prepare_dataset first")
     if not rows: raise ValueError("No evaluation samples")
     if not technical_smoke and any(r["source"]!="LOCAL_PHYSICAL" for r in rows): raise ValueError("Final evaluation requires LOCAL_PHYSICAL")
     saved=torch.load(checkpoint,map_location="cpu",weights_only=False); network=model(None)

@@ -85,10 +85,13 @@ def train(config: dict, *, technical_smoke: bool = False) -> Path:
         if phase == "finetune":
             for block in list(network.features.children())[-config.get("finetune_last_blocks",3):]:
                 for p in block.parameters(): p.requires_grad = True
+        bad_epochs = 0
         optimizer = torch.optim.AdamW([p for p in network.parameters() if p.requires_grad], lr=lr)
         for _ in range(epochs):
             epoch_number += 1; network.train()
-            if phase == "head": network.features.eval()  # Freeze BatchNorm state as well as gradients.
+            network.features.eval()  # Freeze BatchNorm state on frozen blocks.
+            if phase == "finetune":
+                for block in list(network.features.children())[-config.get("finetune_last_blocks",3):]: block.train()
             losses = []
             for batch, target in train_loader:
                 optimizer.zero_grad(set_to_none=True); logits=network(batch.to(device)); loss=nn.functional.cross_entropy(logits,target.to(device))

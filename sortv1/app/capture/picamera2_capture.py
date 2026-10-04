@@ -42,7 +42,7 @@ class PicameraCapture:
                     sensor = int(metadata["SensorTimestamp"])
                     offset = time.clock_gettime_ns(time.CLOCK_BOOTTIME) - time.monotonic_ns() if hasattr(time, "CLOCK_BOOTTIME") else 0
                     captured = sensor - offset
-                    if captured < earliest or sensor <= self.last_sensor: continue
+                    if captured - int(metadata.get("ExposureTime", 0))*1000 < earliest or sensor <= self.last_sensor: continue
                     rgb = np.ascontiguousarray(request.make_array("main"))
                     roi = self.config.get("roi")
                     if roi is not None:

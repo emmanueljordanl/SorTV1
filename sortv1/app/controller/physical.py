@@ -125,6 +125,10 @@ class PhysicalService:
                         if command: self.link.send(command)
                 if self.future and time.monotonic() > self.inspection_deadline and not self.controller.blocked:
                     self.controller.request_sort(Decision(DecisionKind.REVIEW, None, None, "INSPECTION_TIMEOUT"))
+        except Exception as error:
+            self.controller.blocked = True
+            try: self.journal.append("SERVICE_FAULT", {"mode": self.mode, "reason": type(error).__name__, "detail": str(error)})
+            finally: raise
         finally:
             self.link.close(); server.shutdown(); self.pool.shutdown(wait=False, cancel_futures=True)
             if self.camera: self.camera.close()

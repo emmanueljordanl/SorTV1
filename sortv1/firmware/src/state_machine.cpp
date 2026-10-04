@@ -16,7 +16,7 @@ const char* Machine::sort(uint32_t c,uint32_t r,int dest,const Inputs& i,uint32_
   if(c!=cycle || !c || r!=1) return "IDENTITY";
   if(state!=State::WAIT_DECISION || request!=0) return "STATE";
   if(dest<0 || dest>3) return "DESTINATION";
-  if(!i.calibrated || !i.lid || !i.service || !i.power || !i.closed || i.open || !i.stable || !i.presence || i.overweight || i.fill[dest]!=Fill::AVAILABLE) return "GUARDS";
+  if(!linked || now-heartbeat_ms>1000 || !i.calibrated || !i.lid || !i.service || !i.power || !i.closed || i.open || !i.stable || !i.presence || i.overweight || i.fill[dest]!=Fill::AVAILABLE) return "GUARDS";
   for(bool blocked:i.beam) if(blocked) return "PATH_BLOCKED";
   request=r; destination=dest; history[history_next]={c,r,0,dest,false}; history_next=(history_next+1)%history.size();
   enter(State::POSITIONING,now); return "ACK";
@@ -31,6 +31,7 @@ void Machine::tick(uint32_t now,const Inputs& i) {
   const bool active=(state==State::POSITIONING || state==State::DISPENSING || state==State::VERIFY_CLOSE);
   const bool guards=i.calibrated && i.lid && i.service && i.power && linked && now-heartbeat_ms<=1000;
   if(active && !guards) { fault("INTERLOCK_OR_HEARTBEAT",now); return; }
+  if(active && i.fill[destination]!=Fill::AVAILABLE) { fault("BIN_UNAVAILABLE",now); return; }
   if(active && (i.overweight || !i.weight_known)) { fault("WEIGHT_UNSAFE",now); return; }
   if(!idle && state!=State::READY && now-started>10000) { fault("CYCLE_TIMEOUT",now); return; }
   if(idle) {
@@ -53,6 +54,7 @@ void Machine::tick(uint32_t now,const Inputs& i) {
   case State::READY:
     // Opening lid for loading removes physical actuator power and is normal.
     outputs={};
+    if(!linked || now-heartbeat_ms>1000 || (!i.power && i.lid && i.service)) { fault("READY_POWER_OR_LINK_LOST",now); break; }
     if(guards && i.closed && i.weight_known && i.presence) { started=now; enter(State::WAIT_STABLE,now); }
     break;
   case State::WAIT_STABLE:
@@ -90,7 +92,7 @@ void Machine::tick(uint32_t now,const Inputs& i) {
     outputs.gate_close=true;
     for(int b=0;b<4;++b) if(i.beam[b]) { fault("PATH_NOT_CLEAR",now); return; }
     if(!i.index[destination] || indices!=1) { fault("POSITION_LOST",now); break; }
-    if(i.weight_known && !i.presence && i.closed && !i.open) {
+    if(i.weight_known && i.stable && !i.presence && i.closed && !i.open) {
       ++seq;
       for(auto& h:history) if(h.cycle==cycle && h.request==request) { h.done=true; h.seq=seq; }
       enter(State::READY,now); done_event=true;
