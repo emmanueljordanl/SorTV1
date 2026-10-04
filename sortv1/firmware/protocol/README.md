@@ -1,3 +1,5 @@
 # Protocolo del Pico
 
-`crc16.hpp` contiene la rutina de referencia C++; aún no está compilada en Pico. Pendiente: parser acotado ASCII, validación de mensajes, identidad boot/ciclo, historial corto y emisión de resultados. Comparar vector CRC y tramas con las pruebas de Python.
+Parser fisico512bytes y CRC en src/protocol.cpp; contratos originales preservados. Tipos/duplicatekeys/framing/timeout/overflow verificados; no REARM/STEP/PWM remoto. Golden vectors Python/C++ en scripts/check_cross_language.py.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.

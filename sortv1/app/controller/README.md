@@ -1,3 +1,5 @@
 # Orquestación
 
-Un ciclo activo, intención persistida antes de SORT y consolidación solo por DONE consistente. No hay acceso a motores ni rearme remoto. `simulator.py` es exclusivamente un doble de protocolo. La integración del lazo de eventos, transportes reales y recuperación manual está pendiente.
+physical.py integra captura/calidad/ONNX/consenso/serial/journal/UI. INTENT/fsync antes de SORT y conteo solo DONE consistente; fallos/timeout/stale sensores bloquean. Cierre manual auditado sin contar/rearmar; simulador solo doble.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.

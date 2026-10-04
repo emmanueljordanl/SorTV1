@@ -1,0 +1,10 @@
+{
+  "status": "TBC_CALIBRATE", "operator": null, "evidence_path": null,
+  "active_high": null,
+  "contact_debounce_ms": 20, "index_stable_ms": 100,
+  "hx711_offset": null, "hx711_mg_per_count": null,
+  "presence_mg": null, "stable_span_mg": null, "overweight_mg": 200000,
+  "servo_closed_us": null, "servo_open_us": null,
+  "step_period_us": null, "direction": null,
+  "tof_full_mm": null, "tof_hysteresis_mm": null
+}

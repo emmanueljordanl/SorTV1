@@ -1,6 +1,0 @@
-export class ToFSensors {
- constructor(){this.addresses=Array(4).fill(null);this.xshut=Array(4).fill(false);this.cursor=0;this.next=0;this.samples=Array.from({length:4},()=>[]);this.bins=Array.from({length:4},()=>({empty:260,full:45,distance:260,level:0,state:'UNKNOWN',source:'SIMULATION'}));}
- initialize(index){this.xshut[index]=true;this.addresses[index]=0x30+index;}
- sample(i,distance,valid=true){const b=this.bins[i];if(!valid||!Number.isFinite(distance)||b.empty<=b.full||distance<0){b.state='UNKNOWN';b.level=null;b.distance=null;this.samples[i]=[];return;}this.samples[i].push(distance);this.samples[i]=this.samples[i].slice(-5);const sorted=[...this.samples[i]].sort((a,b)=>a-b);const median=sorted[Math.floor(sorted.length/2)];b.distance=median;b.level=Math.max(0,Math.min(100,100*(b.empty-median)/(b.empty-b.full)));b.state=b.level>=90?'FULL':(b.state==='FULL'&&b.level>80)?'FULL':'AVAILABLE';}
- tick(now,levels,flags,target){if(this.cursor<4){if(now>=this.next){this.initialize(this.cursor++);this.next=now+40;}return;}if(now<this.next)return;const i=Math.floor(now/80)%4;const b=this.bins[i];this.sample(i,b.empty-(b.empty-b.full)*levels[i]/100,!(flags.tofInvalid&&i===target));this.next=now+80;}
-}

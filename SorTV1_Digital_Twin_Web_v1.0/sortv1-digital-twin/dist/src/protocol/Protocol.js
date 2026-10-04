@@ -1,8 +1,0 @@
-export function crc16(text){let crc=0xffff;for(const c of text){const b=c.charCodeAt(0);if(b>127)throw Error('NON_ASCII');crc^=b<<8;for(let i=0;i<8;i++)crc=(crc&0x8000)?((crc<<1)^0x1021)&0xffff:(crc<<1)&0xffff;}return crc;}
-export function encode(message){const json=JSON.stringify(message);const out=`${json}|${crc16(json).toString(16).toUpperCase().padStart(4,'0')}\n`;if(out.length>512)throw Error('OVERSIZE');return out;}
-export function decode(line){if(typeof line!=='string'||line.length>512)throw Error('OVERSIZE');if(!line.endsWith('\n'))throw Error('TRUNCATED');if(/[^\x20-\x7e\n]/.test(line)||line.slice(0,-1).includes('\n'))throw Error('NON_ASCII');const k=line.lastIndexOf('|');if(k<0||!/^\|[0-9A-Fa-f]{4}\n$/.test(line.slice(k)))throw Error('FRAME');const json=line.slice(0,k);if(crc16(json)!==parseInt(line.slice(k+1,-1),16))throw Error('CRC');let m;try{m=JSON.parse(json);}catch{throw Error('JSON');}if(!m||Array.isArray(m)||typeof m!=='object'||m.v!==1||typeof m.cmd!=='string')throw Error('SCHEMA');return m;}
-export class LineParser {
- constructor(onMessage,onError){this.buffer='';this.started=0;this.dropping=false;this.onMessage=onMessage;this.onError=onError;}
- feed(chunk,now){for(const c of chunk){if(this.dropping){if(c==='\n')this.dropping=false;continue;}if(!this.buffer)this.started=now;this.buffer+=c;if(this.buffer.length>512){this.buffer='';this.dropping=true;this.onError('OVERSIZE');continue;}if(c==='\n'){try{this.onMessage(decode(this.buffer));}catch(e){this.onError(e.message);}this.buffer='';}}}
- tick(now){if(this.buffer&&now-this.started>250){this.buffer='';this.dropping=false;this.onError('TRUNCATED_TIMEOUT');}}
-}

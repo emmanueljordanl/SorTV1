@@ -3,7 +3,7 @@
 #include "../state_machine/states.hpp"
 
 namespace sortv1 {
-// Adaptadores Pico SDK pendientes. Solo la máquina física utiliza estas interfaces.
+// Contratos portables históricos; drivers físicos en src/sensors.cpp y src/actuators.cpp.
 class Sensors {
 public:
     virtual ~Sensors() = default;

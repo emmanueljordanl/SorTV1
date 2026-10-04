@@ -1,3 +1,5 @@
 # Persistencia de eventos
 
-Journal JSONL con source y result_kind, reloj monótono Pi y reloj de pared. Escrituras con flush/fsync; fallo de persistencia bloquea el journal. Conteo por DONE deduplicado y recuperación de ciclos incompletos. Pendientes: rotación, espacio libre, exportación CSV y conciliación humana documentada.
+Journal durable JSONL PHYSICAL/SIMULATION con campos de identidad/versiones/modelo/config/frames/scores/latencias/resultados. Diskfree/rotacion/fsync; falla enclavada impide SORT. ABORTED/REMOVED/RECONCILED requieren operador/evidencia/estado seguro; no cuentan. ExportCSV conserva datos completos.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.
