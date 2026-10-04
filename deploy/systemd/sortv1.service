@@ -1,0 +1,28 @@
+[Unit]
+Description=SorTV1 supervised experimental sorter
+After=local-fs.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=sortv1
+Group=sortv1
+SupplementaryGroups=video render dialout
+WorkingDirectory=/opt/sortv1/sortv1
+ExecStart=/opt/sortv1/.venv/bin/python -m app --mode physical
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=5
+KillSignal=SIGINT
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/sortv1/sortv1/evidence
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sortv1
+
+[Install]
+WantedBy=multi-user.target
