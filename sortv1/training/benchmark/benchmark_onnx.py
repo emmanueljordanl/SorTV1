@@ -32,6 +32,7 @@ def benchmark(package: Path,image: Path,*,warmup=100,iterations=1000,threads=2,t
 if __name__ == "__main__":
     p=argparse.ArgumentParser(); p.add_argument("--package",type=Path,required=True); p.add_argument("--image",type=Path,required=True)
     p.add_argument("--output",type=Path,default=Path("evidence/benchmarks/onnx.json")); p.add_argument("--target",choices=["host","pi"],default="host")
+    p.add_argument("--target-pi",dest="target",action="store_const",const="pi")
     p.add_argument("--warmup",type=int,default=100); p.add_argument("--iterations",type=int,default=1000); p.add_argument("--threads",type=int,default=2)
     a=p.parse_args(); result=benchmark(a.package,a.image,warmup=a.warmup,iterations=a.iterations,threads=a.threads,target=a.target)
     write_json(a.output,result); print(result)

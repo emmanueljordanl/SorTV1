@@ -53,6 +53,8 @@ def train(config: dict, *, technical_smoke: bool = False) -> Path:
     if not training or not validation: raise ValueError("Training and validation samples required")
     if not technical_smoke and any(r["source"] != "LOCAL_PHYSICAL" for r in validation):
         raise ValueError("Selection validation requires LOCAL_PHYSICAL")
+    if not technical_smoke and any(r["source"] == "SYNTHETIC_TEST" for r in rows):
+        raise ValueError("Synthetic technical fixtures cannot enter production training")
     if any(not any(r["class_id"] == str(i) for r in group) for group in (training, validation) for i in range(4)):
         raise ValueError("All four classes need training and validation samples")
     seed = config["seed"]; random.seed(seed); np.random.seed(seed); torch.manual_seed(seed)
@@ -77,6 +79,8 @@ def train(config: dict, *, technical_smoke: bool = False) -> Path:
                   cuda_version=torch.version.cuda, GPU=torch.cuda.get_device_name(0) if device=="cuda" else None, host=platform.node(),
                   source="SYNTHETIC_TEST" if technical_smoke else "TRAINING", device=device, preprocess=DEFAULT,
                   validation_domain="SYNTHETIC_TEST" if technical_smoke else "LOCAL_PHYSICAL", history=[])
+    record.update(learning_rates={"head": config["head_learning_rate"], "finetune": config["finetune_learning_rate"]},
+                  epochs={"head": config["head_epochs"], "finetune": config["finetune_epochs"]}, augmentation=config["augmentation"])
     best = -1.0; bad_epochs = 0; epoch_number = 0
     for phase, epochs, lr in [("head", config["head_epochs"], config["head_learning_rate"]),
                                ("finetune", config["finetune_epochs"], config["finetune_learning_rate"])]:

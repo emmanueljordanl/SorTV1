@@ -1,3 +1,5 @@
 # Exportación ONNX
 
-Pendiente: exportador FP32 con shape fija, opset compatible con el entorno congelado y equivalencia PyTorch/ONNX en al menos 50 imágenes. Paquete requerido: model.onnx, labels.json, preprocess.json, thresholds.json, dataset_manifest.csv, entrenamiento.json y hashes SHA-256. INT8 solo después de medir beneficio.
+Exportador ONNX FP32 opset17 real, paquetecompletoSHA, equivalencia50+ validation logits1e-4/prob1e-5/top1. Gate fallido DO_NOT_DEPLOY; no sobrescribir modelos. INT8 diferido a benchmarkPi real.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.

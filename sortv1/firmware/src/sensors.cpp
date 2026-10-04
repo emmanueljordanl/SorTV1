@@ -30,6 +30,7 @@ void Sensors::init() {
     else { gpio_set_dir(6+b,GPIO_OUT); gpio_put(6+b,0); }
   }
   data.calibrated=calibration::verified;
+  contact_start=to_ms_since_boot(get_absolute_time()); data.contacts_valid=false;
 }
 void Sensors::poll(uint32_t now) {
   data.gpio_raw=gpio_get_all();
@@ -37,6 +38,7 @@ void Sensors::poll(uint32_t now) {
   data.service=input(27,now); data.power=input(28,now);
   constexpr unsigned fallpins[]={20,21,22,26};
   for(unsigned b=0;b<4;++b) { data.index[b]=input(16+b,now); data.beam[b]=input(fallpins[b],now); }
+  data.contacts_valid=now-contact_start>=20;
   if(!gpio_get(10)) {
     // HX711 bit transfer is bounded (<100 us). SCK high remains below power-down threshold.
     uint32_t irq=save_and_disable_interrupts(); uint32_t raw=0;
@@ -67,14 +69,15 @@ void Sensors::poll(uint32_t now) {
         if(!Wire.failed && !tof[b].timeoutOccurred() && status==11 && mm>0 && mm<8190) {
           ranges[b][range_next[b]]=mm; range_next[b]=(range_next[b]+1)%3; if(range_count[b]<3) ++range_count[b];
           tof_last[b]=now;
+          data.tof_mm[b]=int32_t(mm);
           if(calibration::verified && range_count[b]==3) {
             auto sorted=ranges[b]; std::sort(sorted.begin(),sorted.end()); const unsigned median=sorted[1];
             if(median<=calibration::tof_full_mm[b]) data.fill[b]=physical::Fill::FULL;
             else if(median>=calibration::tof_full_mm[b]+calibration::tof_hysteresis_mm[b]) data.fill[b]=physical::Fill::AVAILABLE;
           }
-        } else data.fill[b]=physical::Fill::UNKNOWN;
+        } else { data.fill[b]=physical::Fill::UNKNOWN; data.tof_mm[b]=-1; }
       }
     }
-    for(unsigned n=0;n<4;++n) if(!tof_ok[n] || now-tof_last[n]>1000) data.fill[n]=physical::Fill::UNKNOWN;
+    for(unsigned n=0;n<4;++n) if(!tof_ok[n] || now-tof_last[n]>1000) { data.fill[n]=physical::Fill::UNKNOWN; data.tof_mm[n]=-1; }
   }
 }

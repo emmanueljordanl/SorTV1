@@ -1,3 +1,5 @@
 # Entrenamiento en laptop
 
-`baseline.json` guarda la propuesta MobileNetV3 Small con cabeza de cuatro clases. Pendiente: script PyTorch/Torchvision, versiones verificadas, semilla, transforms, selección por macro-F1 de validación y checkpoints. No instalar el entorno de entrenamiento en la Pi. No se entrega un modelo entrenado.
+train.py MobileNetV3Small ImageNet: head5+finehasta20, AdamW1e-3/1e-4, seed42/patience5; configuracion ejecutable unica ../configs/baseline.yaml. Legacybaseline.json referencia no ejecutada. Registros/SHA/host/GPU y validacionLOCAL; no Torch en Pi.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.

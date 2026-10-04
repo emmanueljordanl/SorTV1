@@ -35,6 +35,7 @@ class Controller:
         self.active = None
         self.intent = None
         self.boot = boot
+        self.last_fault_seq = -1
 
     def inspect(self, cycle: Cycle) -> None:
         if self.blocked or self.active is not None or cycle.boot != self.boot or cycle.key in self.seen:
@@ -58,7 +59,10 @@ class Controller:
         validate(command)
         # Si fsync falla, esta función no devuelve la orden al transporte.
         self.journal.append("INTENT", {"cycle_key": self.active.key, "command": command,
-                                      "decision": asdict(decision), **self.metadata})
+                                      **self.metadata, "decision": asdict(decision), "predicted_class": decision.predicted_class,
+                                      "requested_bin": decision.destination, "ack": False})
+        self.metadata.update(decision=asdict(decision), predicted_class=decision.predicted_class,
+                             requested_bin=decision.destination, ack=False)
         self.intent = command
         return command.copy()
 
@@ -89,6 +93,7 @@ class Controller:
                     and message["cycle"] == self.active.number
                     and message.get("request") == self.intent["request"]):
                 self.journal.append("ACK", {**message, "cycle_key": self.active.key})
+                self.metadata["ack"] = True
             return
         if cmd != "DONE":
             return  # ACK jamás consolida un resultado físico.

@@ -42,6 +42,14 @@ class Journal:
     def append(self, kind: str, data: dict[str, Any]) -> None:
         if self.failed:
             raise EvidenceError("Persistencia bloqueada después de un error de escritura")
+        fields = ("cycle_id", "boot_id", "request", "firmware_version", "model_sha256", "config_sha256",
+                  "frame_ids", "frame_age_ms", "inference_ms", "predicted_class", "score", "margin", "decision",
+                  "requested_bin", "ack", "confirmed_bin", "physical_result", "cycle_ms", "error_code", "mode")
+        data = {**dict.fromkeys(fields), **data}
+        data["boot_id"] = data.get("boot_id") or data.get("boot")
+        data["cycle_id"] = data.get("cycle_id") if data.get("cycle_id") is not None else data.get("cycle")
+        if kind in {"FAULT", "NACK"}: data["error_code"] = data.get("reason")
+        if kind == "ACK": data["ack"] = True
         record = {"event": kind, "source": self.source,
                   "result_kind": "SIMULATED" if self.source == "SIMULATION" else "PHYSICAL",
                   "wall_time_ns": time_ns(), "pi_monotonic_ns": monotonic_ns(), "data": data}
@@ -84,13 +92,18 @@ class Journal:
                              "evidence": str(Path(evidence).resolve()), "physical_state": physical_state})
 
     def export_csv(self, path: Path) -> None:
+        fields = ["cycle_id", "boot_id", "request", "firmware_version", "model_sha256", "frame_ids", "frame_age_ms",
+                  "inference_ms", "predicted_class", "score", "margin", "requested_bin", "ack", "confirmed_bin",
+                  "physical_result", "cycle_ms", "error_code", "mode"]
         with path.open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(handle, fieldnames=["event", "source", "result_kind", "wall_time_ns",
-                                                        "pi_monotonic_ns", "data_json"])
+                                                        "pi_monotonic_ns", *fields, "data_json"])
             writer.writeheader()
-            for event in self.events:
+            for event in list(self.events):
                 row = {key: value for key, value in event.items() if key != "data"}
-                writer.writerow({**row, "data_json": json.dumps(event["data"], ensure_ascii=True)})
+                values = {f: event["data"].get(f) for f in fields}
+                values = {k: json.dumps(v) if isinstance(v, (dict, list, tuple)) else v for k, v in values.items()}
+                writer.writerow({**row, **values, "data_json": json.dumps(event["data"], ensure_ascii=True)})
 
     def counts(self) -> list[int]:
         counts = [0, 0, 0, 0]

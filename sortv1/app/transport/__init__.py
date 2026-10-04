@@ -41,8 +41,6 @@ def validate(message: dict[str, Any]) -> None:
             raise ProtocolError("ERROR_IDENTITY")
     if cmd in {"INSPECT", "SORT", "ACK", "DONE"} and "cycle" not in message:
         raise ProtocolError("CYCLE_REQUIRED")
-    if cmd == "ACK" and "request" not in message:
-        raise ProtocolError("REQUEST_REQUIRED")
     if cmd == "SORT":
         if "request" not in message or type(message.get("dest")) is not int or message["dest"] not in range(4):
             raise ProtocolError("SORT_FIELDS")

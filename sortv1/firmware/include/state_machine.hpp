@@ -7,9 +7,11 @@ enum class State { BOOT_SAFE, CHECK_HOME, READY, WAIT_STABLE, WAIT_DECISION, POS
 enum class Fill { UNKNOWN, AVAILABLE, FULL };
 struct Inputs {
   bool calibrated=false, lid=false, service=false, power=false, reset=false;
+  bool contacts_valid=true;
   bool closed=false, open=false, weight_known=false, presence=false, stable=false, overweight=false;
   std::array<bool,4> index{}, beam{};
   std::array<Fill,4> fill{};
+  std::array<int32_t,4> tof_mm{{-1,-1,-1,-1}};
   int32_t weight_mg=0, hx_raw=0;
   bool hx_known=false;
   uint32_t gpio_raw=0;
@@ -34,6 +36,7 @@ public:
 private:
   uint32_t entered=0, started=0, heartbeat_ms=0, index_since=0;
   bool linked=false, previous_reset=false, index_timing=false;
+  bool reset_released=false;
   unsigned fall_stage=0, history_next=0;
   void enter(State s, uint32_t now) { state=s; entered=now; outputs={}; index_timing=false; }
 };

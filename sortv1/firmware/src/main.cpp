@@ -34,13 +34,14 @@ void flush() {
 const char* boolean(bool v) { return v?"true":"false"; }
 const char* fill(physical::Fill f) { return f==physical::Fill::AVAILABLE?"AVAILABLE":(f==physical::Fill::FULL?"FULL":"UNKNOWN"); }
 void status() {
-  const auto& s=sensors.data; char weight[24],raw[24];
+  const auto& s=sensors.data; char weight[24],raw[24],range[4][12];
+  for(unsigned b=0;b<4;++b) snprintf(range[b],sizeof range[b],s.tof_mm[b]>=0?"%ld":"null",long(s.tof_mm[b]));
   snprintf(weight,sizeof weight,s.weight_known?"%ld":"null",long(s.weight_mg));
   snprintf(raw,sizeof raw,s.hx_known?"%ld":"null",long(s.hx_raw));
-  send("{\"v\":1,\"boot\":\"%s\",\"cmd\":\"STATUS\",\"state\":\"%s\",\"cycle\":%lu,\"request\":%lu,\"calibrated\":%s,\"lid\":%s,\"service\":%s,\"power\":%s,\"gate_closed\":%s,\"gate_open\":%s,\"presence\":%s,\"stable\":%s,\"weight_mg\":%s,\"hx_raw\":%s,\"gpio_raw\":%lu,\"fill\":[\"%s\",\"%s\",\"%s\",\"%s\"]}",
+  send("{\"v\":1,\"boot\":\"%s\",\"cmd\":\"STATUS\",\"state\":\"%s\",\"cycle\":%lu,\"request\":%lu,\"calibrated\":%s,\"lid\":%s,\"service\":%s,\"power\":%s,\"gate_closed\":%s,\"gate_open\":%s,\"presence\":%s,\"stable\":%s,\"weight_mg\":%s,\"hx_raw\":%s,\"gpio_raw\":%lu,\"fill\":[\"%s\",\"%s\",\"%s\",\"%s\"],\"tof_mm\":[%s,%s,%s,%s]}",
        boot,physical::Machine::name(machine.state),(unsigned long)machine.cycle,(unsigned long)machine.request,
        boolean(s.calibrated),boolean(s.lid),boolean(s.service),boolean(s.power),boolean(s.closed),boolean(s.open),boolean(s.presence),boolean(s.stable),weight,raw,(unsigned long)s.gpio_raw,
-       fill(s.fill[0]),fill(s.fill[1]),fill(s.fill[2]),fill(s.fill[3]));
+       fill(s.fill[0]),fill(s.fill[1]),fill(s.fill[2]),fill(s.fill[3]),range[0],range[1],range[2],range[3]);
 }
 void done(const physical::Result& r) { send("{\"v\":1,\"boot\":\"%s\",\"cmd\":\"DONE\",\"cycle\":%lu,\"request\":%lu,\"seq\":%lu,\"confirmed_bin\":%d}",boot,(unsigned long)r.cycle,(unsigned long)r.request,(unsigned long)r.seq,r.dest); }
 void handle(const wire::Command& c,uint32_t now) {

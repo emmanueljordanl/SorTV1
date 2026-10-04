@@ -23,6 +23,8 @@ const char* Machine::sort(uint32_t c,uint32_t r,int dest,const Inputs& i,uint32_
 }
 void Machine::tick(uint32_t now,const Inputs& i) {
   inspect_event=done_event=fault_event=false;
+  if(!i.contacts_valid) { outputs={}; return; }
+  if(!i.reset) reset_released=true;
   const bool rising=i.reset && !previous_reset; previous_reset=i.reset;
   unsigned indices=0; for(bool v:i.index) if(v) ++indices;
   if(i.open && i.closed) { if(state!=State::FAULT) fault("GATE_CONFLICT",now); return; }
@@ -37,7 +39,7 @@ void Machine::tick(uint32_t now,const Inputs& i) {
   if(idle) {
     outputs={};
     bool clear=true; for(bool blocked:i.beam) clear &= !blocked;
-    if(rising && guards && clear && i.weight_known && !i.presence && i.closed && !i.open && indices==1) {
+    if(rising && reset_released && guards && clear && i.weight_known && !i.presence && i.closed && !i.open && indices==1) {
       request=0; destination=-1; started=now; enter(State::CHECK_HOME,now); reason="OK";
     }
     return;

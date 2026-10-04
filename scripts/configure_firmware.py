@@ -10,11 +10,14 @@ def generate(path, output):
     for key in ("hx711_offset", "hx711_mg_per_count", "presence_mg", "stable_span_mg", "overweight_mg", "servo_closed_us", "servo_open_us", "step_period_us"):
         if type(c.get(key)) not in (int, float) or not math.isfinite(c[key]): raise ValueError(key)
     if not (0 < c["presence_mg"] < c["overweight_mg"] <= 200000) or c["stable_span_mg"] <= 0 or c["hx711_mg_per_count"] == 0: raise ValueError("Weight calibration range")
+    for key in ("hx711_offset", "presence_mg", "stable_span_mg", "overweight_mg", "servo_closed_us", "servo_open_us"):
+        if type(c[key]) is not int or not -2147483648 <= c[key] <= 2147483647: raise ValueError("Integer calibration required: " + key)
     if any(not 500 <= c[k] <= 2500 for k in ("servo_closed_us", "servo_open_us")) or c["servo_closed_us"] == c["servo_open_us"]: raise ValueError("Servo measured endpoints")
     if type(c["step_period_us"]) is not int or c["step_period_us"] < 20 or type(c.get("direction")) is not bool: raise ValueError("STEP timing/direction")
     if not isinstance(c.get("active_high"), list) or len(c["active_high"]) != 29 or any(type(x) is not bool for x in c["active_high"]): raise ValueError("Measured GPIO polarity required")
     for k in ("tof_full_mm", "tof_hysteresis_mm"):
         if not isinstance(c.get(k), list) or len(c[k]) != 4 or any(type(v) is not int or v <= 0 for v in c[k]): raise ValueError(k)
+    if any(a+b>=8190 for a,b in zip(c["tof_full_mm"], c["tof_hysteresis_mm"])): raise ValueError("ToF range calibration")
     lines = ['#pragma once', '#include <array>', 'namespace calibration {', 'constexpr bool verified=true;']
     for k, typ in [("active_high", "bool"), ("tof_full_mm", "unsigned"), ("tof_hysteresis_mm", "unsigned")]:
         values = ','.join(str(v).lower() for v in c[k]); lines.append(f'constexpr std::array<{typ},{len(c[k])}> {k}{{{{{values}}}}};')

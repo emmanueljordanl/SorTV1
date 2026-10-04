@@ -12,7 +12,7 @@ std::string frame(const char* payload) {
 bool parse(const char* payload) { auto s=frame(payload); wire::Command c; return wire::decode(s.data(),s.size(),c); }
 Inputs safe() { Inputs i; i.calibrated=i.lid=i.service=i.power=i.closed=i.weight_known=true; i.index[0]=true; i.fill.fill(Fill::AVAILABLE); return i; }
 Machine waiting(Inputs& i) {
-  Machine m; m.heartbeat(100); i.reset=true; m.tick(100,i); i.reset=false; m.tick(101,i); m.tick(201,i); assert(m.state==State::READY);
+  Machine m; m.heartbeat(100); m.tick(99,i); i.reset=true; m.tick(100,i); i.reset=false; m.tick(101,i); m.tick(201,i); assert(m.state==State::READY);
   i.presence=true; i.stable=true; m.tick(202,i); m.tick(203,i); assert(m.state==State::WAIT_DECISION); assert(m.cycle==1); return m;
 }
 int main() {
@@ -44,4 +44,5 @@ int main() {
   { auto i=safe(); auto m=waiting(i); i.index[1]=true; m.tick(204,i); assert(m.state==State::FAULT); }
   { auto i=safe(); auto m=waiting(i); m.sort(1,1,0,i,204); m.tick(1201,i); assert(m.state==State::FAULT); }
   { auto i=safe(); i.calibrated=false; Machine m; m.heartbeat(1); i.reset=true; m.tick(2,i); assert(m.state==State::BOOT_SAFE); }
+  { auto i=safe(); Machine m; m.heartbeat(1); i.reset=true; m.tick(2,i); assert(m.state==State::BOOT_SAFE); i.reset=false; m.tick(3,i); i.reset=true; m.tick(4,i); assert(m.state==State::CHECK_HOME); }
 }

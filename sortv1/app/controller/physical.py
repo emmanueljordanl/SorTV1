@@ -5,13 +5,14 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict
 from pathlib import Path
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from app.contracts import Cycle, Decision, DecisionKind
 from app.controller import Controller
 from app.decision import decide
 from app.evidence import Journal
 from app.transport.serial_transport import SerialTransport
 from app.utils import load_json, sha256
+from app.operator_ui import create_server
+import shutil
 
 
 class PhysicalService:
@@ -23,7 +24,7 @@ class PhysicalService:
         self.controller = Controller(self.journal); self.status = {}; self.results = queue.Queue(maxsize=1)
         self.pool = ThreadPoolExecutor(max_workers=1); self.future = None; self.inspection_deadline = 0
         self.link = SerialTransport(self.settings["serial"])
-        self.camera = None; self.model = None
+        self.camera = None; self.model = None; self.firmware_version = "UNKNOWN"
         if not diagnostic:
             from app.capture.picamera2_capture import PicameraCapture
             from app.quality.image_quality import ImageQuality
@@ -50,7 +51,9 @@ class PhysicalService:
     def inspect(self, cycle, status):
         start = time.monotonic_ns()
         metadata = {"mode": self.mode, "operator": self.settings.get("operator"), "boot_id": cycle.boot,
-                    "cycle_id": cycle.number, "request_id": 1, "sensors": status, "model_sha256": None}
+                    "cycle_id": cycle.number, "request": 1, "sensors": status, "model_sha256": None,
+                    "firmware_version": self.firmware_version,
+                    "config_sha256": {p.name: sha256(p) for p in (self.root / "config").glob("*.json")}}
         if self.diagnostic:
             decision = Decision(DecisionKind.ACCEPT, self.destination, None, "FORCED_DIAGNOSTIC") if self.enable and self.destination in range(4) else Decision(DecisionKind.REVIEW, None, None, "ACTUATORS_NOT_ENABLED")
         else:
@@ -68,7 +71,9 @@ class PhysicalService:
             metadata.update(model_sha256=self.model.model_sha256, frame_ids=[f.frame_id for f in frames],
                             controls=[f.controls for f in frames], probabilities=[p.probabilities for p in predictions],
                             quality=[asdict(q) for q in qualities], quality_measurements=self.quality.measurements.copy(),
-                            inference_ms=[p.inference_ms for p in predictions])
+                            inference_ms=[p.inference_ms for p in predictions], frame_age_ms=[q.age_ms for q in qualities],
+                            score=[max(p.probabilities) for p in predictions],
+                            margin=[sorted(p.probabilities)[-1]-sorted(p.probabilities)[-2] for p in predictions])
             # Save actual evidence before any SORT can be sent.
             from PIL import Image
             paths = []
@@ -81,24 +86,21 @@ class PhysicalService:
         return cycle, decision, metadata
 
     def snapshot(self):
-        return {"mode": self.mode, "source": "PHYSICAL", "status": self.status, "blocked": self.controller.blocked,
-                "counts": self.journal.counts(), "pending": sorted(self.journal.pending_cycles()), "usb": self.link.metrics}
+        state = self.status.get("state")
+        label = "FALLO" if not self.link.boot or state == "FAULT" or self.journal.failed else "REVISIÓN" if self.controller.blocked or state in {"BOOT_SAFE", "REVIEW"} else "LISTO" if state == "READY" else "PROCESANDO"
+        latest = next((e["data"] for e in reversed(self.journal.events) if e["event"] in {"DONE", "INTENT", "REVIEW"}), {})
+        return {"estado": label, "modo": self.mode, "ultimo_ciclo": latest.get("cycle_key"), "clase": latest.get("predicted_class"),
+                "confidence": latest.get("score"), "destino_solicitado": latest.get("requested_bin"), "destino_confirmado": latest.get("confirmed_bin"),
+                "tiempo_ms": latest.get("cycle_ms"), "tapa": self.status.get("lid"), "puerta": self.status.get("service"),
+                "paro": "COMPROBACIÓN FÍSICA; estado individual no instrumentado", "actuator_power": self.status.get("power"),
+                "llenado_orientativo": self.status.get("fill"), "almacenamiento_libre_bytes": shutil.disk_usage(self.journal.path.parent).free,
+                "modelo": self.model.model_sha256 if self.model else "DIAGNOSTIC_SIN_IA", "firmware": self.firmware_version,
+                "boot": self.controller.boot, "cycle": self.status.get("cycle"), "conteos_DONE": self.journal.counts()}
 
     def run(self):
         self.journal.append("SERVICE_START", {"mode": self.mode, "rearm": "PHYSICAL_ONLY"})
         self.link.start()
-        service = self
-        class Handler(BaseHTTPRequestHandler):
-            def do_GET(self):
-                if self.path == "/api/status": payload = json.dumps(service.snapshot()).encode(); kind = "application/json"
-                elif self.path == "/export.csv":
-                    path = service.root / "evidence/experiments/export.csv"; service.journal.export_csv(path); payload = path.read_bytes(); kind = "text/csv"
-                elif self.path == "/":
-                    payload = b'<html lang="es"><title>SorTV1</title><h1>SorTV1: estado fisico</h1><pre id="s"></pre><a href="/export.csv">Exportar evidencia</a><script>setInterval(async()=>{s.textContent=JSON.stringify(await(await fetch("/api/status")).json(),null,2)},1000)</script></html>'; kind = "text/html"
-                else: self.send_error(404); return
-                self.send_response(200); self.send_header("Content-Type", kind); self.end_headers(); self.wfile.write(payload)
-            def log_message(self, *args): pass
-        server = ThreadingHTTPServer(("127.0.0.1", self.settings["ui_port"]), Handler)
+        server = create_server(self, self.settings["ui_port"])
         threading.Thread(target=server.serve_forever, daemon=True).start()
         try:
             while True:
@@ -108,6 +110,7 @@ class PhysicalService:
                     cmd = message["cmd"]
                     if cmd == "DISCONNECTED": self.controller.disconnected(message["reason"])
                     elif cmd in {"HELLO", "STATUS"}:
+                        if cmd == "HELLO": self.firmware_version = message.get("firmware", "UNKNOWN")
                         if self.controller.boot != message["boot"]: self.controller.connect(message["boot"])
                         self.status = message; self.status["received_monotonic_ns"] = time.monotonic_ns()
                     elif cmd == "INSPECT":

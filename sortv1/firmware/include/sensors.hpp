@@ -13,6 +13,7 @@ class Sensors {
   std::array<int32_t,8> weights{};
   unsigned weight_count=0,weight_next=0;
   uint32_t hx_last=0,tof_poll=0;
+  uint32_t contact_start=0;
   bool input(unsigned pin,uint32_t now);
 public:
   physical::Inputs data{};
