@@ -34,6 +34,11 @@ def validate(message: dict[str, Any]) -> None:
     for name in ("cycle", "request", "seq"):
         if name in message and (type(message[name]) is not int or not 0 <= message[name] <= 0xFFFFFFFF):
             raise ProtocolError(name.upper())
+    if cmd in {"NACK", "FAULT"}:
+        if not isinstance(message.get("reason"), str) or not message["reason"]:
+            raise ProtocolError("REASON_REQUIRED")
+        if ("cycle" in message) != ("request" in message):
+            raise ProtocolError("ERROR_IDENTITY")
     if cmd in {"INSPECT", "SORT", "ACK", "DONE"} and "cycle" not in message:
         raise ProtocolError("CYCLE_REQUIRED")
     if cmd == "SORT":

@@ -1,3 +1,5 @@
 # Evaluación del modelo
 
-Pendiente: evaluación offline sobre test congelado con matriz de confusión, recall por clase, macro-F1, pureza selectiva, cobertura y rechazos. Conservar denominadores y objetos repetidos. Elegir umbrales solo con validación. Ensayos mecánicos dirigidos y clasificación autónoma se informan aparte.
+evaluate.py accuracy/macroF1/precision/recall/confusion/coverage/selectivepurity/alta confianza/confidence/margin. Thresholdsearch solo VALIDATION, TESTfreeze obligatorio; dominio LOCAL_PHYSICAL. Metricas por imagen no son exito fisico/consenso temporal.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.

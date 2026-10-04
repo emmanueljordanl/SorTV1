@@ -1,0 +1,8 @@
+{
+  "status": "PENDING_CALIBRATION",
+  "size": [640, 480], "fps": 15, "spacing_ms": 100,
+  "settle_ms": 150, "timeout_s": 2,
+  "roi": null,
+  "controls": {"AeEnable": true, "AwbEnable": true, "AfMode": 2},
+  "locked": false
+}

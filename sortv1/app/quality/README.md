@@ -1,3 +1,5 @@
 # Calidad de imagen
 
-`assess` comprueba ciclo, edad, imagen disponible y señales de ocupación, exposición y foco. Los checks visuales se reciben como entradas; falta medirlos sobre la ROI real. No clasificar bandeja vacía ni asumir que el peso garantiza una pieza única.
+ImageQuality: diferencia con background/SHA, media/clipping y Laplaciano calibrables; detecta vacio/duplicado/stale/ciclo anterior. Calibracion ausente bloquea AUTO. Peso complementa presencia, no material.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.

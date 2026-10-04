@@ -1,0 +1,93 @@
+{
+  "recorded_at_utc": "2026-10-04T04:11:48.656867+00:00",
+  "source": "MEASURED_SOFTWARE_ONLY",
+  "implementation_commit": "df8a344ee7fa9ca3cf0cc7d392c0758285abb5a1",
+  "ci": {
+    "url": "https://github.com/xxMannexx/SorTV1/actions/runs/37176006179",
+    "commit": "df8a344ee7fa9ca3cf0cc7d392c0758285abb5a1",
+    "jobs_passed": 7
+  },
+  "python": {
+    "tests_passed": 48,
+    "physical_hardware": false
+  },
+  "digital_twin": {
+    "tests_passed": 24,
+    "offline_build": "PASS",
+    "physical_hardware": false
+  },
+  "cpp_host": {
+    "original_contracts": "PASS",
+    "physical_state_machine_contracts": "PASS",
+    "python_cpp_crc_vectors": "PASS",
+    "physical_hardware": false
+  },
+  "firmware_windows": {
+    "sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
+    "sdk_version": "2.3.1",
+    "compiler": "Arm GNU 14.3.rel1",
+    "uf2_bytes": 99840,
+    "uf2_sha256": "f5a9437cf6248fc31832517a9a2cded5bbe7d10a23f381a4a35dc442c226e16f",
+    "flash_blocks_verified_against_bin": 195,
+    "calibrated": false,
+    "flashed": false,
+    "physical_test": "PENDING"
+  },
+  "ml_local": {
+    "environment": {
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130",
+      "onnx": "1.23.1",
+      "onnxruntime": "1.30.0",
+      "numpy": "2.5.3"
+    },
+    "device_verified": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "synthetic_train_evaluate_export": {
+      "result": "PASS_SOFTWARE_ONLY",
+      "source": "SYNTHETIC_TEST",
+      "equivalence": {
+        "images": 52,
+        "logits_atol": 0.0001,
+        "probabilities_atol": 1e-05,
+        "max_logit_abs_diff": 2.3283064365386963e-09,
+        "max_probability_abs_diff": 5.223139976084923e-10,
+        "top1_equal": true,
+        "passed": true
+      }
+    },
+    "synthetic_onnx_sha256": "e9f10c68d6322e5432956584347cf7241fe4db94dd5edee3c102f1499e32b51c",
+    "imagenet_forward_verified": true,
+    "real_waste_accuracy": null,
+    "pi_benchmark": "PENDING",
+    "deployable_model": false
+  },
+  "trashia": {
+    "sdk_project_version_import": "PASS",
+    "zip_traversal_rejected": true,
+    "actual_dataset_download": "ACCESS_REQUIRED",
+    "actual_class_mapping": "ACCESS_REQUIRED"
+  },
+  "physical_acceptance": {
+    "P01": "PENDING",
+    "P02": "PENDING",
+    "P03": "PENDING",
+    "P04": "PENDING",
+    "P05": "PENDING",
+    "P06": "PENDING",
+    "P07": "PENDING",
+    "P08": "PENDING",
+    "P09": "PENDING",
+    "P10": "PENDING",
+    "P11": "PENDING",
+    "P12": "PENDING",
+    "P13": "PENDING",
+    "P14": "PENDING",
+    "P15": "PENDING",
+    "P16": "PENDING"
+  },
+  "notes": [
+    "Windows and Linux UF2 hashes are compiler/build specific.",
+    "Synthetic metrics and host tests do not count as physical acceptance.",
+    "Subsequent documentation commits are verified independently by PR checks."
+  ]
+}

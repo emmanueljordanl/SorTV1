@@ -17,10 +17,18 @@ from app.transport import decode, encode
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--simulate", action="store_true", required=True)
+    parser.add_argument("--simulate", action="store_true")
+    parser.add_argument("--mode", choices=["physical", "diagnostic"])
+    parser.add_argument("--enable-actuators", action="store_true")
+    parser.add_argument("--dest", type=int, choices=range(4))
     parser.add_argument("--journal", type=Path, default=None)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
+    if args.mode:
+        from app.controller.physical import PhysicalService
+        PhysicalService(root, diagnostic=args.mode == "diagnostic", enable_actuators=args.enable_actuators, destination=args.dest).run()
+        return
+    if not args.simulate: parser.error("Choose --simulate or --mode")
     settings = json.loads((root / "config/system.json").read_text())
     thresholds = json.loads((root / "config/thresholds.json").read_text())
     boot = "sim-" + uuid4().hex

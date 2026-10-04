@@ -21,7 +21,8 @@ class SimulatedPico:
             raise ValueError("SORT_REQUIRED")
         key = command["boot"], command["cycle"], command["request"]
         def nack(reason: str) -> dict:
-            return {"v": 1, "cmd": "NACK", "boot": self.boot, "reason": reason}
+            return {"v": 1, "cmd": "NACK", "boot": command["boot"], "cycle": command["cycle"],
+                    "request": command["request"], "reason": reason}
         if command["boot"] != self.boot:
             return nack("STALE_BOOT")
         if key in self.history:

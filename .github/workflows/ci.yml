@@ -31,7 +31,10 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Test contracts
         working-directory: sortv1
-        run: python -m unittest discover -s tests -v
+        run: |
+          python -m pip install -r ../requirements/runtime.txt
+          python -m unittest discover -s tests -v
+          python -m training.datasets.validate training/datasets/manifest.csv --allow-empty
       - name: Simulate four destinations
         working-directory: sortv1
         run: python -m app --simulate
@@ -53,6 +56,13 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - name: Package offline distribution
+        working-directory: .
+        run: python scripts/build_distribution.py
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: twin-${{ github.sha }}
+          path: artifacts/
 
   cpp:
     name: C++ contracts
@@ -64,6 +74,8 @@ jobs:
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -pedantic sortv1/tests/protocol/firmware_contracts.cpp -o /tmp/sortv1-contracts
           /tmp/sortv1-contracts
+          g++ -std=c++17 -Wall -Wextra -Werror -pedantic -Isortv1/firmware/include sortv1/tests/protocol/physical_firmware.cpp sortv1/firmware/src/state_machine.cpp sortv1/firmware/src/protocol.cpp -o /tmp/sortv1-physical
+          python scripts/check_cross_language.py /tmp/sortv1-physical
 
   repository:
     name: Repository integrity
@@ -75,3 +87,52 @@ jobs:
         with:
           python-version: '3.14'
       - run: python scripts/verify_repository.py
+      - run: python scripts/generate_hardware_views.py --check
+      - run: python scripts/verify_mvp.py
+      - run: python scripts/doctor.py
+
+  pico:
+    name: Pico SDK firmware
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Pinned SDK and cross compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+          git clone https://github.com/raspberrypi/pico-sdk.git .tools/pico-sdk
+          git -C .tools/pico-sdk checkout 079c6f39023649b154152db30f1d781e884879bc
+          git -C .tools/pico-sdk submodule update --init --depth 1 lib/tinyusb
+      - name: Build real SDK firmware and UF2
+        env:
+          PICO_SDK_PATH: ${{ github.workspace }}/.tools/pico-sdk
+        run: |
+          cmake -S sortv1/firmware -B build/pico -G Ninja -DPICOTOOL_NO_LIBUSB=1
+          cmake --build build/pico -j 2
+          test -s build/pico/sortv1_pico.uf2
+          sha256sum build/pico/sortv1_pico.uf2 > build/pico/sortv1_pico.uf2.sha256
+          git rev-parse HEAD > build/pico/GIT_COMMIT.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: pico-safe-uncalibrated-${{ github.sha }}
+          path: |
+            build/pico/sortv1_pico.uf2
+            build/pico/sortv1_pico.elf
+            build/pico/*.sha256
+            build/pico/GIT_COMMIT.txt
+            LICENSE
+            sortv1/firmware/vendor/vl53l0x/LICENSE.txt
+
+  ml-smoke:
+    name: ML numeric smoke (synthetic)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.14'
+      - run: python -m pip install torch==2.14.1 torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -r requirements/training.txt
+      - run: python scripts/ml_smoke.py

@@ -1,0 +1,15 @@
+connector_id,id,poles,function,bom_id,fixation,approval,rated_current,wire_range
+J01,J01,2,Entrada fuente 12 V +/−,BOM-47,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J02,J02,2,Principal protegido +12 V / retorno,BOM-47,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J03,J03,2,Rama motor +12 V / retorno,BOM-47,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J04,J04,2,Rama buck +12 V / retorno,BOM-47,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J05,J05,2,Salida buck +6 V / retorno,BOM-47,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J06,J06,2,Iluminación auxiliar TBC,BOM-47,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J07,J07,3,Servo +6 V / GND / PWM,BOM-48,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J08,J08,3,Relay alimentación / retorno / control TBC,BOM-48,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J09,J09,3,Indicadores retorno G/Y/R; drivers ausentes,BOM-48,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J10,J10,3,Referencia señal 3V3 / GND / reserva,BOM-48,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J11,J11,4,Motor A1 A2 B1 B2,BOM-49,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J12,J12,4,HX711 E+ E− A+ A−,BOM-49,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J13,J13,4,I2C 3V3 GND SDA SCL distribución,BOM-49,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL
+J14,J14,4,Cadena resguardos interfaz TBC,BOM-49,KF301 requiere soporte soldado y aislado; TBC montaje real,TBC_MODEL,TBC_MEASURE,TBC_MODEL

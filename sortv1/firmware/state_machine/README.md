@@ -1,3 +1,5 @@
 # Estados del controlador físico
 
-Contrato C++ en `states.hpp` con estados y guardas conservadoras. Pendiente: transiciones completas, creación de ciclos, antirrebote, temporizadores, homing, detección de caída y rearme físico. BOOT_SAFE no permite movimiento. Nunca cerrar un ciclo solo por timeout.
+Maquina fisica ejecutable en src/state_machine.cpp/include/state_machine.hpp. Estados del plan, interlocks, UNKNOWN, indice estable, caida correcta, idempotencia y reset fisico. Contratos originales conservados y probados; hardware pendiente.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.

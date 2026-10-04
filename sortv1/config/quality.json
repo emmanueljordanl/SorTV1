@@ -1,0 +1,6 @@
+{
+  "status": "PENDING_CALIBRATION", "max_age_ms": 300,
+  "background_path": null, "background_sha256": null,
+  "presence_difference_min": null, "laplacian_variance_min": null,
+  "mean_min": null, "mean_max": null, "clipped_fraction_max": null
+}

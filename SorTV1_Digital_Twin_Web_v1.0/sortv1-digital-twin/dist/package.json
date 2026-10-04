@@ -1,6 +1,0 @@
-{
-  "name": "sortv1-digital-twin", "version": "1.0.0", "private": true,
-  "type": "module", "engines": {"node": ">=22"},
-  "scripts": {"start": "node scripts/serve.mjs", "dev": "node scripts/serve.mjs", "build": "node scripts/build.mjs", "test": "node --test tests/*.test.mjs", "audit:twin": "node scripts/audit.mjs"},
-  "dependencies": {"three": "0.186.0"}
-}
