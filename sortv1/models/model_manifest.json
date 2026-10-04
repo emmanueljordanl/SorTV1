@@ -1,0 +1,10 @@
+{
+  "status": "NOT_TRAINED",
+  "model_file": null,
+  "model_sha256": null,
+  "architecture": "MobileNetV3 Small",
+  "backend_target": "ONNX Runtime CPU",
+  "input_shape": [1, 3, 224, 224],
+  "labels": ["PET", "PAPEL_CARTON", "METAL_LATAS", "OTRO_SECO_CONOCIDO"],
+  "physical_validation": "PENDING"
+}

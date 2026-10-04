@@ -1,0 +1,758 @@
+{
+  "cabinet_width_mm": {
+    "value": 500,
+    "status": "REFERENCE",
+    "what": "Ancho exterior; medir bins y espesores",
+    "tool": "Cinta y escuadra",
+    "tolerance": "±2 mm",
+    "cad_dependency": "Bastidor X",
+    "unit": "mm"
+  },
+  "cabinet_depth_mm": {
+    "value": 500,
+    "status": "REFERENCE",
+    "what": "Fondo y espacio posterior de electrónica",
+    "tool": "Cinta",
+    "tolerance": "±2 mm",
+    "cad_dependency": "Bastidor Z",
+    "unit": "mm"
+  },
+  "cabinet_height_mm": {
+    "value": 850,
+    "status": "REFERENCE",
+    "what": "Altura completa y acceso superior",
+    "tool": "Cinta",
+    "tolerance": "±2 mm",
+    "cad_dependency": "Bastidor Y",
+    "unit": "mm"
+  },
+  "tray_y_mm": {
+    "value": 555,
+    "status": "REFERENCE",
+    "what": "Altura plano de pesaje",
+    "tool": "Cinta y nivel",
+    "tolerance": "±1 mm",
+    "cad_dependency": "Travesaño celda",
+    "unit": "mm"
+  },
+  "tray_width_mm": {
+    "value": 200,
+    "status": "REFERENCE",
+    "what": "Bandeja útil y soportes",
+    "tool": "Calibrador",
+    "tolerance": "±0.5 mm",
+    "cad_dependency": "Bandeja",
+    "unit": "mm"
+  },
+  "gate_width_mm": {
+    "value": 160,
+    "status": "REFERENCE",
+    "what": "Hoja y barrido",
+    "tool": "Calibrador",
+    "tolerance": "±0.5 mm",
+    "cad_dependency": "Hoja",
+    "unit": "mm"
+  },
+  "clear_aperture_mm": {
+    "value": 140,
+    "status": "REFERENCE",
+    "what": "Paso mínimo libre real",
+    "tool": "Galga objeto límite",
+    "tolerance": "sin reducción sobre mínimo validado",
+    "cad_dependency": "Bandeja/guía",
+    "unit": "mm"
+  },
+  "camera_height_above_tray_mm": {
+    "value": 280,
+    "status": "REFERENCE",
+    "what": "Lente a bandeja y objeto alto",
+    "tool": "Regla + carta cuadriculada",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "Soporte cámara",
+    "unit": "mm"
+  },
+  "rotor_radius_mm": {
+    "value": 163,
+    "status": "REFERENCE",
+    "what": "Radio al centro salida",
+    "tool": "Regla y eje",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "Guía",
+    "unit": "mm"
+  },
+  "rotor_halfwidth_mm": {
+    "value": 72,
+    "status": "REFERENCE",
+    "what": "Ancho útil y pared",
+    "tool": "Calibrador",
+    "tolerance": "±0.5 mm",
+    "cad_dependency": "Guía",
+    "unit": "mm"
+  },
+  "rotor_inlet_y_mm": {
+    "value": 462,
+    "status": "REFERENCE",
+    "what": "Altura de entrada",
+    "tool": "Regla",
+    "tolerance": "±1 mm",
+    "cad_dependency": "Guía/celda",
+    "unit": "mm"
+  },
+  "rotor_outlet_y_mm": {
+    "value": 340,
+    "status": "REFERENCE",
+    "what": "Altura de salida",
+    "tool": "Regla",
+    "tolerance": "±1 mm",
+    "cad_dependency": "Guía/bocas",
+    "unit": "mm"
+  },
+  "rotor_shaft_diameter_mm": {
+    "value": 8,
+    "status": "TBC-MEDIR",
+    "what": "Eje, acople 8 mm e interiores rodamientos",
+    "tool": "Micrómetro y alesómetro",
+    "tolerance": "Ajuste fabricante; no congelar H7 sin pieza",
+    "cad_dependency": "Eje y alojamientos",
+    "unit": "mm"
+  },
+  "shaft_top_y_mm": {
+    "value": 380,
+    "status": "REFERENCE",
+    "what": "Extremo bajo piso de guía, nunca dentro canal",
+    "tool": "Regla",
+    "tolerance": "±1 mm",
+    "cad_dependency": "Hub",
+    "unit": "mm"
+  },
+  "shaft_bottom_y_mm": {
+    "value": 88,
+    "status": "REFERENCE",
+    "what": "Longitud eje y acople",
+    "tool": "Regla",
+    "tolerance": "±0.5 mm",
+    "cad_dependency": "Eje",
+    "unit": "mm"
+  },
+  "bearing_upper_y_mm": {
+    "value": 305,
+    "status": "REFERENCE",
+    "what": "Apoyo superior bajo hub",
+    "tool": "Regla",
+    "tolerance": "±0.5 mm",
+    "cad_dependency": "Travesaño",
+    "unit": "mm"
+  },
+  "bearing_lower_y_mm": {
+    "value": 140,
+    "status": "REFERENCE",
+    "what": "Separación apoyos",
+    "tool": "Regla",
+    "tolerance": "±0.5 mm",
+    "cad_dependency": "Travesaño",
+    "unit": "mm"
+  },
+  "bearing_inner_mm": {
+    "value": 8,
+    "status": "TBC-MEDIR",
+    "what": "Diámetro interior real",
+    "tool": "Micrómetro",
+    "tolerance": "Según ajuste proveedor",
+    "cad_dependency": "Eje",
+    "unit": "mm"
+  },
+  "bearing_outer_mm": {
+    "value": 22,
+    "status": "TBC-MEDIR",
+    "what": "Diámetro exterior real",
+    "tool": "Calibrador/micrómetro",
+    "tolerance": "Según alojamiento y proveedor",
+    "cad_dependency": "Alojamiento",
+    "unit": "mm"
+  },
+  "bearing_width_mm": {
+    "value": 7,
+    "status": "TBC-MEDIR",
+    "what": "Ancho y sellos",
+    "tool": "Calibrador",
+    "tolerance": "±0.05 mm de medición",
+    "cad_dependency": "Alojamiento",
+    "unit": "mm"
+  },
+  "collar_diameter_mm": {
+    "value": 8,
+    "status": "TBC-MEDIR",
+    "what": "Interior y exterior collarín",
+    "tool": "Calibrador",
+    "tolerance": "±0.05 mm",
+    "cad_dependency": "Eje/holguras",
+    "unit": "mm"
+  },
+  "motor_body_mm": {
+    "value": 42,
+    "status": "TBC-MEDIR",
+    "what": "NEMA ancho y patrón",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "MECH-10",
+    "unit": "mm"
+  },
+  "motor_length_mm": {
+    "value": 48,
+    "status": "TBC-MEDIR",
+    "what": "Longitud modelo 17HS8401 recibido",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Altura acople",
+    "unit": "mm"
+  },
+  "motor_shaft_mm": {
+    "value": 5,
+    "status": "TBC-MEDIR",
+    "what": "Diámetro y plano eje",
+    "tool": "Micrómetro",
+    "tolerance": "±0.02 mm medición",
+    "cad_dependency": "Acople",
+    "unit": "mm"
+  },
+  "coupler_length_mm": {
+    "value": 25,
+    "status": "TBC-MEDIR",
+    "what": "Longitud/inserciones",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Eje/motor",
+    "unit": "mm"
+  },
+  "linkage_length_mm": {
+    "value": 45,
+    "status": "TBC-MEDIR",
+    "what": "Centros articulaciones en ambos extremos",
+    "tool": "Calibrador y plantilla",
+    "tolerance": "±0.5 mm inicial",
+    "cad_dependency": "Varilla",
+    "unit": "mm"
+  },
+  "horn_radius_mm": {
+    "value": 18,
+    "status": "TBC-MEDIR",
+    "what": "Centro servo a pasador",
+    "tool": "Calibrador",
+    "tolerance": "±0.2 mm",
+    "cad_dependency": "Varillaje",
+    "unit": "mm"
+  },
+  "gate_arm_mm": {
+    "value": 18,
+    "status": "TBC-MEDIR",
+    "what": "Brazo efectivo bisagra",
+    "tool": "Calibrador",
+    "tolerance": "±0.2 mm",
+    "cad_dependency": "Compuerta",
+    "unit": "mm"
+  },
+  "servo_width_mm": {
+    "value": 40.7,
+    "status": "TBC-MEDIR",
+    "what": "Ancho carcasa/orejas real",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Soporte",
+    "unit": "mm"
+  },
+  "servo_depth_mm": {
+    "value": 19.7,
+    "status": "TBC-MEDIR",
+    "what": "Profundidad real",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Soporte",
+    "unit": "mm"
+  },
+  "servo_height_mm": {
+    "value": 42.9,
+    "status": "TBC-MEDIR",
+    "what": "Altura eje y orejas",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Varillaje",
+    "unit": "mm"
+  },
+  "gate_mass_g": {
+    "value": 150,
+    "status": "TBC-MEDIR",
+    "what": "Hoja con brazo/bisagra móvil",
+    "tool": "Báscula",
+    "tolerance": "±1 g",
+    "cad_dependency": "Cálculo torque",
+    "unit": "g"
+  },
+  "moving_tare_g": {
+    "value": 450,
+    "status": "TBC-MEDIR",
+    "what": "Toda masa sostenida por celda",
+    "tool": "Báscula",
+    "tolerance": "±1 g",
+    "cad_dependency": "Celda/topes",
+    "unit": "g"
+  },
+  "overload_stop_gap_mm": {
+    "value": 0.4,
+    "status": "TBC-MEDIR",
+    "what": "Deflexión celda normal y tope",
+    "tool": "Galgas/reloj comparador",
+    "tolerance": "No fijar antes curva carga",
+    "cad_dependency": "Topes",
+    "unit": "mm"
+  },
+  "camera_pcb_width_mm": {
+    "value": 25,
+    "status": "TBC-MEDIR",
+    "what": "PCB, agujeros, lente",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Soporte cámara",
+    "unit": "mm"
+  },
+  "csi_min_radius_mm": {
+    "value": 10,
+    "status": "TBC-MEDIR",
+    "what": "Radio permitido por fabricante FPC",
+    "tool": "Ficha del cable + plantilla",
+    "tolerance": "Según fabricante",
+    "cad_dependency": "Canal CSI",
+    "unit": "mm"
+  },
+  "csi_route_length_mm": {
+    "value": 240,
+    "status": "TBC-MEDIR",
+    "what": "Ruta más bucles y holgura",
+    "tool": "Hilo de medición",
+    "tolerance": "±5 mm",
+    "cad_dependency": "Posición Pi y cámara",
+    "unit": "mm"
+  },
+  "cell_length_mm": {
+    "value": 80,
+    "status": "TBC-MEDIR",
+    "what": "Extremos fijos, carga y flecha",
+    "tool": "Calibrador y ficha",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Soporte celda",
+    "unit": "mm"
+  },
+  "hx711_width_mm": {
+    "value": 34,
+    "status": "TBC-MEDIR",
+    "what": "PCB y agujeros",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Panel señal",
+    "unit": "mm"
+  },
+  "tof_width_mm": {
+    "value": 18,
+    "status": "TBC-MEDIR",
+    "what": "PCB y óptica",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Soporte ToF",
+    "unit": "mm"
+  },
+  "beam_body_mm": {
+    "value": 15,
+    "status": "TBC-MEDIR",
+    "what": "TX RX cono y agujeros",
+    "tool": "Calibrador + hoja fina",
+    "tolerance": "±0.2 mm",
+    "cad_dependency": "Soportes barrera",
+    "unit": "mm"
+  },
+  "switch_body_mm": {
+    "value": 20,
+    "status": "TBC-MEDIR",
+    "what": "Cuerpo, palanca, pre/overtravel",
+    "tool": "Calibrador",
+    "tolerance": "±0.2 mm",
+    "cad_dependency": "Levas",
+    "unit": "mm"
+  },
+  "psu12_width_mm": {
+    "value": 110,
+    "status": "TBC-MEDIR",
+    "what": "Fuente cerrada y cables",
+    "tool": "Calibrador",
+    "tolerance": "±0.5 mm",
+    "cad_dependency": "Soporte externo",
+    "unit": "mm"
+  },
+  "buck_width_mm": {
+    "value": 45,
+    "status": "TBC-MEDIR",
+    "what": "PCB/disipador/potenciómetro",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Panel potencia",
+    "unit": "mm"
+  },
+  "relay_width_mm": {
+    "value": 50,
+    "status": "TBC-MEDIR",
+    "what": "Módulo y terminales reales",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Panel potencia",
+    "unit": "mm"
+  },
+  "drv_width_mm": {
+    "value": 20,
+    "status": "TBC-MEDIR",
+    "what": "Módulo/pines/disipador",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Panel potencia",
+    "unit": "mm"
+  },
+  "pi_width_mm": {
+    "value": 85,
+    "status": "TBC-MEDIR",
+    "what": "PCB, conectores y cooler",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Panel alto",
+    "unit": "mm"
+  },
+  "pico_length_mm": {
+    "value": 51,
+    "status": "TBC-MEDIR",
+    "what": "Headers y USB",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Panel señal",
+    "unit": "mm"
+  },
+  "gland_hole_mm": {
+    "value": 12.5,
+    "status": "TBC-MEDIR",
+    "what": "Rosca PG real y tuerca",
+    "tool": "Calibrador/ficha",
+    "tolerance": "Según fabricante",
+    "cad_dependency": "Panel entradas",
+    "unit": "mm"
+  },
+  "terminal_pitch_mm": {
+    "value": 5.08,
+    "status": "TBC-MEDIR",
+    "what": "KF301 real y taladros",
+    "tool": "Calibrador",
+    "tolerance": "±0.1 mm",
+    "cad_dependency": "Soporte borneras",
+    "unit": "mm"
+  },
+  "hinge_offset_mm": {
+    "value": 5,
+    "status": "TBC-MEDIR",
+    "what": "Centro bisagra a hoja/marco",
+    "tool": "Calibrador",
+    "tolerance": "±0.2 mm",
+    "cad_dependency": "Cortes panel",
+    "unit": "mm"
+  },
+  "lid_sweep_deg": {
+    "value": 85,
+    "status": "TBC-MEDIR",
+    "what": "Apertura sin tocar cámara",
+    "tool": "Transportador",
+    "tolerance": "±1° inicial",
+    "cad_dependency": "Tapa",
+    "unit": "deg"
+  },
+  "door_sweep_deg": {
+    "value": 100,
+    "status": "TBC-MEDIR",
+    "what": "Apertura y área extracción",
+    "tool": "Transportador/cinta",
+    "tolerance": "±1° inicial",
+    "cad_dependency": "Puerta",
+    "unit": "deg"
+  },
+  "electronic_bay_depth_mm": {
+    "value": 55,
+    "status": "REFERENCE",
+    "what": "Separación panel-residuo",
+    "tool": "Regla",
+    "tolerance": "≥holgura validada",
+    "cad_dependency": "Panel trasero",
+    "unit": "mm"
+  },
+  "rotor_index_tolerance_deg": {
+    "value": 2,
+    "status": "TBC-MEDIR",
+    "what": "Error máximo sin perder boca",
+    "tool": "Transportador/plantilla",
+    "tolerance": "Medir repetibilidad y margen",
+    "cad_dependency": "Ranuras reed",
+    "unit": "deg"
+  },
+  "cable_service_loop_mm": {
+    "value": 40,
+    "status": "TBC-MEDIR",
+    "what": "Bucle sin tirar de celda",
+    "tool": "Regla y tara",
+    "tolerance": "Cambio de tara dentro incertidumbre",
+    "cad_dependency": "Arnés A",
+    "unit": "mm"
+  },
+  "cabinet_mass_kg": {
+    "value": 15,
+    "status": "TBC-MEDIR",
+    "what": "Masa completa y vacía",
+    "tool": "Báscula",
+    "tolerance": "±0.1 kg",
+    "cad_dependency": "Estabilidad",
+    "unit": "kg"
+  },
+  "cg_height_mm": {
+    "value": 400,
+    "status": "TBC-MEDIR",
+    "what": "Centro de gravedad con bins llenos",
+    "tool": "Pesadas reacciones y geometría",
+    "tolerance": "Incertidumbre declarada",
+    "cad_dependency": "Base",
+    "unit": "mm"
+  },
+  "beam_height_mm": {
+    "value": 304,
+    "status": "REFERENCE",
+    "what": "Altura plano barreras",
+    "tool": "Regla",
+    "tolerance": "±1 mm",
+    "cad_dependency": "Soportes",
+    "unit": "mm"
+  },
+  "gate_clear_rotor_mm": {
+    "value": 10,
+    "status": "TBC-MEDIR",
+    "what": "Distancia mínima hoja-guía durante giro",
+    "tool": "Galgas/maqueta",
+    "tolerance": "No interferencia con margen medido",
+    "cad_dependency": "Guía/hoja",
+    "unit": "mm"
+  },
+  "bin0_width_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN0 ancho exterior con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN0, boca y puerta",
+    "unit": "mm"
+  },
+  "bin0_depth_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN0 profundidad con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN0, boca y puerta",
+    "unit": "mm"
+  },
+  "bin0_height_mm": {
+    "value": 270,
+    "status": "TBC-MEDIR",
+    "what": "BIN0 altura total",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN0, boca y puerta",
+    "unit": "mm"
+  },
+  "bin0_mouth_mm": {
+    "value": 158,
+    "status": "TBC-MEDIR",
+    "what": "BIN0 paso útil boca en ambos ejes",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN0, boca y puerta",
+    "unit": "mm"
+  },
+  "bin0_handle_mm": {
+    "value": 15,
+    "status": "TBC-MEDIR",
+    "what": "BIN0 saliente de asas",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN0, boca y puerta",
+    "unit": "mm"
+  },
+  "bin0_extraction_mm": {
+    "value": 330,
+    "status": "TBC-MEDIR",
+    "what": "BIN0 trayectoria de extracción libre",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN0, boca y puerta",
+    "unit": "mm"
+  },
+  "bin1_width_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN1 ancho exterior con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN1, boca y puerta",
+    "unit": "mm"
+  },
+  "bin1_depth_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN1 profundidad con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN1, boca y puerta",
+    "unit": "mm"
+  },
+  "bin1_height_mm": {
+    "value": 270,
+    "status": "TBC-MEDIR",
+    "what": "BIN1 altura total",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN1, boca y puerta",
+    "unit": "mm"
+  },
+  "bin1_mouth_mm": {
+    "value": 158,
+    "status": "TBC-MEDIR",
+    "what": "BIN1 paso útil boca en ambos ejes",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN1, boca y puerta",
+    "unit": "mm"
+  },
+  "bin1_handle_mm": {
+    "value": 15,
+    "status": "TBC-MEDIR",
+    "what": "BIN1 saliente de asas",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN1, boca y puerta",
+    "unit": "mm"
+  },
+  "bin1_extraction_mm": {
+    "value": 330,
+    "status": "TBC-MEDIR",
+    "what": "BIN1 trayectoria de extracción libre",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN1, boca y puerta",
+    "unit": "mm"
+  },
+  "bin2_width_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN2 ancho exterior con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN2, boca y puerta",
+    "unit": "mm"
+  },
+  "bin2_depth_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN2 profundidad con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN2, boca y puerta",
+    "unit": "mm"
+  },
+  "bin2_height_mm": {
+    "value": 270,
+    "status": "TBC-MEDIR",
+    "what": "BIN2 altura total",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN2, boca y puerta",
+    "unit": "mm"
+  },
+  "bin2_mouth_mm": {
+    "value": 158,
+    "status": "TBC-MEDIR",
+    "what": "BIN2 paso útil boca en ambos ejes",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN2, boca y puerta",
+    "unit": "mm"
+  },
+  "bin2_handle_mm": {
+    "value": 15,
+    "status": "TBC-MEDIR",
+    "what": "BIN2 saliente de asas",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN2, boca y puerta",
+    "unit": "mm"
+  },
+  "bin2_extraction_mm": {
+    "value": 330,
+    "status": "TBC-MEDIR",
+    "what": "BIN2 trayectoria de extracción libre",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN2, boca y puerta",
+    "unit": "mm"
+  },
+  "bin3_width_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN3 ancho exterior con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN3, boca y puerta",
+    "unit": "mm"
+  },
+  "bin3_depth_mm": {
+    "value": 175,
+    "status": "TBC-MEDIR",
+    "what": "BIN3 profundidad con reborde",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN3, boca y puerta",
+    "unit": "mm"
+  },
+  "bin3_height_mm": {
+    "value": 270,
+    "status": "TBC-MEDIR",
+    "what": "BIN3 altura total",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN3, boca y puerta",
+    "unit": "mm"
+  },
+  "bin3_mouth_mm": {
+    "value": 158,
+    "status": "TBC-MEDIR",
+    "what": "BIN3 paso útil boca en ambos ejes",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN3, boca y puerta",
+    "unit": "mm"
+  },
+  "bin3_handle_mm": {
+    "value": 15,
+    "status": "TBC-MEDIR",
+    "what": "BIN3 saliente de asas",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN3, boca y puerta",
+    "unit": "mm"
+  },
+  "bin3_extraction_mm": {
+    "value": 330,
+    "status": "TBC-MEDIR",
+    "what": "BIN3 trayectoria de extracción libre",
+    "tool": "Cinta/calibrador",
+    "tolerance": "±1 mm inicial",
+    "cad_dependency": "BIN3, boca y puerta",
+    "unit": "mm"
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "source": "SIMULATION",
+  "result_kind": "SIMULATED",
+  "physical_result": null,
+  "tests": [
+    {
+      "id": "P01",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "check": "boot y reinicio sin movimiento",
+          "passed": true,
+          "source": "SIMULATION"
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F02",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "TOP_LID",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F03",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "SERVICE_DOOR",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P03",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F01",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "E_STOP",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F07",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "DECISION_TIMEOUT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F09",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "DECISION_TIMEOUT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P06",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F08",
+          "expected": "READY",
+          "observed": "READY",
+          "reason": null,
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P07",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F04",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "HEARTBEAT_LOST",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F05",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "HEARTBEAT_LOST",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P08",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F22",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "QUALITY",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F23",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "QUALITY",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F24",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "QUALITY",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P09",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "attempts": 4,
+          "correct": 4,
+          "note": "Decisiones sintéticas; no mide recall, pureza ni cobertura de un modelo entrenado.",
+          "source": "SIMULATION"
+        }
+      ]
+    },
+    {
+      "id": "P10",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F10",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "POSITION_TIMEOUT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F11",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "MULTIPLE_REEDS",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F28",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "POSITION_TIMEOUT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P11",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F12",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "OPEN_TIMEOUT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F13",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "CLOSE_TIMEOUT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F14",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "OBJECT_JAM",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F15",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "WRONG_BIN",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F16",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "BEAM_STUCK",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F17",
+          "expected": "FAULT",
+          "observed": "FAULT",
+          "reason": "FALL_UNCONFIRMED",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P12",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F18",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "UNSTABLE_WEIGHT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F19",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "OVERWEIGHT",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P13",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F20",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "BIN_2_UNKNOWN",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F21",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "BIN_2_FULL",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P14",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "fault": "F25",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "MODEL_MISSING",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F26",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "STORAGE_FULL",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        },
+        {
+          "fault": "F30",
+          "expected": "REVIEW",
+          "observed": "REVIEW",
+          "reason": "PENDING_PHYSICAL_RECONCILIATION",
+          "passed": true,
+          "source": "SIMULATION",
+          "physical_result": null
+        }
+      ]
+    },
+    {
+      "id": "P15",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "virtual_duration_ms": 3600000,
+          "note": "Estabilidad lógica en reposo; térmica, latencia Pi y desgaste siguen PENDING PHYSICAL.",
+          "source": "SIMULATION"
+        }
+      ]
+    },
+    {
+      "id": "P16",
+      "source": "SIMULATION",
+      "simulated_result": "SIMULATED PASS",
+      "physical_result": null,
+      "evidence": [
+        {
+          "attempts": 200,
+          "correct": 200,
+          "note": "Decisiones sintéticas; no mide recall, pureza ni cobertura de un modelo entrenado.",
+          "source": "SIMULATION"
+        }
+      ]
+    }
+  ]
+}

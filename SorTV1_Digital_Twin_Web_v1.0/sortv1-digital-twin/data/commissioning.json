@@ -1,0 +1,159 @@
+[
+  {
+    "id": "C0",
+    "title": "Sin alimentación",
+    "checks": [
+      "Polaridad",
+      "Continuidad",
+      "Ausencia de cortos",
+      "Terminales",
+      "GND estrella",
+      "Tornillería",
+      "Fusibles"
+    ],
+    "stop_if": "Fuentes desconectadas; resolver bloqueos de cadena física antes de C3",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C1",
+    "title": "Solo fuentes",
+    "checks": [
+      "12 V sin cargas",
+      "6 V sin servo",
+      "5.1 V fuente Pi",
+      "Polaridad buck"
+    ],
+    "stop_if": "Ninguna tensión fuera tolerancia del componente",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C2",
+    "title": "Lógica y sensores",
+    "checks": [
+      "Pi arranca",
+      "Pico BOOT_SAFE",
+      "ToF0–3 asignados",
+      "HX711",
+      "Entradas ≤3.3 V"
+    ],
+    "stop_if": "Potencia de motores aislada",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C3",
+    "title": "Corte sin movimiento",
+    "checks": [
+      "E-STOP corta",
+      "Tapa corta",
+      "Servicio corta",
+      "Feedback válido",
+      "No auto-rearme"
+    ],
+    "stop_if": "Resolver HARDWARE-RISK-01..05; medir caída real de tensión",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C4",
+    "title": "NEMA sin carga",
+    "checks": [
+      "Rsense identificado",
+      "Corriente limitada",
+      "Bobinas identificadas",
+      "Temperatura",
+      "Reset nEN"
+    ],
+    "stop_if": "No conectar/desconectar bobinas con energía",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C5",
+    "title": "Rotor vacío",
+    "checks": [
+      "Giro manual",
+      "Homing ROT0",
+      "Cuatro índices",
+      "Sin colisión",
+      "Timeout"
+    ],
+    "stop_if": "Guía vacía inspeccionada por operador",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C6",
+    "title": "Servo sin residuo",
+    "checks": [
+      "6 V bajo carga",
+      "Pulsos acotados",
+      "Sin stall",
+      "Alimentación externa"
+    ],
+    "stop_if": "Servo sujeto y zona resguardada",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C7",
+    "title": "Compuerta",
+    "checks": [
+      "OPEN real",
+      "CLOSED real",
+      "Ambos nunca activos",
+      "Torque",
+      "Retención sin energía"
+    ],
+    "stop_if": "No usar ángulo PWM como prueba de posición",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C8",
+    "title": "Descarga manual dirigida",
+    "checks": [
+      "Cuatro rutas",
+      "Papel",
+      "Objeto límite",
+      "Barrera correcta",
+      "Vaciado"
+    ],
+    "stop_if": "Motor deshabilitado durante manipulación",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C9",
+    "title": "Ciclo diagnóstico",
+    "checks": [
+      "SORT intención",
+      "Índice",
+      "OPEN",
+      "Haz",
+      "Vacío",
+      "CLOSED",
+      "DONE único"
+    ],
+    "stop_if": "Destino diagnóstico no cuenta como clasificación IA",
+    "simulated_checks": {},
+    "physical_result": null
+  },
+  {
+    "id": "C10",
+    "title": "IA habilitada",
+    "checks": [
+      "Modelo y hashes",
+      "Tres frames",
+      "Quality",
+      "Consenso",
+      "Evidencia",
+      "P08/P09"
+    ],
+    "stop_if": "Solo después de anteriores; resultados físicos requieren registro independiente",
+    "simulated_checks": {},
+    "physical_result": null
+  }
+]

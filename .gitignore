@@ -1,0 +1,16 @@
+# Dependencias y archivos locales regenerables
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+*.log
+
+# Se versionan los documentos, ZIP original y dist/ offline del gemelo.

@@ -1,0 +1,15 @@
+{
+  "status": "PENDING_PHYSICAL_VALIDATION",
+  "inference_p95_ms_max": 200,
+  "inspection_p95_ms_max": 1000,
+  "cycle_p95_ms_max": 6000,
+  "cycle_timeout_ms_max": 10000,
+  "recall_per_class_min": 0.85,
+  "selective_purity_per_recyclable_bin_min": 0.95,
+  "coverage_min": 0.80,
+  "diagnostic_mechanical_success_min": 196,
+  "diagnostic_mechanical_attempts": 200,
+  "autonomous_success_min": 170,
+  "autonomous_attempts": 200,
+  "unauthorized_movements_max": 0
+}

@@ -1,0 +1,587 @@
+[
+  {
+    "frame": 0,
+    "title": "READY",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 1,
+    "title": "Verde nominal",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 2,
+    "title": "Abrir tapa",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 3,
+    "title": "Actuadores OFF",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 4,
+    "title": "Depositar lata",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 5,
+    "title": "Masa presente",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 6,
+    "title": "Cerrar tapa",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 7,
+    "title": "Estabilidad",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 8,
+    "title": "Nuevo cycle_id",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 9,
+    "title": "INSPECT",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 10,
+    "title": "Luz estable",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 11,
+    "title": "Frame A",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 12,
+    "title": "Frame B",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 13,
+    "title": "Frame C",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 14,
+    "title": "Quality PASS",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 15,
+    "title": "Inferencia A B C",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 16,
+    "title": "METAL_LATAS",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 17,
+    "title": "Consenso ACCEPT",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 18,
+    "title": "SORT dest2",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 19,
+    "title": "Guardas Pico",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 20,
+    "title": "nEN activo",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 21,
+    "title": "Giro NEMA",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 22,
+    "title": "Guía vacía gira",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 23,
+    "title": "ROT2 detectado",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 24,
+    "title": "ROT2 estable100ms",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 25,
+    "title": "Motor detenido",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 26,
+    "title": "Servo apertura",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 27,
+    "title": "OPEN confirmado",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 28,
+    "title": "Liberación lata",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 29,
+    "title": "Paso por guía",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 30,
+    "title": "Haz BIN2 FREE-BLOCKED-FREE",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 31,
+    "title": "Bandeja vacía",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 32,
+    "title": "Servo cierre",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 33,
+    "title": "CLOSED confirmado",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 34,
+    "title": "DONE",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 35,
+    "title": "JSONL persistido",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 36,
+    "title": "Contador BIN2 +1",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 37,
+    "title": "ToF actualizado",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  },
+  {
+    "frame": 38,
+    "title": "READY",
+    "source": "SIMULATION",
+    "channels": [
+      "physical",
+      "sensors",
+      "pico",
+      "pi",
+      "power",
+      "protocol",
+      "actuators",
+      "evidence"
+    ]
+  }
+]

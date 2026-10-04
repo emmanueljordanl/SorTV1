@@ -1,0 +1,82 @@
+[
+  {
+    "name": "BOOT_SAFE",
+    "event": "Reinicio",
+    "action": "nEN HIGH; PWM inactivo; nuevo boot; sin rearme",
+    "guard": "rearme físico y recorrido vacío",
+    "next": "CHECK_HOME",
+    "timeout_ms": null
+  },
+  {
+    "name": "CHECK_HOME",
+    "event": "Rearme válido",
+    "action": "Girar vacío lentamente a ROT0",
+    "guard": "CLOSED, resguardos, energía, ROT0 exclusivo 100 ms",
+    "next": "READY",
+    "timeout_ms": 3000
+  },
+  {
+    "name": "READY",
+    "event": "Homing o DONE",
+    "action": "Quieto; permitir carga, tapa abierta corta potencia",
+    "guard": "Objeto único, tapa cerrada",
+    "next": "WAIT_STABLE",
+    "timeout_ms": null
+  },
+  {
+    "name": "WAIT_STABLE",
+    "event": "Tapa cerrada",
+    "action": "Leer masa y estabilidad",
+    "guard": "Presencia estable; ≤200 g; recorrido libre",
+    "next": "WAIT_DECISION",
+    "timeout_ms": 2000
+  },
+  {
+    "name": "WAIT_DECISION",
+    "event": "INSPECT",
+    "action": "Pipeline Pi; un ciclo activo",
+    "guard": "SORT válido; permisos físicos y destino disponible",
+    "next": "POSITIONING",
+    "timeout_ms": 2000
+  },
+  {
+    "name": "POSITIONING",
+    "event": "SORT aceptado",
+    "action": "STEP/DIR; guía vacía; CLOSED",
+    "guard": "Reed destino exclusivo y estable 100 ms",
+    "next": "DISPENSING",
+    "timeout_ms": 3000
+  },
+  {
+    "name": "DISPENSING",
+    "event": "Índice confirmado",
+    "action": "Abrir una sola vez; observar OPEN y haz",
+    "guard": "OPEN confirmado; ruta y vacío válidos",
+    "next": "VERIFY_CLOSE",
+    "timeout_ms": 3000
+  },
+  {
+    "name": "VERIFY_CLOSE",
+    "event": "Caída confirmada",
+    "action": "Cerrar; observar CLOSED sin OPEN",
+    "guard": "Haz correcto completo y bandeja vacía",
+    "next": "READY + DONE único",
+    "timeout_ms": 1000
+  },
+  {
+    "name": "FAULT",
+    "event": "Fallo físico",
+    "action": "Deshabilitar; enclavar; evidencia",
+    "guard": "Inspección, retirar objeto, cerrar, rearme",
+    "next": "CHECK_HOME",
+    "timeout_ms": null
+  },
+  {
+    "name": "REVIEW",
+    "event": "Calidad/capacidad/peso inválido",
+    "action": "Sin descarga; revisión explícita",
+    "guard": "Retiro y rearme físico; nuevo ciclo",
+    "next": "CHECK_HOME",
+    "timeout_ms": null
+  }
+]
