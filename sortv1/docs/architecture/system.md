@@ -20,9 +20,9 @@ flowchart LR
   Model --> Inference
 ```
 
-La Pi captura, verifica calidad, ejecuta inferencia, decide y registra. Envía un destino, nunca pasos ni ángulos. El Pico origina boot_id y cycle_id, valida guardas, mueve y confirma. ACK expresa aceptación; DONE expresa el resultado físico confirmado. La interfaz del operador futura consulta y exporta sin dirigir motores.
+La Pi captura, verifica calidad, ejecuta inferencia, decide y registra. Envía un destino, nunca pasos ni ángulos. El Pico origina boot_id y cycle_id, valida guardas, mueve y confirma. ACK expresa aceptación; DONE expresa el resultado físico confirmado. La interfaz del operador consulta y exporta sin dirigir motores.
 
-`app/capture` y `app/inference` ofrecen interfaces pendientes de adaptadores Picamera2 y ONNX. `app/quality` valida edad y recibe comprobaciones de ocupación, foco y exposición del adaptador futuro. No contiene un detector visual implementado. `app/decision`, `app/transport`, `app/controller` y `app/evidence` contienen lógica ejecutable. El simulador usa probabilidades y confirmaciones sintéticas, sin reloj de planta ni modelo aprendido.
+Adaptadores reales en capture/picamera2_capture.py, inference/onnx_runtime.py, quality/image_quality.py y transport/serial_transport.py; controller/physical.py integra eventos/evidencia/UI. Interfaces/simulador originales se conservan. Estado actual: docs/MVP_STATUS.md en raiz.
 
 La política exige tres frames válidos y distintos y dos votos con top1 > 0.80 y margen > 0.15. Calidad inválida pide revisión. Incertidumbre puede ir al depósito 3 solo con dominio físico admitido y disponibilidad confirmada. OTRO conocido y RECHAZO conservan motivos distintos. Lleno o desconocido nunca provoca un desvío silencioso.
 

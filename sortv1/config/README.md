@@ -1,3 +1,5 @@
 # Configuración de aplicación
 
-Labels y destinos coinciden por índice 0–3. Umbrales y temporizadores proceden del plan. ROI y resize permanecen pendientes de calibración para evitar un preprocesamiento ficticio. Congelar configuraciones con hashes antes de aceptación.
+Camera/quality/firmware exigen calibracion real; valores null bloquean AUTO. Labels/destinos0-3; thresholds del paqueteONNX y targets del plan. physical.json identifica USB/operador/admision/modelo; hashes antes de SORT. Ningun secreto en config.
+
+Estado y comandos: docs/MVP_STATUS.md y docs/ml/ML_PIPELINE.md en la raiz.
