@@ -1,0 +1,11 @@
+id,risk,mitigation,status
+R01,Fabricacion sin medidas congeladas,Medir recipientes actuadores y objetos antes de CAD,OPEN
+R02,Corte DC y retencion sin circuito definitivo,Cerrar componentes y revisar resguardos independientes,OPEN
+R03,Feedback de potencia a GPIO28 sin interfaz definida,Usar contacto auxiliar o adaptacion aislada a 3V3,OPEN
+R04,nEN sin pullup externo,Deshabilitar driver por hardware al arranque,OPEN
+R05,Objeto retenido o caida no observable,Ensayar muestras y exigir barrera vacia y cierre,OPEN
+R06,Modelo aprende fondo o fuga por objeto,Separar objetos y congelar test antes de umbrales,OPEN
+R07,Desconocido con confianza alta,Restringir dominio y medir desafios separados,OPEN
+R08,Disco lleno o reinicio despues de caida,Journal durable y conciliacion manual de incompletos,OPEN
+R09,ToF invalido tratado como vacio,Mostrar desconocido y bloquear o verificar manualmente,OPEN
+R10,Dependencias y latencia de Pi sin verificar,Congelar versiones y medir sesion de 60 minutos,OPEN

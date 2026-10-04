@@ -1,0 +1,1 @@
+export function traceWire(wires, start, end){const queue=[[start,[]]],seen=new Set();while(queue.length){const [node,path]=queue.shift();if(node===end)return path;if(seen.has(node))continue;seen.add(node);for(const w of wires)if(w.from_component===node)queue.push([w.to_component,[...path,w.id]]);}return [];}

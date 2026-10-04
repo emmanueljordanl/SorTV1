@@ -1,0 +1,412 @@
+[
+  {
+    "step": 1,
+    "title": "Medir recipientes",
+    "components": [
+      "BIN-00",
+      "BIN-01",
+      "BIN-02",
+      "BIN-03"
+    ],
+    "entry": "Cuatro recipientes reales",
+    "work": "Medir reborde, boca, base, altura y asas; numerar cada uno",
+    "measurement": "Cotas bin0..3, variación entre piezas y extracción",
+    "pass_criterion": "Los cuatro caben y salen sin deformarse",
+    "typical_error": "Suponer que 5 L define dimensiones",
+    "stop_if": "No existe recorrido de retirada",
+    "tools": "Cinta, calibrador, escuadra",
+    "fixation": "Sin tornillos",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 2,
+    "title": "Medir componentes reales",
+    "components": [
+      "ACT-09",
+      "ACT-15",
+      "MECH-11",
+      "MECH-70-0",
+      "CMP-02"
+    ],
+    "entry": "Componentes recibidos y fichas",
+    "work": "Identificar modelos y contactos; medir huellas, ejes y conectores",
+    "measurement": "Dimensiones y ratings de todos los TBC",
+    "pass_criterion": "No hay incompatibilidades sin registrar",
+    "typical_error": "Usar dimensiones de anuncio para perforar",
+    "stop_if": "Faltan contactos/interfaces de corte",
+    "tools": "Calibrador, multímetro, cámara",
+    "fixation": "Registrar sin modificar",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 3,
+    "title": "Maqueta de cartón",
+    "components": [
+      "MECH-65",
+      "MECH-66",
+      "MECH-67",
+      "MECH-68"
+    ],
+    "entry": "Recipientes medidos y diez muestras límite",
+    "work": "Armar niveles A-D y guía, sin energía",
+    "measurement": "Barrido hoja, guía y bocas; encuadre",
+    "pass_criterion": "Recorrido continuo y acceso de mantenimiento",
+    "typical_error": "Bajar altura sin reservar barrido de hoja",
+    "stop_if": "Eje invade canal u objeto puentea",
+    "tools": "Cartón, regla, cinta",
+    "fixation": "Uniones temporales",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 4,
+    "title": "50 descargas manuales",
+    "components": [
+      "MECH-66",
+      "MECH-67",
+      "MECH-68",
+      "BIN-00"
+    ],
+    "entry": "Maqueta con resguardos y destinos conocidos",
+    "work": "Descargar familias variadas; rotor siempre vacío",
+    "measurement": "Intervenciones, rutas, atascos, orientación",
+    "pass_criterion": "50 ensayos documentados; resolver cada atasco antes automatizar",
+    "typical_error": "Descartar silenciosamente fallos",
+    "stop_if": "No pasa objeto límite o papel evita haz",
+    "tools": "Muestras, registro, cámara",
+    "fixation": "No motores",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 5,
+    "title": "Congelar geometría",
+    "components": [
+      "MECH-65",
+      "MECH-68"
+    ],
+    "entry": "Cotas reales y acta maqueta",
+    "work": "Pasar MEASURED a FROZEN solo tras revisar ensamblaje",
+    "measurement": "Holguras, CG, FOV, tolerancias",
+    "pass_criterion": "CAD revisado con criterios y responsable",
+    "typical_error": "Confundir visualización con plano de corte",
+    "stop_if": "Hay BLOCKER eléctrico o dimensión crítica sin medir",
+    "tools": "CAD/plantillas",
+    "fixation": "No fijar pares universales",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 6,
+    "title": "Fabricar bastidor",
+    "components": [
+      "MECH-65",
+      "MECH-LEFT",
+      "MECH-RIGHT"
+    ],
+    "entry": "CAD aprobado y material",
+    "work": "Cortar, desbarbar, escuadrar y montar travesaños",
+    "measurement": "Diagonales, verticalidad y apoyo",
+    "pass_criterion": "Estructura estable, cantos protegidos",
+    "typical_error": "Cerrar paneles antes probar acceso",
+    "stop_if": "Balancea o choca extracción",
+    "tools": "Escuadra, taladro, llaves",
+    "fixation": "M4/M5; par por material validado",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 7,
+    "title": "Montar rodamientos y eje",
+    "components": [
+      "MECH-69",
+      "MECH-70-0",
+      "MECH-70-1",
+      "MECH-71-0",
+      "MECH-71-1"
+    ],
+    "entry": "Bastidor escuadrado",
+    "work": "Alinear alojamientos y dejar eje libre; collarines sin precarga indebida",
+    "measurement": "Coaxialidad, juego axial, giro manual",
+    "pass_criterion": "Gira suave sin motor",
+    "typical_error": "Forzar eje con acople",
+    "stop_if": "Hay dureza o holgura no explicada",
+    "tools": "Calibrador, reloj comparador, llaves",
+    "fixation": "Ajuste definido por rodamientos recibidos",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 8,
+    "title": "Montar desviador",
+    "components": [
+      "MECH-68"
+    ],
+    "entry": "Apoyos de eje validados",
+    "work": "Fijar hub bajo piso del canal; comprobar cuatro salidas",
+    "measurement": "Envolvente 360°, paso mínimo y pendiente",
+    "pass_criterion": "Sin colisión ni invasión del eje al flujo",
+    "typical_error": "Usar motor como único rodamiento",
+    "stop_if": "Roza bins, arnés o compuerta",
+    "tools": "Plantillas, galgas",
+    "fixation": "Fijación cautiva al hub",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 9,
+    "title": "Montar NEMA",
+    "components": [
+      "ACT-09",
+      "MECH-10",
+      "MECH-11"
+    ],
+    "entry": "Rotor manual libre",
+    "work": "Fijar soporte y acople sin empujar eje motor",
+    "measurement": "Coaxialidad y marcas testigo",
+    "pass_criterion": "Motor transmite par, apoyos toman carga radial",
+    "typical_error": "Prisionero sobre zona equivocada",
+    "stop_if": "Eje se desplaza al apretar",
+    "tools": "Allen, escuadra",
+    "fixation": "M3 motor; M4/M5 bastidor",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 10,
+    "title": "Bandeja y celda",
+    "components": [
+      "SENS-19",
+      "ELEC-HX711",
+      "MECH-66"
+    ],
+    "entry": "Bastidor y celda identificada",
+    "work": "Fijar extremo correcto; carga por extremo libre y topes separados",
+    "measurement": "Tara total, deflexión y carga excéntrica",
+    "pass_criterion": "Tara+objeto dentro capacidad validada; no apoyo paralelo",
+    "typical_error": "Cable tenso o bandeja toca marco",
+    "stop_if": "Se supera capacidad o histéresis",
+    "tools": "Báscula, masas, galgas",
+    "fixation": "Tornillos según roscas celda",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 11,
+    "title": "Compuerta y servo",
+    "components": [
+      "MECH-67",
+      "MECH-72",
+      "ACT-15",
+      "MECH-16",
+      "MECH-17"
+    ],
+    "entry": "Subconjunto de pesaje",
+    "work": "Montar todo en lado pesado; ajustar varilla sin punto muerto",
+    "measurement": "Torque, ángulos, barrido y switches",
+    "pass_criterion": "OPEN/CLOSED con margen; sin zumbido en tope",
+    "typical_error": "Servo fijo al bastidor deriva fuerza de peso",
+    "stop_if": "No cierra, calienta o roza guía",
+    "tools": "Llaves, dinamómetro, transportador",
+    "fixation": "Pasadores cautivos; par del servo proveedor",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 12,
+    "title": "Cámara e iluminación",
+    "components": [
+      "CMP-02",
+      "ELEC-45",
+      "MECH-46",
+      "HAR-07"
+    ],
+    "entry": "Bandeja completa y soporte fijo",
+    "work": "Cámara al bastidor; difusor sin tapar lente; CSI holgado",
+    "measurement": "FOV techo objeto, foco, uniformidad",
+    "pass_criterion": "Objeto íntegro a 150 mm de altura en ROI final",
+    "typical_error": "Probar solo bandeja vacía",
+    "stop_if": "Recorta esquina o lente golpea tapa",
+    "tools": "Carta patrón, regla",
+    "fixation": "M2/M3 según módulo; agujeros TBC",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 13,
+    "title": "Sensores",
+    "components": [
+      "SENS-22",
+      "SENS-23",
+      "SENS-24",
+      "SENS-25",
+      "SENS-ROT0",
+      "SENS-TOF0",
+      "SENS-27"
+    ],
+    "entry": "Mecánica libre",
+    "work": "Montar cuatro reed, cuatro ToF, cuatro barreras y límites",
+    "measurement": "Ventanas exclusivas, cobertura y polaridades",
+    "pass_criterion": "Todos con soporte, ruta y prueba individual",
+    "typical_error": "Sensor usado como tope duro",
+    "stop_if": "Haz no detecta papel o dos reed simultáneos",
+    "tools": "Multímetro, muestras, soporte ranurado",
+    "fixation": "PETG incluido; geometría por medir",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 14,
+    "title": "Panel electrónico",
+    "components": [
+      "CMP-01",
+      "CMP-06",
+      "ELEC-12",
+      "ELEC-32",
+      "SAFE-34"
+    ],
+    "entry": "Componentes y esquema resuelto",
+    "work": "Montar zona alta lógica, baja potencia y HX cerca celda",
+    "measurement": "Ventilación, acceso tornillos, distancia arnés",
+    "pass_criterion": "Separado del residuo y accesible",
+    "typical_error": "Cooler contra pared o bornera colgante",
+    "stop_if": "Queda interfaz de potencia sin resolver",
+    "tools": "Taladro, separadores, multímetro",
+    "fixation": "M3 y soporte aislante",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 15,
+    "title": "Arnés",
+    "components": [
+      "HAR-53",
+      "HAR-54",
+      "HAR-55",
+      "HAR-56",
+      "HAR-57",
+      "HAR-58"
+    ],
+    "entry": "Panel sin alimentación",
+    "work": "Cortar a ruta medida; etiquetar ambos extremos; crimpar y revisar",
+    "measurement": "Wire-from/to, continuidad, caída y tirón",
+    "pass_criterion": "Sin positivos unidos ni retorno de motor por Pico",
+    "typical_error": "Usar color como única identificación",
+    "stop_if": "Corto, cobre expuesto o borde vivo",
+    "tools": "Crimpadora, multímetro, termorretráctil",
+    "fixation": "PG7/9 y cinchos con holgura",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 16,
+    "title": "Resguardos",
+    "components": [
+      "SAFE-78",
+      "MECH-TOP",
+      "MECH-DOOR",
+      "SAFE-33"
+    ],
+    "entry": "Arnés validado sin energía",
+    "work": "Cerrar zonas móviles y contactos; validar accesos",
+    "measurement": "Apertura antes de acceso, volumen de parada",
+    "pass_criterion": "Interrupción física verificable",
+    "typical_error": "Confiar en UI para detener",
+    "stop_if": "Contactos no cortan o resguardo alcanzable",
+    "tools": "Plantilla acceso, multímetro",
+    "fixation": "Tornillos desmontables",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 17,
+    "title": "Firmware sin motores",
+    "components": [
+      "CMP-06"
+    ],
+    "entry": "Sensores y USB, potencia aislada",
+    "work": "Verificar boot, GPIO, CRC, temporizadores y estados",
+    "measurement": "Estados nEN/PWM desde reset",
+    "pass_criterion": "Sin pulsos intempestivos; identidad nueva",
+    "typical_error": "Probar solo tras init software",
+    "stop_if": "nEN arranca habilitado",
+    "tools": "Analizador lógico, laptop",
+    "fixation": "No conectar motores",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 18,
+    "title": "Motor de banco",
+    "components": [
+      "ACT-09",
+      "ELEC-12",
+      "ELEC-13"
+    ],
+    "entry": "DRV identificado y sensor índice de prueba",
+    "work": "Leer Rsense; corriente conservadora; rampa lenta",
+    "measurement": "Fase, VREF, temperatura y pérdida de pasos",
+    "pass_criterion": "Repetible sin exceder térmica",
+    "typical_error": "Conectar bobinas con VMOT vivo",
+    "stop_if": "Sin control de corriente o calor excesivo",
+    "tools": "Multímetro, sonda térmica",
+    "fixation": "Resguardado y descargado",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 19,
+    "title": "Servo de banco",
+    "components": [
+      "ACT-15",
+      "ELEC-32"
+    ],
+    "entry": "Buck calibrado sin carga",
+    "work": "Alimentar externo; probar recorrido sin forzar tope",
+    "measurement": "Tensión 6 V bajo pico, consumo, pulsos",
+    "pass_criterion": "Movimiento repetible sin stall",
+    "typical_error": "Usar bloqueo como régimen",
+    "stop_if": "Buck cae o servo zumba sin mover",
+    "tools": "Multímetro, fuente protegida",
+    "fixation": "Montaje firme sin residuo",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 20,
+    "title": "Integración",
+    "components": [
+      "MECH-68",
+      "MECH-67",
+      "CMP-06",
+      "CMP-01"
+    ],
+    "entry": "C0-C8 y fallos básicos",
+    "work": "Ciclo diagnóstico protegido; destino conocido separado de IA",
+    "measurement": "Cadena causa-señal-movimiento-confirmación",
+    "pass_criterion": "Cuatro destinos y recuperaciones correctas",
+    "typical_error": "Contar ACK como caída",
+    "stop_if": "Un solo movimiento no autorizado",
+    "tools": "Registros y observación externa",
+    "fixation": "Resguardos cerrados",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 21,
+    "title": "Clasificación IA",
+    "components": [
+      "CMP-01",
+      "CMP-02"
+    ],
+    "entry": "Modelo y preprocessing con hash",
+    "work": "Activar decisiones a partir de tres imágenes nuevas",
+    "measurement": "Recall, pureza, cobertura y latencias",
+    "pass_criterion": "P08/P09, paquete coherente y sin fuga",
+    "typical_error": "Entrenar usando test o fondo sesgado",
+    "stop_if": "No hay modelo validado o frame viejo",
+    "tools": "Laptop entrenamiento; Pi inferencia",
+    "fixation": "No alterar hardware para acertar",
+    "source": "SIMULATION"
+  },
+  {
+    "step": 22,
+    "title": "Pruebas de aceptación",
+    "components": [
+      "MECH-65",
+      "CMP-01",
+      "CMP-06"
+    ],
+    "entry": "Versión congelada",
+    "work": "P01-P16; F01-F30; 200 ciclos y térmica",
+    "measurement": "Denominadores, evidencia y fallos preservados",
+    "pass_criterion": "Criterios cumplidos con evidencia física",
+    "typical_error": "Rellenar PHYSICAL con simulación",
+    "stop_if": "Hay fallo de protección o resultado incierto",
+    "tools": "Checklist, muestras, logs",
+    "fixation": "Revisar tornillos tras sesión",
+    "source": "SIMULATION"
+  }
+]

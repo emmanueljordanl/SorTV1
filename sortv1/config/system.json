@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "mode": "SIMULATION",
+  "frame_max_age_ms": 300,
+  "frame_spacing_ms": 100,
+  "heartbeat_interval_ms": 200,
+  "heartbeat_timeout_ms": 1000,
+  "decision_timeout_ms": 2000,
+  "position_timeout_ms": 3000,
+  "gate_timeout_ms": 1000,
+  "fall_timeout_ms": 2000,
+  "cycle_timeout_ms": 10000,
+  "protocol_max_bytes": 512,
+  "protocol_partial_timeout_ms": 250,
+  "object_limits": {"width_mm": 100, "depth_mm": 100, "height_mm": 150, "mass_g": 200}
+}
