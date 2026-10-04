@@ -1,0 +1,15 @@
+{
+  "workspace": "trashia",
+  "project": "trashia",
+  "url": "https://universe.roboflow.com/trashia/trashia",
+  "status": "ACCESS_REQUIRED",
+  "task_type": null,
+  "classes": null,
+  "versions": null,
+  "selected_version": null,
+  "license": null,
+  "images": null,
+  "splits": null,
+  "preprocessing": null,
+  "error": "ROBOFLOW_API_KEY_REQUIRED; public page returned 403 and API returned 401"
+}
