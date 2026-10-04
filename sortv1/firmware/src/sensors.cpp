@@ -8,7 +8,7 @@ TwoWire Wire;
 bool Sensors::input(unsigned pin,uint32_t now) {
   auto& d=contacts[pin]; bool v=gpio_get(pin)==calibration::active_high[pin];
   if(v!=d.candidate) { d.candidate=v; d.changed=now; }
-  if(now-d.changed>=20) d.value=d.candidate;
+  if(now-d.changed>=calibration::contact_debounce_ms) d.value=d.candidate;
   return d.value;
 }
 void Sensors::init() {
@@ -38,7 +38,7 @@ void Sensors::poll(uint32_t now) {
   data.service=input(27,now); data.power=input(28,now);
   constexpr unsigned fallpins[]={20,21,22,26};
   for(unsigned b=0;b<4;++b) { data.index[b]=input(16+b,now); data.beam[b]=input(fallpins[b],now); }
-  data.contacts_valid=now-contact_start>=20;
+  data.contacts_valid=now-contact_start>=calibration::contact_debounce_ms;
   if(!gpio_get(10)) {
     // HX711 bit transfer is bounded (<100 us). SCK high remains below power-down threshold.
     uint32_t irq=save_and_disable_interrupts(); uint32_t raw=0;

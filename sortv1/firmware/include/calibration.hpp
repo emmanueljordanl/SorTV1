@@ -3,6 +3,7 @@
 namespace calibration {
 // Generated safe defaults. Use configure_firmware.py with measured evidence.
 constexpr bool verified=false;
+constexpr unsigned contact_debounce_ms=20,index_stable_ms=100;
 constexpr std::array<bool,29> active_high{};
 constexpr int hx_offset=0;
 constexpr float mg_per_count=0;

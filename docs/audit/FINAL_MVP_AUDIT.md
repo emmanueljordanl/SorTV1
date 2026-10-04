@@ -6,7 +6,7 @@ Implementado: Picamera2 con exposiciones/timestamps reales, quality calibrable, 
 
 | Validación ejecutada | Resultado y límites |
 | --- | --- |
-| Python | 47 tests locales, sin eliminar pruebas originales; regresiones de almacenamiento, correlación, DONE, USB, datos/TESTfreeze, cámara, quality/modelos |
+| Python | 48 tests locales, sin eliminar pruebas originales; regresiones de almacenamiento, correlación, DONE, USB, datos/TESTfreeze, cámara, quality/modelos y conteos por modo |
 | C++ host | Contratos originales y máquina física/codec; 4 destinos, duplicados/conflictos, UNKNOWN/FULL, fallo power/heartbeat/WRONG_ROUTE/índices/gate y reset mantenido; CRC Python/C++ golden vectors PASS |
 | PicoSDK | Windows ARM14.3.1 + SDK2.3.1; ELF/BIN/UF2 real, payload/header/familia verificados. LinuxCI picotool compila y publica UF2; sin flasheo ni prueba de sensores reales |
 | Gemelo | 24/24 tests; build offline; BOM82 y datos históricos preservados. ZIP histórico íntegro, dist fuera de fuenteGit |

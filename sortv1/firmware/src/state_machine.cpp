@@ -1,4 +1,5 @@
 #include "state_machine.hpp"
+#include "calibration.hpp"
 namespace physical {
 const char* Machine::name(State s) {
   static const char* names[]={"BOOT_SAFE","CHECK_HOME","READY","WAIT_STABLE","WAIT_DECISION","POSITIONING","DISPENSING","VERIFY_CLOSE","FAULT","REVIEW"};
@@ -49,7 +50,7 @@ void Machine::tick(uint32_t now,const Inputs& i) {
     if(!guards) { fault("HOME_GUARDS",now); break; }
     if(indices==1 && i.closed && !i.presence) {
       if(!index_timing) { index_since=now; index_timing=true; }
-      if(now-index_since>=100) enter(State::READY,now);
+      if(now-index_since>=calibration::index_stable_ms) enter(State::READY,now);
     } else index_timing=false;
     if(now-entered>3000) fault("HOME_TIMEOUT",now);
     break;
@@ -76,7 +77,7 @@ void Machine::tick(uint32_t now,const Inputs& i) {
     outputs.motor=!i.index[destination];
     if(i.index[destination] && indices==1) {
       if(!index_timing) { index_since=now; index_timing=true; }
-      if(now-index_since>=100) { enter(State::DISPENSING,now); fall_stage=0; }
+      if(now-index_since>=calibration::index_stable_ms) { enter(State::DISPENSING,now); fall_stage=0; }
     } else index_timing=false;
     if(now-entered>3000) fault("POSITION_TIMEOUT",now);
     break;

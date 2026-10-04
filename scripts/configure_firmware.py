@@ -19,6 +19,10 @@ def generate(path, output):
         if not isinstance(c.get(k), list) or len(c[k]) != 4 or any(type(v) is not int or v <= 0 for v in c[k]): raise ValueError(k)
     if any(a+b>=8190 for a,b in zip(c["tof_full_mm"], c["tof_hysteresis_mm"])): raise ValueError("ToF range calibration")
     lines = ['#pragma once', '#include <array>', 'namespace calibration {', 'constexpr bool verified=true;']
+    for key, default in (("contact_debounce_ms", 20), ("index_stable_ms", 100)):
+        value = c.get(key, default)
+        if type(value) is not int or not 1 <= value <= 1000: raise ValueError("Invalid measured timing: " + key)
+        lines.append(f'constexpr unsigned {key}={value};')
     for k, typ in [("active_high", "bool"), ("tof_full_mm", "unsigned"), ("tof_hysteresis_mm", "unsigned")]:
         values = ','.join(str(v).lower() for v in c[k]); lines.append(f'constexpr std::array<{typ},{len(c[k])}> {k}{{{{{values}}}}};')
     for key, typ, name in [("hx711_offset", "int", "hx_offset"), ("hx711_mg_per_count", "float", "mg_per_count"), ("presence_mg", "int", "presence_mg"), ("stable_span_mg", "int", "stable_span_mg"), ("overweight_mg", "int", "overweight_mg"), ("servo_closed_us", "unsigned", "servo_closed_us"), ("servo_open_us", "unsigned", "servo_open_us"), ("step_period_us", "unsigned", "step_period_us"), ("direction", "bool", "direction")]:
