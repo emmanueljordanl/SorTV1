@@ -1,0 +1,74 @@
+[
+  {
+    "id": "SW-01",
+    "name": "capture",
+    "input": "INSPECT(cycle_id)",
+    "process": "Picamera2 produce tres frames RGB nuevos, timestamp monótono y controles",
+    "output": "Frame{frame_id,cycle_id,timestamp,RGB,exposure,gain,WB}",
+    "failures": "buffer viejo, cámara ausente",
+    "dependencies": "CMP-02, reloj Pi"
+  },
+  {
+    "id": "SW-02",
+    "name": "quality",
+    "input": "Frame y ROI calibrada",
+    "process": "Verifica edad≤300 ms, ocupación, foco y exposición",
+    "output": "QualityResult{valid,reason}",
+    "failures": "tapada, blur, ROI inválida",
+    "dependencies": "SW-01, configuración"
+  },
+  {
+    "id": "SW-03",
+    "name": "inference",
+    "input": "Tensor FP32 1×3×224×224",
+    "process": "ONNX Runtime CPU batch1 MobileNetV3 Small",
+    "output": "probabilities[4], model_sha256",
+    "failures": "modelo faltante, salida inválida",
+    "dependencies": "models/, SW-02"
+  },
+  {
+    "id": "SW-04",
+    "name": "decision",
+    "input": "Tres predicciones válidas",
+    "process": "top1>0.80, margen>0.15, consenso≥2/3",
+    "output": "Decision{predicted_class,decision,requested_bin}",
+    "failures": "incertidumbre u OOD no detectado",
+    "dependencies": "SW-03, labels/thresholds"
+  },
+  {
+    "id": "SW-05",
+    "name": "transport",
+    "input": "JSON compacto y CRC16",
+    "process": "Acota 512 bytes, timeout, clave idempotente",
+    "output": "ACK/NACK/DONE/FAULT",
+    "failures": "CRC, truncado, boot viejo",
+    "dependencies": "USB CDC, FW-01"
+  },
+  {
+    "id": "SW-06",
+    "name": "controller",
+    "input": "Eventos un ciclo",
+    "process": "No pide SORT hasta persistir intención; vigencia de sesión",
+    "output": "Intención y estado lógico",
+    "failures": "reinicio o duplicado de ciclo",
+    "dependencies": "SW-01..07"
+  },
+  {
+    "id": "SW-07",
+    "name": "evidence",
+    "input": "Eventos y resumen",
+    "process": "JSONL append, flush/fsync de intent antes SORT; deduplicación",
+    "output": "CSV/JSONL/hash",
+    "failures": "ENOSPC, corte antes commit",
+    "dependencies": "microSD, reloj Pi"
+  },
+  {
+    "id": "SW-08",
+    "name": "operator_ui",
+    "input": "Snapshot inmutable",
+    "process": "Consulta/exporta estado",
+    "output": "Visualización sin mando motor",
+    "failures": "estado obsoleto, enlace ausente",
+    "dependencies": "SW-06/07"
+  }
+]

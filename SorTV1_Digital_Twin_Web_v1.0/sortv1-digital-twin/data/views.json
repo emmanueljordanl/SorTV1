@@ -1,0 +1,326 @@
+[
+  {
+    "id": "V01",
+    "name": "Perspectiva frontal cerrada",
+    "mode": "PRODUCTO",
+    "components": [
+      "MECH-65",
+      "MECH-TOP",
+      "MECH-DOOR",
+      "SAFE-33",
+      "ELEC-42",
+      "ELEC-43",
+      "ELEC-44"
+    ],
+    "orientation": "Frente +Z, derecha +X, arriba +Y; paro al frente superior",
+    "access": "Acceso tapa y puerta independientes; acabado no estructural",
+    "interference": "Tapa, puerta y estabilidad",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V02",
+    "name": "Frontal",
+    "mode": "PRODUCTO",
+    "components": [
+      "MECH-DOOR",
+      "SAFE-33",
+      "SENS-26"
+    ],
+    "orientation": "Eje óptico desde +Z hacia origen",
+    "access": "Puerta abatible permite bins delanteros, luego traseros",
+    "interference": "Extracción de asas y panel de control",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V03",
+    "name": "Lateral derecha",
+    "mode": "PRODUCTO",
+    "components": [
+      "MECH-RIGHT",
+      "MECH-TOP"
+    ],
+    "orientation": "Desde +X",
+    "access": "Panel atornillado; acceso varillaje por derecha",
+    "interference": "Servo/varilla y pared",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V04",
+    "name": "Lateral izquierda",
+    "mode": "PRODUCTO",
+    "components": [
+      "MECH-LEFT"
+    ],
+    "orientation": "Desde −X",
+    "access": "Panel removible para celda/soportes",
+    "interference": "Celda no toca carcasa",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V05",
+    "name": "Posterior",
+    "mode": "ELECTRÓNICA",
+    "components": [
+      "MECH-REAR",
+      "MECH-PANEL",
+      "CMP-01",
+      "CMP-06"
+    ],
+    "orientation": "Desde −Z; lógica alta potencia baja",
+    "access": "Panel ventilado desmontable; fuentes externas",
+    "interference": "CSI, radios y aire cooler",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V06",
+    "name": "Superior",
+    "mode": "INTERIOR",
+    "components": [
+      "MECH-TOP",
+      "CMP-02",
+      "MECH-66"
+    ],
+    "orientation": "Desde +Y",
+    "access": "Quitar tapa solo aislado; cámara fija al marco",
+    "interference": "Volumen de visión y depósito manual",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V07",
+    "name": "Inferior funcional",
+    "mode": "MECÁNICA",
+    "components": [
+      "MECH-65",
+      "ACT-09",
+      "MECH-10"
+    ],
+    "orientation": "Desde −Y",
+    "access": "Motor central sobre base y apoyos estables",
+    "interference": "Altura motor/acople y tornillos",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V08",
+    "name": "Servicio abierto",
+    "mode": "INTERIOR",
+    "components": [
+      "MECH-DOOR",
+      "BIN-00",
+      "BIN-01",
+      "BIN-02",
+      "BIN-03"
+    ],
+    "orientation": "Puerta hacia frente",
+    "access": "Sacar delante antes de atrás si comparten corredor",
+    "interference": "No inclinar bin lleno sobre electrónica",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V09",
+    "name": "Corte longitudinal",
+    "mode": "CORTE_L",
+    "components": [
+      "CMP-02",
+      "MECH-66",
+      "MECH-67",
+      "MECH-68",
+      "MECH-69"
+    ],
+    "orientation": "Plano X=0; lado derecho retirado",
+    "access": "Corte virtual no modificación física",
+    "interference": "Hoja no invade guía; eje bajo suelo",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V10",
+    "name": "Corte transversal",
+    "mode": "CORTE_T",
+    "components": [
+      "MECH-68",
+      "BIN-00",
+      "BIN-01",
+      "BIN-02",
+      "BIN-03"
+    ],
+    "orientation": "Plano horizontal bajo bandeja",
+    "access": "Ver alineación centro salida-boca",
+    "interference": "Envolvente rotor 360 grados",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V11",
+    "name": "Carcasa transparente",
+    "mode": "INTERIOR",
+    "components": [
+      "MECH-65",
+      "CMP-01",
+      "CMP-06",
+      "MECH-68",
+      "ACT-15"
+    ],
+    "orientation": "3/4 ingeniería",
+    "access": "Misma geometría con opacidad reducida",
+    "interference": "Solapes no validan cotas físicas",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V12",
+    "name": "Exploded completo",
+    "mode": "EXPLODED",
+    "components": [
+      "MECH-65",
+      "MECH-66",
+      "MECH-67",
+      "MECH-68"
+    ],
+    "orientation": "Desplazamientos de grupos A-O",
+    "access": "Orden no cambia IDs ni conexiones",
+    "interference": "Restituir slider 0 antes simular ajuste físico",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V13",
+    "name": "Mecanismo inspección",
+    "mode": "INSPECCIÓN",
+    "components": [
+      "CMP-02",
+      "MECH-66",
+      "MECH-67",
+      "SENS-19",
+      "ACT-15"
+    ],
+    "orientation": "Superior hacia bandeja",
+    "access": "Servo y bisagra pertenecen masa tarada",
+    "interference": "Cables blandos; sin carga paralela",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V14",
+    "name": "Desviador",
+    "mode": "ROTOR",
+    "components": [
+      "MECH-68",
+      "MECH-69",
+      "MECH-70-0",
+      "ACT-09"
+    ],
+    "orientation": "Centro y salida radial",
+    "access": "Dos apoyos independientes; hub bajo suelo",
+    "interference": "No shaft atravesando objeto",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V15",
+    "name": "Electrónica",
+    "mode": "ELECTRÓNICA",
+    "components": [
+      "CMP-01",
+      "CMP-06",
+      "ELEC-12",
+      "ELEC-32",
+      "SAFE-34",
+      "ELEC-HX711"
+    ],
+    "orientation": "Panel posterior expuesto",
+    "access": "Tornillos y conectores frente al mantenedor",
+    "interference": "Aire, contacto vivo, fuente exterior",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V16",
+    "name": "Arnés",
+    "mode": "CABLEADO",
+    "components": [
+      "HAR-53",
+      "HAR-54",
+      "HAR-55",
+      "HAR-56",
+      "HAR-57",
+      "HAR-58"
+    ],
+    "orientation": "Rutas R-P R-S R-C",
+    "access": "Potencia por borde, señales por borde separado",
+    "interference": "No cable sobre barrido; discontinuos = BLOCKER",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V17",
+    "name": "Depósitos",
+    "mode": "DEPÓSITOS",
+    "components": [
+      "BIN-00",
+      "BIN-01",
+      "BIN-02",
+      "BIN-03"
+    ],
+    "orientation": "Planta: 0 arriba izquierda,1 derecha,3 abajo izquierda,2 derecha",
+    "access": "BIN0/1 al fondo, BIN3/2 al frente",
+    "interference": "Bocas, asas y volumen real",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V18",
+    "name": "Trayectoria residuo",
+    "mode": "SIMULACIÓN",
+    "components": [
+      "MECH-66",
+      "MECH-67",
+      "MECH-68",
+      "BIN-02"
+    ],
+    "orientation": "Retención, caída y guía",
+    "access": "Trazado cinemático de referencia, no DEM",
+    "interference": "Contacto/puentes requieren ensayo físico",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V19",
+    "name": "Mantenimiento",
+    "mode": "MANTENIMIENTO",
+    "components": [
+      "MECH-DOOR",
+      "MECH-REAR",
+      "MECH-LEFT",
+      "MECH-RIGHT"
+    ],
+    "orientation": "Accesos resaltados",
+    "access": "Aislar, retirar panel indicado, acceder pieza",
+    "interference": "Nada exige desmontar bastidor para fusible",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  },
+  {
+    "id": "V20",
+    "name": "Riesgos y resguardo",
+    "mode": "RIESGOS",
+    "components": [
+      "SAFE-33",
+      "SAFE-78",
+      "ACT-15",
+      "ACT-09"
+    ],
+    "orientation": "Volúmenes móvil y eléctrico",
+    "access": "Paro visible; cámara no gobierna protección",
+    "interference": "Inercia y energía residual tras corte",
+    "fixation": "Fijaciones y prueba específicas en ficha de cada component_id",
+    "position": "Coordenadas de referencia de ModelBuilder; dimensiones.json"
+  }
+]

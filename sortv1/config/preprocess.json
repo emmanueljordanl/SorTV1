@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "color": "RGB",
+  "shape": [1, 3, 224, 224],
+  "dtype": "float32",
+  "scale": 255.0,
+  "mean": [0.485, 0.456, 0.406],
+  "std": [0.229, 0.224, 0.225],
+  "resize_policy": "PENDING_CALIBRATION",
+  "roi": null,
+  "status": "PENDING_PHYSICAL_VALIDATION"
+}

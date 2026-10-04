@@ -1,0 +1,77 @@
+name: SorTV1 CI
+
+on:
+  push:
+    branches: [main, develop, 'feature/**', 'fix/**', 'test/**', 'docs/**', 'release/**']
+    tags: ['v*']
+  pull_request:
+    branches: [main, develop, 'release/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: Python contracts (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Test contracts
+        working-directory: sortv1
+        run: python -m unittest discover -s tests -v
+      - name: Simulate four destinations
+        working-directory: sortv1
+        run: python -m app --simulate
+
+  digital-twin:
+    name: Digital twin
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: SorTV1_Digital_Twin_Web_v1.0/sortv1-digital-twin
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: SorTV1_Digital_Twin_Web_v1.0/sortv1-digital-twin/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+  cpp:
+    name: C++ contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Compile portable headers and test guards
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -pedantic sortv1/tests/protocol/firmware_contracts.cpp -o /tmp/sortv1-contracts
+          /tmp/sortv1-contracts
+
+  repository:
+    name: Repository integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.14'
+      - run: python scripts/verify_repository.py

@@ -1,0 +1,13 @@
+import {cp,mkdir,rm,readFile,writeFile} from 'node:fs/promises';
+await rm('dist',{recursive:true,force:true});
+await mkdir('dist',{recursive:true});
+for(const p of ['src','data','docs','models','index.html','style.css','favicon.svg','README.md','package.json','package-lock.json']) await cp(p,`dist/${p}`,{recursive:true});
+await mkdir('dist/vendor',{recursive:true});
+await cp('node_modules/three/build','dist/vendor/build',{recursive:true});
+await cp('node_modules/three/examples/jsm/controls','dist/vendor/controls',{recursive:true});
+await cp('node_modules/three/LICENSE','dist/vendor/LICENSE-three');
+await cp('scripts/serve.mjs','dist/serve.mjs');
+let html=await readFile('dist/index.html','utf8');
+html=html.replaceAll('./node_modules/three/build/','./vendor/build/').replaceAll('./node_modules/three/examples/jsm/controls/','./vendor/controls/');
+await writeFile('dist/index.html',html);
+console.log('Build offline dist completo');

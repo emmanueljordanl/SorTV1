@@ -1,0 +1,106 @@
+{
+  "source": "SIMULATION",
+  "result_kind": "SIMULATED",
+  "scenarios": [
+    {
+      "kind": 0,
+      "state": "READY",
+      "result": {
+        "cycle_id": "sim-b1:1",
+        "predicted_class": "PET",
+        "decision": "ACCEPT",
+        "score": 0.91,
+        "requested_bin": 0,
+        "confirmed_bin": 0,
+        "physical_result": "DONE",
+        "source": "SIMULATION",
+        "result_kind": "SIMULATED",
+        "cycle_ms": 2420,
+        "model_sha256": null,
+        "model_status": "SIMULATED_NO_MODEL",
+        "firmware": "conceptual-js-1.0",
+        "config_sha256": null,
+        "error_code": null
+      },
+      "events": 38,
+      "protocol_messages": 25,
+      "source": "SIMULATION",
+      "result_kind": "SIMULATED"
+    },
+    {
+      "kind": 1,
+      "state": "READY",
+      "result": {
+        "cycle_id": "sim-b2:1",
+        "predicted_class": "PAPEL_CARTON",
+        "decision": "ACCEPT",
+        "score": 0.91,
+        "requested_bin": 1,
+        "confirmed_bin": 1,
+        "physical_result": "DONE",
+        "source": "SIMULATION",
+        "result_kind": "SIMULATED",
+        "cycle_ms": 3000,
+        "model_sha256": null,
+        "model_status": "SIMULATED_NO_MODEL",
+        "firmware": "conceptual-js-1.0",
+        "config_sha256": null,
+        "error_code": null
+      },
+      "events": 38,
+      "protocol_messages": 28,
+      "source": "SIMULATION",
+      "result_kind": "SIMULATED"
+    },
+    {
+      "kind": 2,
+      "state": "READY",
+      "result": {
+        "cycle_id": "sim-b3:1",
+        "predicted_class": "METAL_LATAS",
+        "decision": "ACCEPT",
+        "score": 0.91,
+        "requested_bin": 2,
+        "confirmed_bin": 2,
+        "physical_result": "DONE",
+        "source": "SIMULATION",
+        "result_kind": "SIMULATED",
+        "cycle_ms": 3600,
+        "model_sha256": null,
+        "model_status": "SIMULATED_NO_MODEL",
+        "firmware": "conceptual-js-1.0",
+        "config_sha256": null,
+        "error_code": null
+      },
+      "events": 38,
+      "protocol_messages": 31,
+      "source": "SIMULATION",
+      "result_kind": "SIMULATED"
+    },
+    {
+      "kind": 3,
+      "state": "READY",
+      "result": {
+        "cycle_id": "sim-b4:1",
+        "predicted_class": "OTRO_SECO_CONOCIDO",
+        "decision": "ACCEPT",
+        "score": 0.91,
+        "requested_bin": 3,
+        "confirmed_bin": 3,
+        "physical_result": "DONE",
+        "source": "SIMULATION",
+        "result_kind": "SIMULATED",
+        "cycle_ms": 3000,
+        "model_sha256": null,
+        "model_status": "SIMULATED_NO_MODEL",
+        "firmware": "conceptual-js-1.0",
+        "config_sha256": null,
+        "error_code": null
+      },
+      "events": 38,
+      "protocol_messages": 28,
+      "source": "SIMULATION",
+      "result_kind": "SIMULATED"
+    }
+  ]
+}
