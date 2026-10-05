@@ -2,7 +2,7 @@
 
 Source: https://universe.roboflow.com/trashia/trashia
 
-Verification: PUBLIC_METADATA_VERIFIED
+Verification: DATASET_DOWNLOADED
 
 License: CC BY 4.0
 

@@ -1,57 +1,63 @@
+﻿default: CHALLENGE_OOD
+status: REVIEWED
+
 classes:
   '0':
-    reason: Numeric or ambiguous name; material semantics not verified
-    reviewed: false
-    semantic_meaning: UNKNOWN
-    source_class_id: null
+    source_class_id: 1
     source_class_name: '0'
+    semantic_meaning: GLASS
+    verification_source: MANUAL_VISUAL_REVIEW
+    verification_confidence: HIGH
     target: CHALLENGE_OOD
-    verification_confidence: PENDING_REVIEW
-    verification_source: ROBOFLOW_METADATA
+    reason: Glass is outside the validated SorTV1 MVP material domain and must not be silently treated as general dry waste.
+    reviewed: true
+
   '1':
-    reason: Numeric or ambiguous name; material semantics not verified
-    reviewed: false
-    semantic_meaning: UNKNOWN
-    source_class_id: null
+    source_class_id: 2
     source_class_name: '1'
-    target: CHALLENGE_OOD
-    verification_confidence: PENDING_REVIEW
-    verification_source: ROBOFLOW_METADATA
+    semantic_meaning: CARDBOARD
+    verification_source: MANUAL_VISUAL_REVIEW
+    verification_confidence: HIGH
+    target: PAPEL_CARTON
+    reason: Multiple reviewed samples consistently contain cardboard boxes and corrugated cardboard.
+    reviewed: true
+
   '2':
-    reason: Numeric or ambiguous name; material semantics not verified
-    reviewed: false
-    semantic_meaning: UNKNOWN
-    source_class_id: null
+    source_class_id: 3
     source_class_name: '2'
+    semantic_meaning: MEDICAL_WASTE
+    verification_source: MANUAL_VISUAL_REVIEW
+    verification_confidence: HIGH
     target: CHALLENGE_OOD
-    verification_confidence: PENDING_REVIEW
-    verification_source: ROBOFLOW_METADATA
+    reason: Medical waste is outside the SorTV1 dry household waste operating domain and must be rejected.
+    reviewed: true
+
   '3':
-    reason: Numeric or ambiguous name; material semantics not verified
-    reviewed: false
-    semantic_meaning: UNKNOWN
-    source_class_id: null
+    source_class_id: 4
     source_class_name: '3'
-    target: CHALLENGE_OOD
-    verification_confidence: PENDING_REVIEW
-    verification_source: ROBOFLOW_METADATA
+    semantic_meaning: METAL
+    verification_source: MANUAL_VISUAL_REVIEW
+    verification_confidence: HIGH
+    target: METAL_LATAS
+    reason: Reviewed samples consistently contain metal including cans and scrap. LOCAL_PHYSICAL data defines the final deployment distribution.
+    reviewed: true
+
   '4':
-    reason: Numeric or ambiguous name; material semantics not verified
-    reviewed: false
-    semantic_meaning: UNKNOWN
-    source_class_id: null
+    source_class_id: 5
     source_class_name: '4'
-    target: CHALLENGE_OOD
-    verification_confidence: PENDING_REVIEW
-    verification_source: ROBOFLOW_METADATA
+    semantic_meaning: PAPER
+    verification_source: MANUAL_VISUAL_REVIEW
+    verification_confidence: HIGH
+    target: PAPEL_CARTON
+    reason: Reviewed samples consistently contain paper, printed paper and paper-based packaging.
+    reviewed: true
+
   '5':
-    reason: Numeric or ambiguous name; material semantics not verified
-    reviewed: false
-    semantic_meaning: UNKNOWN
-    source_class_id: null
+    source_class_id: 6
     source_class_name: '5'
+    semantic_meaning: MIXED_PLASTIC
+    verification_source: MANUAL_VISUAL_REVIEW
+    verification_confidence: HIGH
     target: CHALLENGE_OOD
-    verification_confidence: PENDING_REVIEW
-    verification_source: ROBOFLOW_METADATA
-default: CHALLENGE_OOD
-status: PENDING_REVIEW
+    reason: The source class mixes PET bottles with non-PET plastic containers, cups and bins; mapping the complete class to PET would introduce label noise.
+    reviewed: true

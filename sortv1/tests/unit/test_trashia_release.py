@@ -14,7 +14,11 @@ from scripts.inspect_trashia_inference import sanitized_response
 
 class TrashiaReleaseTests(unittest.TestCase):
     def test_public_metadata_does_not_imply_api_or_dataset_access(self):
-        record = fetch_trashia.initial_metadata()
+        # Isolate the public-only case from an operator's already-downloaded local dataset.
+        public = (fetch_trashia.METADATA / 'public_metadata.json').read_bytes()
+        with tempfile.TemporaryDirectory() as directory, patch.object(fetch_trashia, 'METADATA', Path(directory)):
+            (Path(directory) / 'public_metadata.json').write_bytes(public)
+            record = fetch_trashia.initial_metadata()
         self.assertEqual(record['metadata_access'], 'PUBLIC_METADATA_VERIFIED')
         self.assertEqual(record['license'], 'CC BY 4.0')
         self.assertEqual(record['dataset_export_access'], 'ACCESS_REQUIRED')
