@@ -1,5 +1,5 @@
 {
-  "status": "PUBLIC_METADATA_VERIFIED",
+  "status": "DATASET_DOWNLOADED",
   "verified_on": "2026-10-04",
   "verification_source": "ROBOFLOW_PUBLIC_UNIVERSE",
   "sources": [
@@ -8,7 +8,7 @@
   ],
   "workspace": "trashia",
   "project": "trashia",
-  "task_type": "Object Detection",
+  "task_type": "object-detection",
   "model_id": "trashia/1",
   "model_type": "Roboflow 3.0 Object Detection (Fast)",
   "input_output_contract": "Detection API; actual response contract requires inference inspection",
@@ -29,11 +29,12 @@
   "class_ids": null,
   "class_semantics": "PENDING_REVIEW",
   "project_images": 9876,
-  "images": 25557,
+  "images": 9876,
   "splits": {
-    "train": 23589,
     "valid": 996,
-    "test": 972
+    "test": 972,
+    "export": 0,
+    "train": 7908
   },
   "preprocessing": {
     "auto_orient": "Applied",
@@ -48,13 +49,13 @@
     ],
     "blur_up_to_px": 2.8
   },
-  "dataset_downloaded": false,
+  "dataset_downloaded": true,
   "export_sha256": null,
   "notes": "Project images and augmented version images are different counts. Numeric names do not establish annotation class IDs or material semantics. These are source dataset parameters, not SorTV1 training settings.",
   "url": "https://universe.roboflow.com/trashia/trashia",
-  "metadata_access": "PUBLIC_METADATA_VERIFIED",
+  "metadata_access": "METADATA_ACCESS_VERIFIED",
   "inference_access": "ACCESS_REQUIRED",
   "dataset_export_access": "ACCESS_REQUIRED",
-  "class_mapping": "PENDING_REVIEW",
-  "error": "ROBOFLOW_API_KEY_REQUIRED; public metadata preserved; inference/export not verified"
+  "class_mapping": "REVIEWED",
+  "index_status": "REINDEXED_EXISTING_DATASET"
 }
