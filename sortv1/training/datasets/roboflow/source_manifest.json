@@ -1,9 +1,15 @@
 {
-  "workspace": "trashia",
+  "dataset_downloaded": true,
+  "export_sha256": null,
+  "file_count": 25562,
+  "full_manifest_path": "datasets-cache/trashia-manifests/source_manifest_v1_full.json",
+  "full_manifest_sha256": "eae6fc9fb7dc7a526806acf1a8fff801e1d6b76ce6975709822a84af84a9ae75",
+  "generated_from": "sortv1/training/datasets/external/trashia/1",
+  "index_status": "REINDEXED_EXISTING_DATASET",
   "project": "trashia",
-  "version": 1,
   "source": "EXTERNAL",
-  "files": [],
-  "status": "PUBLIC_METADATA_VERIFIED",
-  "export_sha256": null
+  "status": "REINDEXED_EXISTING_DATASET",
+  "total_bytes": 1126230337,
+  "version": 1,
+  "workspace": "trashia"
 }
