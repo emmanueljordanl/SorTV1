@@ -3,6 +3,7 @@ import queue
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import ExitStack
 from dataclasses import asdict
 from pathlib import Path
 from app.contracts import Cycle, Decision, DecisionKind
@@ -15,9 +16,21 @@ from app.operator_ui import create_server
 import shutil
 
 
+PICO_DECISION_TIMEOUT_MS = 2000  # state_machine.cpp: WAIT_DECISION -> REVIEW tras 2 s; plan §11/§12.
+MIN_DECISION_MARGIN_MS = 250
+MAX_INSPECTION_DEADLINE_MS = PICO_DECISION_TIMEOUT_MS - MIN_DECISION_MARGIN_MS
+DEFAULT_INSPECTION_DEADLINE_MS = 1750  # CONFIGURED_BASELINE; PENDING_PHYSICAL_BENCHMARK.
+
+
 class PhysicalService:
     def __init__(self, root: Path, *, diagnostic=False, enable_actuators=False, destination=None):
         self.root = root; self.settings = load_json(root / "config/physical.json")
+        # Plazo duro de inspección en la Pi. La meta de aceptación p95 <= 1 s se mide aparte (inspection_ms);
+        # No usar una métrica estadística como timeout; reservar el margen Pi -> USB -> Pico.
+        deadline_ms = self.settings.get("inspection_deadline_ms", DEFAULT_INSPECTION_DEADLINE_MS)
+        if type(deadline_ms) is not int or not 0 < deadline_ms <= MAX_INSPECTION_DEADLINE_MS:
+            raise ValueError(f"inspection_deadline_ms must be an integer in [1, {MAX_INSPECTION_DEADLINE_MS}] ms")
+        self.inspection_deadline_s = deadline_ms / 1000
         self.diagnostic, self.enable, self.destination = diagnostic, enable_actuators, destination
         self.mode = "DIAGNOSTIC" if diagnostic else "PHYSICAL_AUTO"
         self.journal = Journal(root / self.settings["journal"], "PHYSICAL", mode=self.mode)
@@ -99,11 +112,13 @@ class PhysicalService:
                 "boot": self.controller.boot, "cycle": self.status.get("cycle"), "conteos_DONE": self.journal.counts(self.mode)}
 
     def run(self):
-        self.journal.append("SERVICE_START", {"mode": self.mode, "rearm": "PHYSICAL_ONLY"})
-        self.link.start()
-        server = create_server(self, self.settings["ui_port"])
-        threading.Thread(target=server.serve_forever, daemon=True).start()
+        server = None; ui_thread = None
         try:
+            self.journal.append("SERVICE_START", {"mode": self.mode, "rearm": "PHYSICAL_ONLY"})
+            self.link.start()
+            server = create_server(self, self.settings["ui_port"])
+            thread = threading.Thread(target=server.serve_forever, name="SorTV1OperatorUI")
+            thread.start(); ui_thread = thread
             while True:
                 try: message = self.link.events.get(timeout=0.05)
                 except queue.Empty: message = None
@@ -120,8 +135,8 @@ class PhysicalService:
                     elif cmd == "INSPECT":
                         cycle = Cycle(message["boot"], message["cycle"])
                         self.controller.inspect(cycle)
+                        self.inspection_deadline = time.monotonic()+self.inspection_deadline_s
                         self.future = self.pool.submit(self.inspect, cycle, self.status.copy())
-                        self.inspection_deadline = time.monotonic()+1
                     else: self.controller.on_message(message)
                 if self.future and self.future.done():
                     cycle, decision, metadata = self.future.result(); self.future = None
@@ -137,5 +152,12 @@ class PhysicalService:
             try: self.journal.append("SERVICE_FAULT", {"mode": self.mode, "reason": type(error).__name__, "detail": str(error)})
             finally: raise
         finally:
-            self.link.close(); server.shutdown(); self.pool.shutdown(wait=False, cancel_futures=True)
-            if self.camera: self.camera.close()
+            # Every cleanup runs even if another fails. Join workers before closing the camera.
+            with ExitStack() as cleanup:
+                if self.camera: cleanup.callback(self.camera.close)
+                cleanup.callback(self.pool.shutdown, wait=True, cancel_futures=True)
+                if ui_thread: cleanup.callback(ui_thread.join)
+                if server:
+                    cleanup.callback(server.server_close)
+                    if ui_thread: cleanup.callback(server.shutdown)
+                cleanup.callback(self.link.close)

@@ -1,6 +1,6 @@
 {
   "serial": {"vid": 11914, "pid": 10, "serial_number": null, "port": null},
   "model_package": "models/active", "operator": null,
-  "admission_record": null, "admission_max_age_s": 120,
+  "admission_record": null, "admission_max_age_s": 120, "inspection_deadline_ms": 1750,
   "journal": "evidence/experiments/physical.jsonl", "ui_port": 8080
 }
