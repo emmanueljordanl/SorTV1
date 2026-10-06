@@ -81,7 +81,9 @@ BOM-79,MECH-79,PETG para guías/soportes,por medir,MECHANICAL,,,,,
 BOM-80,MECH-80,fabricación mecánica completa,1 servicio,MECHANICAL,,,,,
 BOM-81,SAFE-81,repuestos menores,1 lote,DEFERRED,,,,,
 BOM-82,HAR-82,envíos/logística,1 partida,DEFERRED,,,,,
-MVP-83,,Pull-up externo nEN a 3V3; resistencia TBC_MODEL,1,REQUIRED_MVP,,,,,
+MVP-83,,nEN external pull-up: 10 kOhm 1% 1/4W CONFIGURED_BASELINE; persistent driver-side 3V3,1,REQUIRED_MVP,,,,10kOhm 1% 0.25W; package TBC_MODEL,QUOTE_PENDING; PENDING_PHYSICAL_VALIDATION
 MVP-84,,Feedback potencia aislado/adaptado 12V -> logica <=3V3,1,TBC_MODEL,,,,,
 MVP-85,,Superficie mate uniforme en bandeja,1,CONSUMABLE,,,,,
 MVP-86,,Topes de sobrecarga para celda y retenedores de arnes,TBC_MEASURE,MECHANICAL,,,,,
+MVP-87,,Dry-contact external pull-ups: 10 kOhm 1% 1/4W CONFIGURED_BASELINE; 9 used + 3 spares,12,REQUIRED_MVP,,,,10kOhm 1% 0.25W; package TBC_MODEL,QUOTE_PENDING; PENDING_PHYSICAL_VALIDATION
+MVP-88,,ACTUATOR_ENABLE separate physical momentary button for DC safety latch; not PHYSICAL_RESET,1,REQUIRED_MVP,,,,TBC_MODEL; DC rating and isolated contacts must be verified,QUOTE_PENDING; PENDING_PHYSICAL_VALIDATION

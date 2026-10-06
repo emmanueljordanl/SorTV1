@@ -31,8 +31,8 @@
     "direction": "OUT",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "HIGH / deshabilitado; pull-up externo AUSENTE BOM",
-    "pull": "Externo nEN necesario, no comprado",
+    "safe": "HIGH / disabled; physical external 10k pull-up",
+    "pull": "CONFIGURED_BASELINE: 10k 1% 1/4W at driver nEN to persistent 3V3_LOGIC (not only Pico rail); retain during reset/BOOTSEL/Pico removal; validate module and supply",
     "connector": "H01:3"
   },
   {
@@ -128,7 +128,7 @@
     "active": "HIGH",
     "voltage_max": 3.3,
     "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "pull": "TBC_MODEL: verify actual HX711 board DVDD/DOUT <=3V3 and MCU-compatible PD_SCK; no generic pull-up; level adaptation if needed; see electrical/input_interfaces.md",
     "connector": "H01:11"
   },
   {
@@ -151,8 +151,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:13"
   },
   {
@@ -163,8 +163,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:14"
   },
   {
@@ -175,8 +175,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:15"
   },
   {
@@ -187,8 +187,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:16"
   },
   {
@@ -199,8 +199,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:17"
   },
   {
@@ -211,8 +211,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:18"
   },
   {
@@ -223,8 +223,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:19"
   },
   {
@@ -235,8 +235,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:20"
   },
   {
@@ -248,7 +248,7 @@
     "active": "LOW",
     "voltage_max": 3.3,
     "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "pull": "TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation",
     "connector": "H01:21"
   },
   {
@@ -260,7 +260,7 @@
     "active": "LOW",
     "voltage_max": 3.3,
     "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "pull": "TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation",
     "connector": "H01:22"
   },
   {
@@ -272,7 +272,7 @@
     "active": "LOW",
     "voltage_max": 3.3,
     "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "pull": "TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation",
     "connector": "H01:23"
   },
   {
@@ -284,7 +284,7 @@
     "active": "LOW",
     "voltage_max": 3.3,
     "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "pull": "TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation",
     "connector": "H01:27"
   },
   {
@@ -295,8 +295,8 @@
     "direction": "IN",
     "active": "LOW",
     "voltage_max": 3.3,
-    "safe": "OPEN/UNKNOWN",
-    "pull": "Pull-up interno 3.3 V; validar ruido",
+    "safe": "Open contact -> HIGH / inactive; validate polarity",
+    "pull": "CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V",
     "connector": "H01:28"
   },
   {
@@ -308,7 +308,7 @@
     "active": "HIGH",
     "voltage_max": 3.3,
     "safe": "OPEN/UNKNOWN",
-    "pull": "Interfaz 12→3.3 V AUSENTE",
+    "pull": "MVP-84 TBC_MODEL: 12V -> isolated/adapted output <=3V3; NEVER 12V directly to GPIO28; no generic pull-up",
     "connector": "H01:29"
   }
 ]

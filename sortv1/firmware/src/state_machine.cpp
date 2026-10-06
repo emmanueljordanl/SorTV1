@@ -57,7 +57,8 @@ void Machine::tick(uint32_t now,const Inputs& i) {
   case State::READY:
     // Opening lid for loading removes physical actuator power and is normal.
     outputs={};
-    if(!linked || now-heartbeat_ms>1000 || (!i.power && i.lid && i.service)) { fault("READY_POWER_OR_LINK_LOST",now); break; }
+    // Closing a guard never reenergizes the physical latch. Await ACTUATOR_ENABLE safely.
+    if(!linked || now-heartbeat_ms>1000) { fault("READY_LINK_LOST",now); break; }
     if(guards && i.closed && i.weight_known && i.presence) { started=now; enter(State::WAIT_STABLE,now); }
     break;
   case State::WAIT_STABLE:
