@@ -15,7 +15,8 @@ void Sensors::init() {
   for(unsigned pin=10;pin<=28;++pin) {
     if(pin==11 || pin==23 || pin==24 || pin==25) continue;
     gpio_init(pin); gpio_set_dir(pin,GPIO_IN);
-    // External electrical pulls are mandatory; do not hide open circuits with guesses.
+    // GPIO12..19/27: external 10k to 3V3, dry contact to GND; validate active_high physically.
+    // GPIO10/20..22/26/28: module-specific <=3V3 interface, NOT a generic contact pull-up.
   }
   gpio_init(11); gpio_put(11,0); gpio_set_dir(11,GPIO_OUT);
   i2c_init(i2c0,100000); gpio_set_function(4,GPIO_FUNC_I2C); gpio_set_function(5,GPIO_FUNC_I2C);

@@ -15,6 +15,11 @@ Machine waiting(Inputs& i) {
   Machine m; m.heartbeat(100); m.tick(99,i); i.reset=true; m.tick(100,i); i.reset=false; m.tick(101,i); m.tick(201,i); assert(m.state==State::READY);
   i.presence=true; i.stable=true; m.tick(202,i); m.tick(203,i); assert(m.state==State::WAIT_DECISION); assert(m.cycle==1); return m;
 }
+void off(const Machine& m) { assert(!m.outputs.motor && !m.outputs.gate_open && !m.outputs.gate_close); }
+Machine ready(Inputs& i) {
+  Machine m; m.heartbeat(100); m.tick(99,i); i.reset=true; m.tick(100,i); i.reset=false;
+  m.tick(101,i); m.tick(201,i); assert(m.state==State::READY); off(m); return m;
+}
 int main() {
   const char* golden[]={"123456789","","SorTV1","{\"v\":1,\"boot\":\"golden\",\"cmd\":\"HEARTBEAT\"}"};
   for(auto s:golden) printf("%04X\n",wire::crc16(reinterpret_cast<const uint8_t*>(s),std::strlen(s)));
@@ -45,4 +50,32 @@ int main() {
   { auto i=safe(); auto m=waiting(i); m.sort(1,1,0,i,204); m.tick(1201,i); assert(m.state==State::FAULT); }
   { auto i=safe(); i.calibrated=false; Machine m; m.heartbeat(1); i.reset=true; m.tick(2,i); assert(m.state==State::BOOT_SAFE); }
   { auto i=safe(); Machine m; m.heartbeat(1); i.reset=true; m.tick(2,i); assert(m.state==State::BOOT_SAFE); i.reset=false; m.tick(3,i); i.reset=true; m.tick(4,i); assert(m.state==State::CHECK_HOME); }
+  // Normal loading: closing lid alone cannot restore the physical latch or initiate movement.
+  { auto i=safe(); auto m=ready(i); i.presence=true; i.lid=false; i.power=false;
+    m.tick(202,i); assert(m.state==State::READY); off(m);
+    i.lid=true; m.tick(203,i); assert(m.state==State::READY); off(m);
+    m.heartbeat(1500); m.tick(1501,i); assert(m.state==State::READY); off(m);
+    i.power=true; m.tick(1502,i); assert(m.state==State::WAIT_STABLE); off(m); }
+  // READY with power absent still faults on heartbeat loss, not on power alone.
+  { auto i=safe(); auto m=ready(i); i.power=false; m.tick(1101,i); assert(m.state==State::FAULT); off(m); }
+  for(State active:{State::POSITIONING,State::DISPENSING,State::VERIFY_CLOSE}) {
+    auto i=safe(); auto m=waiting(i); m.sort(1,1,0,i,204);
+    if(active!=State::POSITIONING) { m.tick(205,i); m.tick(305,i); }
+    if(active==State::VERIFY_CLOSE) {
+      m.tick(306,i); i.closed=false; i.open=true; i.beam[0]=true; m.tick(307,i);
+      i.beam[0]=false; m.tick(308,i);
+    }
+    assert(m.state==active); i.power=false; m.tick(309,i);
+    assert(m.state==State::FAULT); off(m); assert(!m.done_event);
+  }
+  // A reset with no known index stays BOOT_SAFE; CHECK_HOME never hunts for one.
+  { auto i=safe(); i.index.fill(false); Machine m; m.heartbeat(100); m.tick(99,i); i.reset=true;
+    m.tick(100,i); assert(m.state==State::BOOT_SAFE); off(m); }
+  { auto i=safe(); Machine m; m.heartbeat(100); m.tick(99,i); i.reset=true; m.tick(100,i);
+    assert(m.state==State::CHECK_HOME); i.index.fill(false); i.reset=false;
+    m.tick(101,i); off(m); m.heartbeat(3001); m.tick(3101,i);
+    assert(m.state==State::FAULT && !std::strcmp(m.reason,"HOME_TIMEOUT")); off(m); }
+  { auto i=safe(); auto m=ready(i); assert(m.state==State::READY); off(m); }
+  { auto i=safe(); i.index[1]=true; Machine m; m.heartbeat(100); m.tick(101,i);
+    assert(m.state==State::FAULT && !std::strcmp(m.reason,"MULTIPLE_INDICES")); off(m); }
 }
