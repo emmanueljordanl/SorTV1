@@ -1,7 +1,7 @@
 signal,gpio,direction,voltage_domain,polarity,safe,notes,status
 STEP,0,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,LOW,Según módulo,PENDING_PHYSICAL_VALIDATION
 DIR,1,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,LOW,Según módulo,PENDING_PHYSICAL_VALIDATION
-nEN,2,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,HIGH / deshabilitado; pull-up externo AUSENTE BOM,"Externo nEN necesario, no comprado",PENDING_PHYSICAL_VALIDATION
+nEN,2,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,HIGH / disabled; physical external 10k pull-up,CONFIGURED_BASELINE: 10k 1% 1/4W at driver nEN to persistent 3V3_LOGIC (not only Pico rail); retain during reset/BOOTSEL/Pico removal; validate module and supply,PENDING_PHYSICAL_VALIDATION
 SERVO_PWM,3,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,HIGH-Z / sin PWM,Según módulo,PENDING_PHYSICAL_VALIDATION
 I2C_SDA,4,BIDIR,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,SDA/SCL pull-ups efectivos; módulos TBC,PENDING_PHYSICAL_VALIDATION
 I2C_SCL,5,BIDIR,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,SDA/SCL pull-ups efectivos; módulos TBC,PENDING_PHYSICAL_VALIDATION
@@ -9,19 +9,20 @@ TOF_XSHUT_0,6,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,LOW,XSHUT LOW/alta impedancia,PEND
 TOF_XSHUT_1,7,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,LOW,XSHUT LOW/alta impedancia,PENDING_PHYSICAL_VALIDATION
 TOF_XSHUT_2,8,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,LOW,XSHUT LOW/alta impedancia,PENDING_PHYSICAL_VALIDATION
 TOF_XSHUT_3,9,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,LOW,XSHUT LOW/alta impedancia,PENDING_PHYSICAL_VALIDATION
-HX711_DOUT,10,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
+HX711_DOUT,10,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,TBC_MODEL: verify actual HX711 board DVDD/DOUT <=3V3 and MCU-compatible PD_SCK; no generic pull-up; level adaptation if needed; see electrical/input_interfaces.md,PENDING_PHYSICAL_VALIDATION
 HX711_SCK,11,OUT,LOGIC_3V3_MAX,TBC_CALIBRATE,LOW,Según módulo,PENDING_PHYSICAL_VALIDATION
-LID_CLOSED,12,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-GATE_CLOSED,13,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-GATE_OPEN,14,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-PHYSICAL_RESET,15,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-ROTOR_INDEX_0,16,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-ROTOR_INDEX_1,17,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-ROTOR_INDEX_2,18,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-ROTOR_INDEX_3,19,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-FALL_BEAM_0,20,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-FALL_BEAM_1,21,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-FALL_BEAM_2,22,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-FALL_BEAM_3,26,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-SERVICE_CLOSED,27,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Pull-up interno 3.3 V; validar ruido,PENDING_PHYSICAL_VALIDATION
-ACTUATOR_POWER_FEEDBACK,28,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,Interfaz 12→3.3 V AUSENTE,PENDING_PHYSICAL_VALIDATION
+LID_CLOSED,12,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+GATE_CLOSED,13,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+GATE_OPEN,14,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+PHYSICAL_RESET,15,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+ROTOR_INDEX_0,16,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+ROTOR_INDEX_1,17,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+ROTOR_INDEX_2,18,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+ROTOR_INDEX_3,19,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+FALL_BEAM_0,20,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation,PENDING_PHYSICAL_VALIDATION
+FALL_BEAM_1,21,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation,PENDING_PHYSICAL_VALIDATION
+FALL_BEAM_2,22,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation,PENDING_PHYSICAL_VALIDATION
+FALL_BEAM_3,26,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,TBC_MODEL: identify push-pull/open-collector/open-drain/optoisolated output and voltage before wiring; no generic pull-up; 5V requires appropriate level adaptation,PENDING_PHYSICAL_VALIDATION
+SERVICE_CLOSED,27,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,Open contact -> HIGH / inactive; validate polarity,CONFIGURED_BASELINE: external 10k 1% 1/4W pull-up to 3V3; dry contact to GND; active-low design; active_high TBC_CALIBRATE; logic contact isolated from 12V,PENDING_PHYSICAL_VALIDATION
+ACTUATOR_POWER_FEEDBACK,28,IN,LOGIC_3V3_MAX,TBC_CALIBRATE,OPEN/UNKNOWN,MVP-84 TBC_MODEL: 12V -> isolated/adapted output <=3V3; NEVER 12V directly to GPIO28; no generic pull-up,PENDING_PHYSICAL_VALIDATION
+ACTUATOR_ENABLE,N/A,PHYSICAL_CONTROL,12V_CONTROL_ISOLATED_FROM_GPIO,TBC_MODEL,Released; closing guards does not auto-enable,MVP-88 separate momentary button in physical safety latch; not Pico PHYSICAL_RESET; verify DC contacts/holding circuit,PENDING_PHYSICAL_VALIDATION
