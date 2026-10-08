@@ -31,3 +31,20 @@ if(PICO_NO_PICOTOOL)
       ${CMAKE_CURRENT_BINARY_DIR}/sortv1_pico.bin ${CMAKE_CURRENT_BINARY_DIR}/sortv1_pico.uf2
     BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/sortv1_pico.uf2 VERBATIM)
 endif()
+
+# Explicitly separate characterization image. Never used by the production service.
+add_executable(sortv1_bench src/bench_main.cpp src/protocol.cpp)
+target_include_directories(sortv1_bench PRIVATE include)
+target_compile_options(sortv1_bench PRIVATE -Wall -Wextra -Werror)
+target_compile_definitions(sortv1_bench PRIVATE PICO_STDIO_USB_CONNECT_WAIT_TIMEOUT_MS=0 PICO_STDIO_USB_ENABLE_RESET_VIA_BAUD_RATE=0 PICO_STDIO_USB_ENABLE_RESET_VIA_VENDOR_INTERFACE=0)
+target_link_libraries(sortv1_bench pico_stdlib pico_rand hardware_pwm hardware_clocks hardware_watchdog)
+pico_enable_stdio_usb(sortv1_bench 1)
+pico_enable_stdio_uart(sortv1_bench 0)
+pico_set_program_name(sortv1_bench "SorTV1 BENCH ONLY")
+pico_add_extra_outputs(sortv1_bench)
+if(PICO_NO_PICOTOOL)
+  add_custom_command(TARGET sortv1_bench POST_BUILD
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_LIST_DIR}/../../scripts/bin_to_uf2.py
+      ${CMAKE_CURRENT_BINARY_DIR}/sortv1_bench.bin ${CMAKE_CURRENT_BINARY_DIR}/sortv1_bench.uf2
+    BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/sortv1_bench.uf2 VERBATIM)
+endif()
