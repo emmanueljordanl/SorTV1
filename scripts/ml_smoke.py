@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT/"sortv1"))
 import numpy as np
 from PIL import Image
 from app.utils import sha256,write_json
-from training.datasets.validate import write_rows
+from training.datasets.validate import write_rows, read_rows
 from training.train.train import train
 from training.evaluate.evaluate import evaluate
 from training.export.export_onnx import export
@@ -25,7 +25,7 @@ def main():
                              source="SYNTHETIC_TEST",source_dataset="TECHNICAL_FIXTURE",source_version="1",source_image_id=sha256(path),
                              lighting_setup="SYNTHETIC",operator="CI",sha256=sha256(path),excluded_reason=""))
     manifest=work/"manifest.csv"; write_rows(manifest,rows)
-    frozen=sorted([r for r in rows if r["split"]=="test"],key=lambda r:(r["object_id"],r["sha256"]))
+    frozen=sorted([r for r in read_rows(manifest) if r["split"]=="test"],key=lambda r:(r["object_id"],r["sha256"]))
     write_json(manifest.with_suffix(".test-freeze.json"),dict(test_manifest_sha256=hashlib.sha256(json.dumps(frozen,sort_keys=True).encode()).hexdigest()))
     config=dict(manifest=str(manifest),output=str(work/"experiment"),seed=42,device="auto",threads=2,batch_size=4,workers=0,
                 head_epochs=1,finetune_epochs=1,head_learning_rate=1e-3,finetune_learning_rate=1e-4,finetune_last_blocks=2,
