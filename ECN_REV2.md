@@ -9,3 +9,7 @@ B07: separate sortv1_bench image for manually requested isolated characterizatio
 B01: GPIO2 remains high=disabled, low=enabled. An optocoupler with independent driver pullup prevents unpowered Pico backfeed. The electrical design and physical checks are specified in the REV2 manual, and are not approved hardware merely by this PR.
 
 Validation: Python contracts, C++ policy/physical contracts, repository generators, SDK compilation and synthetic ONNX smoke are required. Physical P01-P16 remain PENDING. This change makes no CE, UL, PL or SIL claim. Do not merge or energize solely because CI passes.
+
+B05: Active wiring powers Adafruit2168 TX and RX from independent 3.3V AUX; receiver open-collector outputs have separate 10k pulls to Pico 3V3. Test voltage/polarity before GPIO attachment.
+
+B08: Generic KF301 are not used in active distribution. WAGO221-415 junction blocks have numbered contacts and explicit bridge leads in active_rev2.csv. Mount the junctions in compatible carriers and label each potential; never connect different potentials within one common block. Inspections and measurements are mandatory before installation/energization. Active interface uses D36V50F6 #4092, not a D24V22F6.
