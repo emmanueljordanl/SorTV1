@@ -10,7 +10,7 @@ volatile bool pulse=false, permission=false;
 bool step(repeating_timer_t*) { pulse=permission && !pulse; gpio_put(0,pulse); return true; }
 }
 void Actuators::init() {
-  gpio_init(2); gpio_put(2,1); gpio_set_dir(2,GPIO_OUT);
+  gpio_init(2); gpio_put(2,1); gpio_set_dir(2,GPIO_OUT); gpio_set_drive_strength(2,GPIO_DRIVE_STRENGTH_8MA);
   for(unsigned pin:{0u,1u,3u}) { gpio_init(pin); gpio_put(pin,0); gpio_set_dir(pin,GPIO_OUT); }
   slice=pwm_gpio_to_slice_num(3);
   if(calibration::verified) {
