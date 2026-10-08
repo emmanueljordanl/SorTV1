@@ -1,0 +1,181 @@
+id,signal,from_,to,domain,kind,route,method,figure,colour,closure
+W001,LOGIC,ELEC-03 / USB-C,CMP-01 / USB-C,5.1 V,INCLUIDO/FABRICADO DE FÁBRICA,USB/CSI/SD,NO CORTAR,BUILD-012,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W002,CSI,Pi 5 / CAM-DISP0 conector 22 contactos,Camera Module 3 / conector CSI 15 contactos,CSI,INCLUIDO/FABRICADO DE FÁBRICA,USB/CSI/SD,NO CORTAR,BUILD-012,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W003,FAN,Pi 5 / FAN de 4 contactos,Active Cooler / enchufe de fábrica de 4 contactos,según Pi,INCLUIDO/FABRICADO DE FÁBRICA,USB/CSI/SD,NO CORTAR,BUILD-012,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W004,USB CDC,CMP-01 / USB-A,CMP-06 / USB,USB 5 V + datos,INCLUIDO/FABRICADO DE FÁBRICA,USB/CSI/SD,NO CORTAR,BUILD-012,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W005,STORAGE,microSD / contactos dorados,Pi 5 / ranura microSD,bus SD,INCLUIDO/FABRICADO DE FÁBRICA,USB/CSI/SD,NO CORTAR,BUILD-012,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W006,MAIN,ELEC-31 / +,SAFE-35 / IN,12 V,AWG18,POTENCIA,SOLDAR,BUILD-006,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W009,VMOT,F_MOTOR / conductor OUT,DRV8825 #2982 / VMOT,12 V switched,AWG18,POTENCIA,SOLDAR,BUILD-007,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W011,BUCK INPUT,F_SERVO / conductor OUT,Pololu D36V50F6 #4092 / VIN,12 V switched,AWG18,POTENCIA,SOLDAR,BUILD-007,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W012,SERVO POWER,Pololu D36V50F6 #4092 / VOUT 6 V,MG996R / V+ identificado en I015,6 V,AWG18,POTENCIA,SOLDAR,BUILD-007,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W013,POWER RETURN,DRV8825 / GND junto a VMOT,PGND bloque1 / WAGO221-415 puerto1,0 V,AWG18,POTENCIA,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W014,POWER RETURN,Buck #4092 / GND,PGND bloque1 / WAGO221-415 puerto2,0 V,AWG18,POTENCIA,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W015,POWER RETURN,MG996R / GND identificado en I015,PGND bloque1 / WAGO221-415 puerto3,0 V,AWG18,POTENCIA,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W018,SINGLE SIGNAL REFERENCE,Pico W / pin físico 38 GND y nodo SGND,PGND bloque1 / WAGO221-415 puerto4,0 V,AWG22,POTENCIA,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W019,DECOUPLING,DRV8825 / VMOT,C_VMOT 100 µF 35 V / terminal positivo,12 V switched,AWG18,POTENCIA,SOLDAR,BUILD-007,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W020,CAP RETURN,C_VMOT / terminal negativo marcado banda −,DRV8825 / GND junto VMOT,0 V,AWG18,POTENCIA,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W021,DECOUPLING,Buck #4092 / VIN,C_BUCK 100 µF 35 V / terminal positivo,12 V switched,AWG18,POTENCIA,SOLDAR,BUILD-007,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W022,CAP RETURN,C_BUCK / terminal negativo marcado banda −,Buck #4092 / GND,0 V,AWG18,POTENCIA,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W023,COIL,DRV8825 / A1,NEMA / conductor A0 etiquetado tras M021,PWM bobina,AWG18,POTENCIA,SOLDAR,BUILD-007,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W024,COIL,DRV8825 / A2,NEMA / conductor A1 etiquetado tras M021,PWM bobina,AWG18,POTENCIA,SOLDAR,BUILD-007,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W025,COIL,DRV8825 / B1,NEMA / conductor B0 etiquetado tras M021,PWM bobina,AWG18,POTENCIA,SOLDAR,BUILD-007,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W026,COIL,DRV8825 / B2,NEMA / conductor B1 etiquetado tras M021,PWM bobina,AWG18,POTENCIA,SOLDAR,BUILD-007,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W027,STEP,CMP-06 / GPIO0 / pin1,ELEC-12 / STEP,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-007,AMARILLO,M010 longitud; M011 terminal; M012 continuidad
+W028,DIR,CMP-06 / GPIO1 / pin2,ELEC-12 / DIR,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-007,AMARILLO,M010 longitud; M011 terminal; M012 continuidad
+W030,SERVO PWM,CMP-06 / GPIO3 / pin5,MG996R / señal identificada en I015,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,AMARILLO,M010 longitud; M011 terminal; M012 continuidad
+W031,SDA,J_SDA bloque1 / WAGO221-415 puerto1,VL53L0X #2490 BIN0 / SDA,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W032,SDA,J_SDA bloque1 / WAGO221-415 puerto2,VL53L0X #2490 BIN1 / SDA,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W033,SDA,J_SDA bloque1 / WAGO221-415 puerto3,VL53L0X #2490 BIN2 / SDA,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W034,SDA,J_SDA bloque1 / WAGO221-415 puerto4,VL53L0X #2490 BIN3 / SDA,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W035,SCL,J_SCL bloque1 / WAGO221-415 puerto1,VL53L0X #2490 BIN0 / SCL,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W036,SCL,J_SCL bloque1 / WAGO221-415 puerto2,VL53L0X #2490 BIN1 / SCL,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W037,SCL,J_SCL bloque1 / WAGO221-415 puerto3,VL53L0X #2490 BIN2 / SCL,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W038,SCL,J_SCL bloque1 / WAGO221-415 puerto4,VL53L0X #2490 BIN3 / SCL,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,VERDE,M010 longitud; M011 terminal; M012 continuidad
+W039,XSHUT0,CMP-06 / GPIO6 / pin9,VL53L0X #2490 BIN0 / XSHUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W040,XSHUT1,CMP-06 / GPIO7 / pin10,VL53L0X #2490 BIN1 / XSHUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W041,XSHUT2,CMP-06 / GPIO8 / pin11,VL53L0X #2490 BIN2 / XSHUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W042,XSHUT3,CMP-06 / GPIO9 / pin12,VL53L0X #2490 BIN3 / XSHUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W043,HX711 DOUT,CMP-06 / GPIO10 / pin14,ELEC-HX711 / HX711 DOUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W044,HX711 SCK,CMP-06 / GPIO11 / pin15,ELEC-HX711 / HX711 SCK,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W045,TOP LID,CMP-06 / GPIO12 / pin16,TAPA-A / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W046,GATE CLOSED,CMP-06 / GPIO13 / pin17,CLOSED / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W047,GATE OPEN,CMP-06 / GPIO14 / pin19,OPEN / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W048,RESET,CMP-06 / GPIO15 / pin20,RESET / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W049,ROT0,CMP-06 / GPIO16 / pin21,INDEX0 / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W050,ROT1,CMP-06 / GPIO17 / pin22,INDEX1 / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W051,ROT2,CMP-06 / GPIO18 / pin24,INDEX2 / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W052,ROT3,CMP-06 / GPIO19 / pin25,INDEX3 / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W053,FALL0,CMP-06 / GPIO20 / pin26,Adafruit 2168 RX BIN0 / blanco o amarillo OUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W054,FALL1,CMP-06 / GPIO21 / pin27,Adafruit 2168 RX BIN1 / blanco o amarillo OUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W055,FALL2,CMP-06 / GPIO22 / pin29,Adafruit 2168 RX BIN2 / blanco o amarillo OUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W056,FALL3,CMP-06 / GPIO26 / pin31,Adafruit 2168 RX BIN3 / blanco o amarillo OUT,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W057,SERVICE DOOR,CMP-06 / GPIO27 / pin32,SERVICIO-A / borne que cierra sólo en estado válido según I-CONTACTO,≤3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-011,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W059,SENSOR SUPPLY,P3V bloque1 / WAGO221-415 puerto1,VL53L0X #2490 BIN0 / VIN,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-006,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W060,SENSOR RETURN,VL53L0X #2490 BIN0 / GND,SGND bloque1 / WAGO221-415 puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-006,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W061,SENSOR SUPPLY,P3V bloque1 / WAGO221-415 puerto2,VL53L0X #2490 BIN1 / VIN,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-006,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W062,SENSOR RETURN,VL53L0X #2490 BIN1 / GND,SGND bloque1 / WAGO221-415 puerto2,0 V,AWG22,SEÑAL,SOLDAR,BUILD-006,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W063,SENSOR SUPPLY,P3V bloque1 / WAGO221-415 puerto3,VL53L0X #2490 BIN2 / VIN,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-006,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W064,SENSOR RETURN,VL53L0X #2490 BIN2 / GND,SGND bloque1 / WAGO221-415 puerto3,0 V,AWG22,SEÑAL,SOLDAR,BUILD-006,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W065,SENSOR SUPPLY,P3V bloque1 / WAGO221-415 puerto4,VL53L0X #2490 BIN3 / VIN,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-006,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W066,SENSOR RETURN,VL53L0X #2490 BIN3 / GND,SGND bloque1 / WAGO221-415 puerto4,0 V,AWG22,SEÑAL,SOLDAR,BUILD-006,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W067,SENSOR SUPPLY,P3V bloque2 / WAGO221-415 puerto2,HX711 / DVDD o VCC lógica sólo tras I018,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-006,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W068,SENSOR RETURN,ELEC-HX711 / GND,SGND bloque2 / WAGO221-415 puerto2,0 V,AWG22,SEÑAL,SOLDAR,BUILD-006,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W069,SENSOR SUPPLY,AUX3V3 bloque1 / WAGO221-415 puerto1,Adafruit 2168 RX BIN0 / rojo V+,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W070,SENSOR RETURN,Adafruit 2168 RX BIN0 / negro GND,SGND bloque2 / WAGO221-415 puerto3,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W071,SENSOR SUPPLY,AUX3V3 bloque1 / WAGO221-415 puerto2,Adafruit 2168 RX BIN1 / rojo V+,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W072,SENSOR RETURN,Adafruit 2168 RX BIN1 / negro GND,SGND bloque2 / WAGO221-415 puerto4,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W073,SENSOR SUPPLY,AUX3V3 bloque1 / WAGO221-415 puerto3,Adafruit 2168 RX BIN2 / rojo V+,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W074,SENSOR RETURN,Adafruit 2168 RX BIN2 / negro GND,SGND bloque3 / WAGO221-415 puerto2,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W075,SENSOR SUPPLY,AUX3V3 bloque1 / WAGO221-415 puerto4,Adafruit 2168 RX BIN3 / rojo V+,3.3 V validado módulo,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W076,SENSOR RETURN,Adafruit 2168 RX BIN3 / negro GND,SGND bloque3 / WAGO221-415 puerto3,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W086,LOAD BRIDGE,ELEC-HX711 / E+,SENS-19 / E+,puente,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W087,LOAD BRIDGE,ELEC-HX711 / E−,SENS-19 / E−,puente,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W088,LOAD BRIDGE,ELEC-HX711 / A+,SENS-19 / A+,puente,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W089,LOAD BRIDGE,ELEC-HX711 / A−,SENS-19 / A−,puente,AWG22,SEÑAL,SOLDAR,BUILD-006,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W101,AUXILIARY,F_AUX / OUT antes del relé,LED 12 V / positivo identificado en I045,12 V protegido F_AUX,AWG18,POTENCIA,SOLDAR,BUILD-008,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W102,LED DRIVER TBC,LED 12 V / negativo I045,PGND bloque2 / WAGO221-415 puerto2,0 V,AWG18,POTENCIA,SOLDAR,BUILD-008,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W105,nEN_PULLUP,AUX3V3 bloque2 / WAGO221-415 puerto2,R_nEN 22 kΩ 1% / A,3.3 V persistente,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W106,nEN,R_nEN / B,DRV8825 / nEN (NO conectar a GP2),3V3,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W107,POWER_FEEDBACK_IN,BUS_CUT bloque1 / WAGO221-415 puerto1,R_PF 2.2 kΩ 1% / A,12V_CUT,AWG18,POTENCIA,SOLDAR,BUILD-008,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W108,POWER_FEEDBACK_RETURN,VO618A PF / pin2 K,PGND bloque2 / WAGO221-415 puerto3,0V_ACT,AWG18,POTENCIA,SOLDAR,BUILD-008,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W109,ACTUATOR_POWER_FEEDBACK,VO618A PF / pin4 C y nodo R_PF_PULL,Pico W / GP28 pin34,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W110,SIGNAL_REFERENCE,VO618A PF / pin3 E,SGND bloque3 / WAGO221-415 puerto4,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-008,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W111,SAFETY_CHAIN,F_AUX / OUT,E-STOP / NC IN identificado I033,12V_CONTROL,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W112,SAFETY_CHAIN,E-STOP / NC OUT,TAPA-B / COM identificado I-CONTACTO,12V_CONTROL,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W113,SAFETY_CHAIN,TAPA-B / NC,SERVICIO-B / COM identificado I-CONTACTO,12V_CONTROL,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W114,SAFETY_CHAIN,SERVICIO-B / NC,ENABLE / NO IN identificado I088,12V_CONTROL,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W115,SAFETY_CHAIN_RETURN,Omron zócalo / terminal7 bobina −,PGND bloque2 / WAGO221-415 puerto4,0V_ACT,AWG18,POTENCIA,SOLDAR,BUILD-009,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W116,DC_CUT_POWER,F_MAIN / OUT,Omron zócalo / terminal5 COM potencia,12V,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W117,DC_CUT_POWER,Omron zócalo / terminal3 NO potencia,BUS_CUT bloque1 / WAGO221-415 puerto2,12V_CUT,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W118,MOTOR_POWER,BUS_CUT bloque1 / WAGO221-415 puerto3,F_MOTOR / IN,12V_CUT,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W119,SERVO_POWER,BUS_CUT bloque1 / WAGO221-415 puerto4,F_SERVO / IN,12V_CUT,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W120,PULLUP_GPIO12,P3V bloque2 / WAGO221-415 puerto3,MVP-87-R12 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W121,PULLUP_GPIO12,MVP-87-R12 / B,CMP-06 / GPIO12,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W122,DRY_CONTACT_GPIO12_RETURN,TAPA-A / COM o segundo hilo seco identificado,SGND bloque4 / WAGO221-415 puerto2,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W123,PULLUP_GPIO13,P3V bloque2 / WAGO221-415 puerto4,MVP-87-R13 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W124,PULLUP_GPIO13,MVP-87-R13 / B,CMP-06 / GPIO13,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W125,DRY_CONTACT_GPIO13_RETURN,CLOSED / COM o segundo hilo seco identificado,SGND bloque4 / WAGO221-415 puerto3,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W126,PULLUP_GPIO14,P3V bloque3 / WAGO221-415 puerto2,MVP-87-R14 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W127,PULLUP_GPIO14,MVP-87-R14 / B,CMP-06 / GPIO14,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W128,DRY_CONTACT_GPIO14_RETURN,OPEN / COM o segundo hilo seco identificado,SGND bloque4 / WAGO221-415 puerto4,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W129,PULLUP_GPIO15,P3V bloque3 / WAGO221-415 puerto3,MVP-87-R15 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W130,PULLUP_GPIO15,MVP-87-R15 / B,CMP-06 / GPIO15,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W131,DRY_CONTACT_GPIO15_RETURN,RESET / COM o segundo hilo seco identificado,SGND bloque5 / WAGO221-415 puerto2,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W132,PULLUP_GPIO16,P3V bloque3 / WAGO221-415 puerto4,MVP-87-R16 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W133,PULLUP_GPIO16,MVP-87-R16 / B,CMP-06 / GPIO16,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W134,DRY_CONTACT_GPIO16_RETURN,INDEX0 / COM o segundo hilo seco identificado,SGND bloque5 / WAGO221-415 puerto3,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W135,PULLUP_GPIO17,P3V bloque4 / WAGO221-415 puerto2,MVP-87-R17 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W136,PULLUP_GPIO17,MVP-87-R17 / B,CMP-06 / GPIO17,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W137,DRY_CONTACT_GPIO17_RETURN,INDEX1 / COM o segundo hilo seco identificado,SGND bloque5 / WAGO221-415 puerto4,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W138,PULLUP_GPIO18,P3V bloque4 / WAGO221-415 puerto3,MVP-87-R18 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W139,PULLUP_GPIO18,MVP-87-R18 / B,CMP-06 / GPIO18,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W140,DRY_CONTACT_GPIO18_RETURN,INDEX2 / COM o segundo hilo seco identificado,SGND bloque6 / WAGO221-415 puerto2,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W141,PULLUP_GPIO19,P3V bloque4 / WAGO221-415 puerto4,MVP-87-R19 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W142,PULLUP_GPIO19,MVP-87-R19 / B,CMP-06 / GPIO19,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W143,DRY_CONTACT_GPIO19_RETURN,INDEX3 / COM o segundo hilo seco identificado,SGND bloque6 / WAGO221-415 puerto3,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W144,PULLUP_GPIO27,P3V bloque5 / WAGO221-415 puerto2,MVP-87-R27 / A (sin polaridad),3V3,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W145,PULLUP_GPIO27,MVP-87-R27 / B,CMP-06 / GPIO27,3V3_MAX,AWG22,SEÑAL,SOLDAR,BUILD-011,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W146,DRY_CONTACT_GPIO27_RETURN,SERVICIO-A / COM o segundo hilo seco identificado,SGND bloque6 / WAGO221-415 puerto4,0V_LOGIC,AWG22,SEÑAL,SOLDAR,BUILD-011,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W147,ACTUATOR_ENABLE,ENABLE / NO OUT,K8 bloque1 / WAGO221-415 puerto1,12V_CONTROL,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W148,LATCH_HOLD,SERVICIO-B / NC salida,Omron zócalo / terminal6 COM HOLD,12V_CONTROL,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W149,LATCH_HOLD,Omron zócalo / terminal4 NO HOLD,K8 bloque1 / WAGO221-415 puerto2,12V_CONTROL,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W200,SDA BUS,Pico W / GP4 pin6,J_SDA bloque1 / WAGO221-415 puerto5,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W201,SCL BUS,Pico W / GP5 pin7,J_SCL bloque1 / WAGO221-415 puerto5,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W202,nEN LED V+,P3V bloque5 / WAGO221-415 puerto3,R_EN 1 kΩ 1% / A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W203,nEN LED A,R_EN / B,VO618A EN / pin1 A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W204,nEN LED K,VO618A EN / pin2 K,Pico W / GP2 pin4,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W205,nEN OPTO C,VO618A EN / pin4 C,DRV8825 / nEN,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W206,nEN OPTO E,VO618A EN / pin3 E,PGND bloque3 / WAGO221-415 puerto2,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W207,GP2 pullup,P3V bloque5 / WAGO221-415 puerto4,R_GP2 10 kΩ / A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W208,GP2 pullup,R_GP2 / B,Pico W / GP2 pin4,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W209,AUX IN,F_AUX / OUT,Pololu D24V5F3 #2842 / VIN,12 V protegido,AWG18,POTENCIA,SOLDAR,BUILD-008,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W210,AUX GND,Pololu D24V5F3 #2842 / GND,PGND bloque3 / WAGO221-415 puerto3,0 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W211,AUX3V3,Pololu D24V5F3 #2842 / VOUT,AUX3V3 bloque2 / WAGO221-415 puerto3,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W212,RESET strap,AUX3V3 bloque2 / WAGO221-415 puerto4,DRV8825 / RESET,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-007,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W213,SLEEP strap,AUX3V3 bloque3 / WAGO221-415 puerto2,DRV8825 / SLEEP,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-007,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W214,FULL STEP STRAP,DRV8825 / MODE0,PGND bloque3 / WAGO221-415 puerto4,0 V,AWG22,SEÑAL,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W215,FULL STEP STRAP,DRV8825 / MODE1,PGND bloque4 / WAGO221-415 puerto2,0 V,AWG22,SEÑAL,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W216,FULL STEP STRAP,DRV8825 / MODE2,PGND bloque4 / WAGO221-415 puerto3,0 V,AWG22,SEÑAL,SOLDAR,BUILD-007,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W217,F_AUX feed,F_MAIN / OUT,F_AUX / IN,12 V protegido,AWG18,POTENCIA,SOLDAR,BUILD-008,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W218,FEEDBACK LED,R_PF 2.2 kΩ / B,VO618A PF / pin1 A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W219,FEEDBACK pullup,P3V bloque6 / WAGO221-415 puerto2,R_PF_PULL 22 kΩ / A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W220,FEEDBACK node,R_PF_PULL / B,VO618A PF / pin4 C,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W221,Coil positive node,K8 bloque1 / WAGO221-415 puerto3,Omron zócalo / terminal8 bobina +,12 V control,AWG18,POTENCIA,SOLDAR,BUILD-009,ROJO,M010 longitud; M011 terminal; M012 continuidad
+W222,TX POWER 0,AUX3V3 bloque3 / WAGO221-415 puerto3,Adafruit 2168 TX BIN0 / rojo,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W223,TX RETURN 0,Adafruit 2168 TX BIN0 / negro,SGND bloque7 / WAGO221-415 puerto2,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W224,TX POWER 1,AUX3V3 bloque3 / WAGO221-415 puerto4,Adafruit 2168 TX BIN1 / rojo,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W225,TX RETURN 1,Adafruit 2168 TX BIN1 / negro,SGND bloque7 / WAGO221-415 puerto3,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W226,TX POWER 2,AUX3V3 bloque4 / WAGO221-415 puerto2,Adafruit 2168 TX BIN2 / rojo,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W227,TX RETURN 2,Adafruit 2168 TX BIN2 / negro,SGND bloque7 / WAGO221-415 puerto4,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W228,TX POWER 3,AUX3V3 bloque4 / WAGO221-415 puerto3,Adafruit 2168 TX BIN3 / rojo,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W229,TX RETURN 3,Adafruit 2168 TX BIN3 / negro,SGND bloque8 / WAGO221-415 puerto2,0 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W230,BEAM pullup 0,P3V bloque6 / WAGO221-415 puerto3,R_BEAM0 10 kΩ / A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W231,BEAM node 0,R_BEAM0 / B,Adafruit 2168 RX BIN0 / OUT (nodo W053),3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W232,BEAM pullup 1,P3V bloque6 / WAGO221-415 puerto4,R_BEAM1 10 kΩ / A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W233,BEAM node 1,R_BEAM1 / B,Adafruit 2168 RX BIN1 / OUT (nodo W054),3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W234,BEAM pullup 2,P3V bloque7 / WAGO221-415 puerto2,R_BEAM2 10 kΩ / A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W235,BEAM node 2,R_BEAM2 / B,Adafruit 2168 RX BIN2 / OUT (nodo W055),3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W236,BEAM pullup 3,P3V bloque7 / WAGO221-415 puerto3,R_BEAM3 10 kΩ / A,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W237,BEAM node 3,R_BEAM3 / B,Adafruit 2168 RX BIN3 / OUT (nodo W056),3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-010,AZUL,M010 longitud; M011 terminal; M012 continuidad
+W238,12 V RETURN,Jack J12V / contacto exterior − identificado M020,PGND bloque4 / WAGO221-415 puerto4,0 V,AWG18,POTENCIA,SOLDAR,BUILD-008,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W239,PICO LOGIC BUS,Pico W / 3V3 OUT pin36,P3V bloque7 / WAGO221-415 puerto4,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W240,PICO SIGNAL GND,SGND bloque8 / WAGO221-415 puerto3,Pico W / GND pin38,0 V,AWG22,SEÑAL,SOLDAR,BUILD-008,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W300,PUENTE PGND,PGND bloque1 / puerto5,PGND bloque2 / puerto1,0 V,AWG18,POTENCIA,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W301,PUENTE PGND,PGND bloque2 / puerto5,PGND bloque3 / puerto1,0 V,AWG18,POTENCIA,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W302,PUENTE PGND,PGND bloque3 / puerto5,PGND bloque4 / puerto1,0 V,AWG18,POTENCIA,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W303,PUENTE SGND,SGND bloque1 / puerto5,SGND bloque2 / puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W304,PUENTE SGND,SGND bloque2 / puerto5,SGND bloque3 / puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W305,PUENTE SGND,SGND bloque3 / puerto5,SGND bloque4 / puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W306,PUENTE SGND,SGND bloque4 / puerto5,SGND bloque5 / puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W307,PUENTE SGND,SGND bloque5 / puerto5,SGND bloque6 / puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W308,PUENTE SGND,SGND bloque6 / puerto5,SGND bloque7 / puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W309,PUENTE SGND,SGND bloque7 / puerto5,SGND bloque8 / puerto1,0 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NEGRO,M010 longitud; M011 terminal; M012 continuidad
+W310,PUENTE P3V,P3V bloque1 / puerto5,P3V bloque2 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W311,PUENTE P3V,P3V bloque2 / puerto5,P3V bloque3 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W312,PUENTE P3V,P3V bloque3 / puerto5,P3V bloque4 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W313,PUENTE P3V,P3V bloque4 / puerto5,P3V bloque5 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W314,PUENTE P3V,P3V bloque5 / puerto5,P3V bloque6 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W315,PUENTE P3V,P3V bloque6 / puerto5,P3V bloque7 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W316,PUENTE AUX3V3,AUX3V3 bloque1 / puerto5,AUX3V3 bloque2 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W317,PUENTE AUX3V3,AUX3V3 bloque2 / puerto5,AUX3V3 bloque3 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad
+W318,PUENTE AUX3V3,AUX3V3 bloque3 / puerto5,AUX3V3 bloque4 / puerto1,3.3 V,AWG22,SEÑAL,SOLDAR,BUILD-013,NARANJA,M010 longitud; M011 terminal; M012 continuidad

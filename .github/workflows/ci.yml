@@ -74,6 +74,8 @@ jobs:
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -pedantic sortv1/tests/protocol/firmware_contracts.cpp -o /tmp/sortv1-contracts
           /tmp/sortv1-contracts
+          g++ -std=c++17 -Wall -Wextra -Werror -pedantic -Isortv1/firmware/include sortv1/tests/protocol/bench_policy.cpp -o /tmp/sortv1-bench-policy
+          /tmp/sortv1-bench-policy
           g++ -std=c++17 -Wall -Wextra -Werror -pedantic -Isortv1/firmware/include sortv1/tests/protocol/physical_firmware.cpp sortv1/firmware/src/state_machine.cpp sortv1/firmware/src/protocol.cpp -o /tmp/sortv1-physical
           python scripts/check_cross_language.py /tmp/sortv1-physical
 
@@ -112,6 +114,8 @@ jobs:
           cmake -S sortv1/firmware -B build/pico -G Ninja -DPICOTOOL_NO_LIBUSB=1
           cmake --build build/pico -j 2
           test -s build/pico/sortv1_pico.uf2
+          test -s build/pico/sortv1_bench.uf2
+          sha256sum build/pico/sortv1_bench.uf2 > build/pico/sortv1_bench.uf2.sha256
           python scripts/firmware_build_metadata.py --sdk .tools/pico-sdk
           sha256sum build/pico/sortv1_pico.uf2 > build/pico/sortv1_pico.uf2.sha256
           git rev-parse HEAD > build/pico/GIT_COMMIT.txt
@@ -121,6 +125,7 @@ jobs:
           path: |
             build/pico/sortv1_pico.uf2
             build/pico/sortv1_pico.elf
+            build/pico/sortv1_bench.uf2
             build/pico/*.sha256
             build/pico/GIT_COMMIT.txt
             build/pico/BUILD_INFO.json
